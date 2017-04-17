@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  election_id: 1
+  candidate_id: 1
+  district_id: 1
+  votes_total: 1
+  votes_percent: 1.5
+
+two:
+  election_id: 1
+  candidate_id: 1
+  district_id: 1
+  votes_total: 1
+  votes_percent: 1.5

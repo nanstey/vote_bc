@@ -1,0 +1,2 @@
+class ElectionLeader < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class CandidateElectionDistrict < ApplicationRecord
+end
