@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'pry'
 gem 'roo'
 gem 'simplecov'
+gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-rails'
 
 
 # Use Capistrano for deployment
