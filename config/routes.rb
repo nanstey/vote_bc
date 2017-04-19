@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   get '/:year' => 'election#show'
   get '/districts' => 'district#index'
-  get '/:name' => 'district#show'
+  get '/districts/:name' => 'district#show'
 
 end
