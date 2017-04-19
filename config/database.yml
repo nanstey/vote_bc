@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: vote_bc_production
-  username: vote_bc
-  password: <%= ENV['VOTE_BC_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DATABASE']
+  username: <%= ENV['USER']
+  password: <%= ENV['PASSWORD'] %>
