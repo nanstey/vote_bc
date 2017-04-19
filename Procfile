@@ -1,1 +1,1 @@
-release: heroku pg:reset ENV['DATABASE']
+release: bundle exec rake db:migrate && bundle exec rake db:seed
