@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  resources :districts
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root to: 'districts#index'
+
+  get '/election' => 'election#show'
+  get '/district' => 'district#index'
+  get '/district' => 'district#show'
+
 end
