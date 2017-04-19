@@ -27,14 +27,7 @@ def seed_candidates(csv, year)
     pp candidate = Candidate.find_or_create_by(name: csv.cell(i,c), party_id: party.id)
     pp CandidateElectionDistrict.find_or_create_by(candidate_id: candidate.id, election_id: election.id, district_id: district.id)
   end
-
-  # csv.each(name: 'Candidate Ballot Name', district: 'Electoral District', party: 'Affiliation') do |hash|
-  #   # puts hash.inspect
-
-
-  # end
 end
-
 
 puts "Reading candidates 2017 csv ..."
 
