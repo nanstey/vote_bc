@@ -1,1 +1,1 @@
-release: bundle exec rake db:reset
+release: heroku pg:reset ENV['DATABASE']
