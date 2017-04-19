@@ -1,2 +1,22 @@
-<h1>District#index</h1>
-<p>Find me in app/views/district/index.html.erb</p>
+<h1>Districts</h1>
+
+ <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Abbr</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @districts.each do |district| %>
+      <tr>
+        <td><%= link_to "#{district.name}", "district/#{district.name}" %></td>
+        <td><%= district.abbr %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

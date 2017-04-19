@@ -4,5 +4,6 @@ class DistrictController < ApplicationController
   end
 
   def show
+
   end
 end
