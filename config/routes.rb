@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  root to: 'districts#index'
+  root to: 'election#show'
 
-  get '/election' => 'election#show'
-  get '/district' => 'district#index'
-  get '/district' => 'district#show'
+  get '/:year' => 'election#show'
+  get '/districts' => 'district#index'
+  get '/:name' => 'district#show'
 
 end
