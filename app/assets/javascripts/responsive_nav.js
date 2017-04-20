@@ -10,8 +10,11 @@ $(document).ready(function() {
   checkSize();
   $(window).resize(checkSize);
   $('.menu-icon').on('click', function() {
-
-    $(".nav-menu").slideToggle(200);
+    if ($('.nav-menu').hasClass('dropped')) {
+      $('.dropdown-content').slideUp(100);
+      setTimeout(function(){}, 100);
+    }
+    $(".nav-menu").slideToggle(200).toggleClass('dropped')
   })
 
   $('.dropdown-content').hide();
