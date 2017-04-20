@@ -4,6 +4,6 @@ class DistrictController < ApplicationController
   end
 
   def show
-
+    @district = District.find_by name: params[:name]
   end
 end
