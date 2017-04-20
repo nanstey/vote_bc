@@ -4,6 +4,7 @@ class DistrictController < ApplicationController
   end
 
   def show
-
+    @district_name = params[:name]
+    @district = District.where('lower(name) = ?', @district_name.downcase).first
   end
 end
