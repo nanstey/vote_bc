@@ -9,6 +9,7 @@ def get_boundary_points(district)
   response = HTTP.get(url)
   boundary = JSON.parse(response)
   boundary['coordinates'][0][0].each do |point|
+    puts "  >> #{district.name}"
     DistrictPoint.create!(
             district_id: district.id,
             lat: point[0],
