@@ -7,23 +7,26 @@
 
 <% end %>
 
- <table>
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Abbr</th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="container">
+    <div class="one-full column">
+      <table>
+        <thead>
+          <tr>
+            <th>District Name</th>
+            <th>Abbreviation</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @districts.each do |district| %>
+            <tr>
+              <td><%= link_to "#{district.name}", "district/#{district.name}" %></td>
+              <td><%= district.abbr %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <tbody>
-    <% @districts.each do |district| %>
-      <tr>
-        <td><%= link_to "#{district.name}", "district/#{district.name}" %></td>
-        <td><%= district.abbr %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+</div>
