@@ -1,7 +1,7 @@
 class District < ApplicationRecord
   validates :name, uniqueness: true
 
-  # For acurate results, finds exact lat and lng of addess to pinpoint specific riding
+  # For acurate results, finds exact geolocation of addess to pinpoint specific riding using google maps api
   def self.get_geolocation(address)
     url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{CGI.escape(address)}&key=#{ENV['GOOGLE_MAPS_API_KEY']}"
     response = HTTP.get(url)
@@ -11,7 +11,8 @@ class District < ApplicationRecord
     Hash["lat", lat, "lng", lng]
   end
 
-  def self.get_boundary_info(geolocation)
+  # uses open north api (election info) to find riding based on geolocation found in get_geolocation
+  def self.get_district(geolocation)
     url = "https://represent.opennorth.ca/boundaries/?contains=#{geolocation['lat']},#{geolocation['lng']}"
     response = HTTP.get(url)
     district = JSON.parse(response)
@@ -22,5 +23,17 @@ class District < ApplicationRecord
       end
     end
     @district_name
+  end
+
+  # searches for the boundary points that make up the riding boundary polygon (from open north api)
+  def self.get_boundary_points(district_name)
+    district = district_name.downcase
+    if district.include? ' '
+      district = district.gsub! ' ', '-'
+    end
+    url = "https://represent.opennorth.ca/boundaries/british-columbia-electoral-districts-2015-redistribution/#{district}/shape"
+    response = HTTP.get(url)
+    boundary = JSON.parse(response)
+    boundary['coordinates'][0][0]
   end
 end
