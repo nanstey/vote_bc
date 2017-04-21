@@ -22,10 +22,10 @@ require Rails.root.join('db', 'scripts', 'import_candidate_election_district_201
 
 require Rails.root.join('db', 'scripts', 'import_party_leaders_2017')
 
-require Rails.root.join('db', 'scripts', 'import_boundaries')
-
 require Rails.root.join('db', 'scripts', 'import_election_results_2013_2009')
 
 require Rails.root.join('db', 'scripts', 'import_party_leaders_2013_2009')
+
+require Rails.root.join('db', 'scripts', 'import_boundaries')
 
 puts "=============== DONE SEEDING ==============="
