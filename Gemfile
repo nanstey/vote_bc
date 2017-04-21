@@ -35,6 +35,8 @@ gem 'pry'
 gem 'roo'
 gem 'simplecov'
 gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-rails'
+gem 'http'
+gem 'json'
 
 
 # Use Capistrano for deployment
@@ -43,6 +45,7 @@ gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-r
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'dotenv-rails'
   gem 'rspec'
 end
 
