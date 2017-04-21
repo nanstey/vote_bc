@@ -72,6 +72,8 @@ GEM
     ffi (1.9.18)
     font-awesome-rails (4.7.0.1)
       railties (>= 3.2, < 5.1)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     http (2.2.1)
@@ -218,6 +220,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   dotenv-rails
   font-awesome-rails
+  friendly_id (~> 5.1.0)
   http
   jbuilder (~> 2.5)
   jquery-rails
