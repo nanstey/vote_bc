@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on("turbolinks:load", function() {
 // Toggles elections dropdown menu
   $('.dropdown-content').hide();
   $('.dropdown').on('click', function() {
