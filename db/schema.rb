@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416214144) do
+ActiveRecord::Schema.define(version: 20170421185647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 20170416214144) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["party_id"], name: "index_candidates_on_party_id", using: :btree
+  end
+
+  create_table "district_points", force: :cascade do |t|
+    t.integer "district_id"
+    t.float   "lat"
+    t.float   "lng"
+    t.index ["district_id"], name: "index_district_points_on_district_id", using: :btree
   end
 
   create_table "districts", force: :cascade do |t|
@@ -86,6 +93,7 @@ ActiveRecord::Schema.define(version: 20170416214144) do
   add_foreign_key "candidate_election_districts", "districts"
   add_foreign_key "candidate_election_districts", "elections"
   add_foreign_key "candidates", "parties"
+  add_foreign_key "district_points", "districts"
   add_foreign_key "election_districts", "candidates", column: "winner_id"
   add_foreign_key "election_districts", "districts"
   add_foreign_key "election_districts", "elections"
