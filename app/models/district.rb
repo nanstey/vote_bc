@@ -29,7 +29,7 @@ class District < ApplicationRecord
         break
       end
     end
-    District.find_by name: @district_name
+    @district_name
   end
 
 end
