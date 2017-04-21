@@ -1,0 +1,14 @@
+<h1>Elections</h1>
+
+ <table>
+
+  <tbody>
+    <% @elections.each do |election| %>
+      <tr>
+        <td><%= link_to "#{election.year}", "election/#{election.year}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
