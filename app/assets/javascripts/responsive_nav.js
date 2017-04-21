@@ -23,7 +23,6 @@ $(document).ready(function() {
     if ($('.dropdown i').hasClass('down')) {
       $('.dropdown-content').slideUp(100);
       $('.dropdown i').toggleClass('up').toggleClass('down')
-      $('.nav-menu').removeClass('dropped');
       setTimeout(function(){}, 100);
     }
     $(".nav-menu").slideToggle(200)
