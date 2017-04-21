@@ -5,11 +5,11 @@ def get_boundary_points(district)
   if district_name.include? ' '
     district_name = district_name.gsub! ' ', '-'
   end
-  url = "https://represent.opennorth.ca/boundaries/british-columbia-electoral-districts-2015-redistribution/#{district_name}/shape"
+  url = "https://represent.opennorth.ca/boundaries/british-columbia-electoral-districts-2015-redistribution/#{district_name}/simple_shape"
   response = HTTP.get(url)
   boundary = JSON.parse(response)
+  puts "  >> #{district.name}"
   boundary['coordinates'][0][0].each do |point|
-    puts "  >> #{district.name}"
     DistrictPoint.create!(
             district_id: district.id,
             lat: point[0],
