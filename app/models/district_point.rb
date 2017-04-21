@@ -1,0 +1,2 @@
+class DistrictPoint < ApplicationRecord
+end
