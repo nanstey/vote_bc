@@ -1,5 +1,12 @@
 <h1>Districts</h1>
 
+<%= form_tag '/districts' do %>
+
+  Address: <%= text_field_tag :address %>
+  <%= submit_tag "Submit" %>
+
+<% end %>
+
  <table>
     <thead>
     <tr>

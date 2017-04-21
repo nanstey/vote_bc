@@ -7,7 +7,7 @@ class DistrictController < ApplicationController
   def show
     @district_name = params[:name]
     @district = District.where('lower(name) = ?', @district_name.downcase).first
-    puts District.get_boundary_points(@district.name)
+    @boundary = District.get_boundary_points(@district.name)
   end
 
   def search

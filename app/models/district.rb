@@ -25,11 +25,13 @@ class District < ApplicationRecord
     @district_name
   end
 
-  # searches for the boundary points that make up the boundary polygon (from open north api)
-  def self.get_boundary_points(name)
-    @point_hash = {}
-    district = name.sub! ' ', '-'
-    url = "https://represent.opennorth.ca/boundaries/british-columbia-electoral-districts-2015-redistribution/#{district.downcase}/shape"
+  # searches for the boundary points that make up the riding boundary polygon (from open north api)
+  def self.get_boundary_points(district_name)
+    district = district_name.downcase
+    if district.include? ' '
+      district = district.gsub! ' ', '-'
+    end
+    url = "https://represent.opennorth.ca/boundaries/british-columbia-electoral-districts-2015-redistribution/#{district}/shape"
     response = HTTP.get(url)
     boundary = JSON.parse(response)
     boundary['coordinates'][0][0]
