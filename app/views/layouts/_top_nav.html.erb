@@ -9,9 +9,9 @@
       <i class="fa fa-caret-right up" aria-hidden="true"></i>
       <button class="dropbtn">Elections</button>
       <div class="dropdown-content">
-        <a href="#">2017</a>
-        <a href="#">2009</a>
-        <a href="#">2006</a>
+        <% election.each do |e| %>
+        <%= link_to "#{e.year}", "/election/#{e.year}" %>
+        <% end %>
       </div>
     </div>
   </div>

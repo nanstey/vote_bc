@@ -5,7 +5,7 @@ class District < ApplicationRecord
   has_many :candidate_election_districts
   has_many :candidates, through: :candidate_election_districts
 
-  # For acurate results, finds exact lat and lng of addess to pinpoint specific riding
+  # For acurate results, finds exact geolocation of addess to pinpoint specific riding using google maps api
   def self.get_geolocation(address)
     url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{CGI.escape(address)}&key=#{ENV['GOOGLE_MAPS_API_KEY']}"
     response = HTTP.get(url)
@@ -15,7 +15,8 @@ class District < ApplicationRecord
     Hash["lat", lat, "lng", lng]
   end
 
-  def self.get_boundary_info(geolocation)
+  # uses open north api (election info) to find riding based on geolocation found in get_geolocation
+  def self.get_district(geolocation)
     url = "https://represent.opennorth.ca/boundaries/?contains=#{geolocation['lat']},#{geolocation['lng']}"
     response = HTTP.get(url)
     district = JSON.parse(response)

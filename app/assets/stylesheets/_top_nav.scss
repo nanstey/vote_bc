@@ -5,7 +5,8 @@
   width: 100%;
   background-color: #F0F0F0;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  color: #555
+  color: #555;
+  z-index: 2;
 }
 
 .navbar h4 {
@@ -38,8 +39,9 @@
 }
 
 .nav-menu .dropdown i {
-  margin-right: 3px;
-  font-size: 18px;
+  margin-right: 2px;
+  font-size: 16px;
+  color: #333;
 }
 
 .dropbtn {
@@ -61,7 +63,7 @@
 }
 
 .dropdown-content a {
-  color: black;
+  color: #333;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
