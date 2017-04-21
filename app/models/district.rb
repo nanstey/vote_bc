@@ -1,5 +1,9 @@
 class District < ApplicationRecord
   validates :name, uniqueness: true
+  has_many :election_districts
+  has_many :elections, through: :election_districts
+  has_many :candidate_election_districts
+  has_many :candidates, through: :candidate_election_districts
 
   # For acurate results, finds exact lat and lng of addess to pinpoint specific riding
   def self.get_geolocation(address)
@@ -23,4 +27,5 @@ class District < ApplicationRecord
     end
     @district_name
   end
+
 end
