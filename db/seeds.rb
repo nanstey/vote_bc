@@ -1,13 +1,13 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-Party.destroy_all
+CandidateElectionDistrict.destroy_all
+ElectionDistrict.destroy_all
+ElectionLeader.destroy_all
 Election.destroy_all
 District.destroy_all
 Candidate.destroy_all
-ElectionLeader.destroy_all
-ElectionDistrict.destroy_all
-CandidateElectionDistrict.destroy_all
+Party.destroy_all
 
 puts "=============== START SEEDING ==============="
 
