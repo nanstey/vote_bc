@@ -12,8 +12,8 @@ class DistrictController < ApplicationController
 
   def search
     geolocation = District.get_geolocation(params[:address])
-    if the = District.get_district(geolocation)
-      redirect_to "/district/#{the}"
+    if district = District.get_district(geolocation)
+      redirect_to "/district/#{district}"
     else
       redirect_to "/"
     end
