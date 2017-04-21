@@ -18,4 +18,5 @@ class DistrictController < ApplicationController
       redirect_to "/"
     end
   end
+
 end

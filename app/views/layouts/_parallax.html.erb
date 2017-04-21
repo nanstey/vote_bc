@@ -1,0 +1,14 @@
+<div class="parallax">
+
+  <div class="bg" height="100%">
+  </div>
+  <div class="search">
+    <%= form_tag '/districts' do %>
+
+      Address: <%= text_field_tag :address %>
+      <%= submit_tag "Submit" %>
+
+    <% end %>
+  </div>
+
+</div>
