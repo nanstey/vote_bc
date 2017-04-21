@@ -38,6 +38,7 @@ gem 'simplecov'
 gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-rails'
 gem 'http'
 gem 'json'
+gem 'friendly_id', '~> 5.1.0'
 
 
 # Use Capistrano for deployment

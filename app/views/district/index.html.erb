@@ -20,7 +20,7 @@
         <tbody>
           <% @districts.each do |district| %>
             <tr>
-              <td><%= link_to "#{district.name}", "district/#{district.name}" %></td>
+              <td><%= link_to district.name, "/district/#{district.slug}" %></td>
               <td><%= district.abbr %></td>
             </tr>
           <% end %>

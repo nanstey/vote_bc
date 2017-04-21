@@ -1,4 +1,7 @@
 class District < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  validates_presence_of :name, :slug
   validates :name, uniqueness: true
   has_many :election_districts
   has_many :elections, through: :election_districts
