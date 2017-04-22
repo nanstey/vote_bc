@@ -1,19 +1,16 @@
 class DistrictController < ApplicationController
   def index
     @districts = District.all
-
   end
 
   def show
-    @district_name = params[:name]
-    @district = District.where('lower(name) = ?', @district_name.downcase).first
-    @boundary = District.get_boundary_points(@district.name)
+    @district = District.friendly.find(params[:name])
   end
 
   def search
     geolocation = District.get_geolocation(params[:address])
     if district = District.get_district(geolocation)
-      redirect_to "/district/#{district}"
+      redirect_to "/district/#{district.slug}"
     else
       redirect_to "/"
     end

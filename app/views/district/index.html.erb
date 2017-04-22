@@ -1,31 +1,9 @@
 <h1>Districts</h1>
 
-<%= form_tag '/districts' do %>
-
-  Address: <%= text_field_tag :address %>
-  <%= submit_tag "Submit" %>
-
-<% end %>
 
 <div class="container body-container">
     <div class="one-full column">
-      <table>
-        <thead>
-          <tr>
-            <th>District Name</th>
-            <th>Abbreviation</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @districts.each do |district| %>
-            <tr>
-              <td><%= link_to "#{district.name}", "district/#{district.name}" %></td>
-              <td><%= district.abbr %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render 'district_list', districts: @districts %>
     </div>
   </div>
 

@@ -1,5 +1,12 @@
 class District < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  validates_presence_of :name, :slug
   validates :name, uniqueness: true
+  has_many :election_districts
+  has_many :elections, through: :election_districts
+  has_many :candidate_election_districts
+  has_many :candidates, through: :candidate_election_districts
 
   # For acurate results, finds exact geolocation of addess to pinpoint specific riding using google maps api
   def self.get_geolocation(address)
@@ -22,18 +29,7 @@ class District < ApplicationRecord
         break
       end
     end
-    @district_name
+    District.find_by name: @district_name
   end
 
-  # searches for the boundary points that make up the riding boundary polygon (from open north api)
-  def self.get_boundary_points(district_name)
-    district = district_name.downcase
-    if district.include? ' '
-      district = district.gsub! ' ', '-'
-    end
-    url = "https://represent.opennorth.ca/boundaries/british-columbia-electoral-districts-2015-redistribution/#{district}/shape"
-    response = HTTP.get(url)
-    boundary = JSON.parse(response)
-    boundary['coordinates'][0][0]
-  end
 end

@@ -10,7 +10,9 @@
 
   <body>
     <%= render 'layouts/top_nav' %>
-    <%= yield %>
+    <div class="content">
+      <%= yield %>
+    </div>
     <%= render 'layouts/footer' %>
 
   </body>
