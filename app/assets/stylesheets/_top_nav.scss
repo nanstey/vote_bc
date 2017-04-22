@@ -15,6 +15,7 @@
   position: relative;
   top: 7px;
   line-height: 40px;
+  z-index: 4;
 }
 
 .nav-menu {
@@ -73,12 +74,16 @@ background-color: #E8E8E8
 }
 
 .menu-icon {
+  position: relative;
   margin-right: 20px;
   font-size: 30px;
   display: none;
   float: right;
   line-height: 60px;
+  z-index: 4;
 }
+
+
 
 .menu-icon:hover {
 color: black;
@@ -140,12 +145,14 @@ transition:             transform 200ms ease;
 //RESPONSIVE
 @media screen and (max-width: 550px) {
   .nav-menu {
-    padding-top: 10px;
+    position: relative;
+    top: -60px;
+    padding-top: 70px;
     float: none;
     width: 100%;
     background-color: #f0f0f0;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-
+    z-index: 2;
   }
 
   .nav-menu a {
@@ -178,8 +185,9 @@ transition:             transform 200ms ease;
   }
 
   .navbar.atTop .menu-icon:hover {
-    color: #555;
+    color: #e3e3e3;
   }
+
 
 }
 
