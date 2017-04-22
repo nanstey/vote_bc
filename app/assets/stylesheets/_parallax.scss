@@ -1,0 +1,67 @@
+.bg {
+  background-image: url(Parliament_1920x1080.jpg);
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+}
+
+.search {
+  position: relative;
+  margin: 50vh auto;
+  min-height: 100vh;
+  display: inline-block;
+  z-index: 2;
+  min-width: 100%;
+  text-align: center;
+}
+
+.search form {
+  font-size: 20px;
+  width: 360px;
+  color: white;
+  display: inline-block;
+}
+
+.search form input {
+  display: block;
+  width: 100%;
+}
+
+.search form .search-text {
+  margin-top: 20px;
+  color: white;
+  background: transparent;
+}
+
+.search form .search-submit {
+  color: white;
+  border: none;
+  min-height: 40px;
+  font-size: 20px;
+}
+
+.search form .search-submit:hover {
+  color: #1EAEDB;
+}
+
+.translucent {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color:rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 550px) {
+
+  .search form {
+    font-size: 15px;
+    width: 80%;
+  }
+
+  .search form .search-submit {
+    font-size: 15px;
+  }
+
+}

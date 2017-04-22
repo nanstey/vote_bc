@@ -27,4 +27,24 @@ $(document).on("turbolinks:load", function() {
     }
     $(".nav-menu").slideToggle(200)
   })
+
+//Loads in transparent mode if most recent election is selected
+  if (window.location.pathname === '/election/2017') {
+    $('.navbar').addClass('at-top');
+  }
+
+// Adds or removes transparency on scroll
+  $(window).scroll(function () {
+    console.log(document.body.scrollTop);
+    if (window.location.pathname === '/election/2017') {
+      if (document.body.scrollTop > 20) {
+        $('.navbar').removeClass('at-top').addClass('scrolled-down');
+      }
+      if (document.body.scrollTop < 20) {
+        $('.navbar').addClass('at-top').removeClass('scrolled-down');
+      }
+    }
+  })
 });
+
+

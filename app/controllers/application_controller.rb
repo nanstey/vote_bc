@@ -2,10 +2,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
-  def election
+  def elections
     @elections = Election.all
   end
-  helper_method :election
+  helper_method :elections
 
 end
 

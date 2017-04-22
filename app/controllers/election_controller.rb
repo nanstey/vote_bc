@@ -9,4 +9,7 @@ class ElectionController < ApplicationController
     @leaders = @election.leaders
 
   end
+
+
+
 end
