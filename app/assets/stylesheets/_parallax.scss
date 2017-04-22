@@ -7,8 +7,6 @@
   display: block;
 }
 
-
-
 .search {
   position: relative;
   margin: 50vh auto;
@@ -41,6 +39,13 @@
   border: none;
   min-height: 40px;
   font-size: 20px;
+}
+
+.translucent {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color:rgba(0, 0, 0, 0.5);
 }
 
 @media screen and (max-width: 550px) {

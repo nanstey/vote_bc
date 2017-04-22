@@ -1,10 +1,12 @@
 <div class="parallax">
   <div class="bg">
-    <div class="search">
-      <%= form_tag '/districts' do %>
-        Enter your address or postal code: <%= text_field_tag :address, nil, class: "search-text" %>
-        <%= submit_tag "Submit", class: "search-submit" %>
-      <% end %>
+    <div class="translucent">
+      <div class="search">
+        <%= form_tag '/districts' do %>
+          Enter your address or postal code: <%= text_field_tag :address, nil, class: "search-text" %>
+          <%= submit_tag "Submit", class: "search-submit" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
