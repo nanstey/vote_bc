@@ -16,5 +16,36 @@
   </tbody>
 </table>
 
+<div id="map"></div>
 
-<br>
+<script>
+  var map;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: {lat: <%= @district.centroid_lat %>, lng: <%= @district.centroid_lng %>}
+    });
+    // Define the LatLng coordinates for the polygon.
+    var triangleCoords = [
+      <% boundary = DistrictPoint.where district_id: @district.id %>
+      <% boundary.each do |point| %>
+        {lat: <%= point.lat %>, lng: <%= point.lng %>},
+      <% end %>
+    ];
+    // Construct the polygon.
+    var bermudaTriangle = new google.maps.Polygon({
+      paths: triangleCoords,
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 3,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35
+    });
+    bermudaTriangle.setMap(map);
+  }
+</script>
+
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_JS_API_KEY']%>&callback=initMap">
+</script>

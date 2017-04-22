@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170421213344) do
+ActiveRecord::Schema.define(version: 20170421225451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,9 +46,11 @@ ActiveRecord::Schema.define(version: 20170421213344) do
   create_table "districts", force: :cascade do |t|
     t.string   "name"
     t.string   "abbr"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "slug"
+    t.float    "centroid_lat"
+    t.float    "centroid_lng"
     t.index ["slug"], name: "index_districts_on_slug", unique: true, using: :btree
   end
 
