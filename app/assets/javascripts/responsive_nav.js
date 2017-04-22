@@ -27,4 +27,22 @@ $(document).on("turbolinks:load", function() {
     }
     $(".nav-menu").slideToggle(200)
   })
+
+  if (window.location.pathname === '/election/2017') {
+    $('.navbar').addClass('atTop');
+  }
+
+
+  $(window).scroll(function () {
+    if (document.body.scrollTop) {
+      $('.navbar').removeClass('atTop')
+    } else {
+      if (window.location.pathname === '/election/2017')
+        $('.navbar').addClass('atTop');
+    }
+  })
+
+
 });
+
+

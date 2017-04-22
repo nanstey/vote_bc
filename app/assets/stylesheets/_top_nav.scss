@@ -41,7 +41,6 @@
 .nav-menu .dropdown i {
   margin-right: 2px;
   font-size: 16px;
-  color: #333;
 }
 
 .dropbtn {
@@ -112,6 +111,32 @@ transition:             transform 200ms ease;
     -webkit-transition: -webkit-transform 200ms ease;
 }
 
+// Styles navbar when it is at the top of the page
+.navbar.atTop {
+  background: transparent;
+  box-shadow: none;
+  color: #F0F0F0;
+}
+
+.navbar.atTop .dropdown button {
+  color: #F0F0F0;
+}
+
+.navbar.atTop .dropdown i:before {
+  color: #F0F0F0;
+}
+
+.navbar.atTop .nav-menu a {
+  color: #F0F0F0;
+}
+
+.navbar.atTop .nav-menu .dropdown-content {
+  background: transparent;
+}
+
+.navbar.atTop .nav-menu .dropdown-content a:hover {
+  background-color:rgba(0, 0, 0, 0.1);
+}
 //RESPONSIVE
 @media screen and (max-width: 550px) {
   .nav-menu {
@@ -137,8 +162,23 @@ transition:             transform 200ms ease;
 
   .dropdown-content {
     position: absolute;
-    top: 177px;
+    top: 178px;
     width: 100%;
+  }
+
+  .navbar.atTop .nav-menu {
+    background-color:rgba(0, 0, 0, 0.4);
+  }
+
+  .navbar.atTop .nav-menu .dropdown-content {
+    background-color:rgba(0, 0, 0, 0.4);
+  }
+  .navbar.atTop .nav-menu .dropdown-content a:hover {
+    background-color:rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar.atTop .menu-icon:hover {
+    color: #555;
   }
 
 }
