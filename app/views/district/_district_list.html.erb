@@ -1,0 +1,17 @@
+<table>
+  <thead>
+    <tr>
+      <th>District Name</th>
+      <th>Abbreviation</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% districts.each do |district| %>
+      <tr>
+        <td><%= link_to district.name, "/district/#{district.slug}" %></td>
+        <td><%= district.abbr %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
