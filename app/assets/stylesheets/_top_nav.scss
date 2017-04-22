@@ -1,9 +1,14 @@
 .navbar {
+  background-color: rgba(240, 240, 240, 1);
+  -webkit-transition: background-color 200ms linear;
+  -moz-transition: background-color 200ms linear;
+  -o-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
   position: fixed;
   top: 0;
   height: 60px;
   width: 100%;
-  background-color: #F0F0F0;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   color: #555;
   z-index: 3;
@@ -19,6 +24,11 @@
 }
 
 .nav-menu {
+  -webkit-transition: background-color 200ms linear;
+  -moz-transition: background-color 200ms linear;
+  -o-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
   float: right;
 }
 
@@ -53,10 +63,15 @@
 }
 
 .dropdown-content {
+  background-color: rgba(240, 240, 240, 1);
+  -webkit-transition: background-color 200ms linear;
+  -moz-transition: background-color 200ms linear;
+  -o-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
   display: block;
   position: absolute;
-  top: 59px;
-  background-color: #f0f0f0;
+  top: 60px;
   min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -117,29 +132,29 @@ transition:             transform 200ms ease;
 }
 
 // Styles navbar when it is at the top of the page
-.navbar.atTop {
-  background: transparent;
+.navbar.at-top {
+  background-color: rgba(240, 240, 240, 0);
   box-shadow: none;
   color: #F0F0F0;
 }
 
-.navbar.atTop .dropdown button {
+.navbar.at-top .dropdown button {
   color: #F0F0F0;
 }
 
-.navbar.atTop .dropdown i:before {
+.navbar.at-top .dropdown i:before {
   color: #F0F0F0;
 }
 
-.navbar.atTop .nav-menu a {
+.navbar.at-top .nav-menu a {
   color: #F0F0F0;
 }
 
-.navbar.atTop .nav-menu .dropdown-content {
+.navbar.at-top .nav-menu .dropdown-content {
   background: transparent;
 }
 
-.navbar.atTop .nav-menu .dropdown-content a:hover {
+.navbar.at-top .nav-menu .dropdown-content a:hover {
   background-color:rgba(0, 0, 0, 0.1);
 }
 //RESPONSIVE
@@ -173,18 +188,18 @@ transition:             transform 200ms ease;
     width: 100%;
   }
 
-  .navbar.atTop .nav-menu {
-    background-color:rgba(0, 0, 0, 0.4);
+  .navbar.at-top .nav-menu {
+    background-color:rgba(0, 0, 0, 0.3);
   }
 
-  .navbar.atTop .nav-menu .dropdown-content {
-    background-color:rgba(0, 0, 0, 0.4);
+  .navbar.at-top .nav-menu .dropdown-content {
+    background-color:rgba(0, 0, 0, 0.3);
   }
-  .navbar.atTop .nav-menu .dropdown-content a:hover {
+  .navbar.at-top .nav-menu .dropdown-content a:hover {
     background-color:rgba(0, 0, 0, 0.1);
   }
 
-  .navbar.atTop .menu-icon:hover {
+  .navbar.at-top .menu-icon:hover {
     color: #e3e3e3;
   }
 

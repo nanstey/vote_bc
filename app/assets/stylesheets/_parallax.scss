@@ -30,6 +30,7 @@
 }
 
 .search form .search-text {
+  margin-top: 20px;
   color: white;
   background: transparent;
 }
@@ -41,11 +42,15 @@
   font-size: 20px;
 }
 
+.search form .search-submit:hover {
+  color: #1EAEDB;
+}
+
 .translucent {
   height: 100%;
   width: 100%;
   opacity: 0;
-  background-color:rgba(0, 0, 0, 0.5);
+  background-color:rgba(0, 0, 0, 0.4);
 }
 
 @media screen and (max-width: 550px) {
