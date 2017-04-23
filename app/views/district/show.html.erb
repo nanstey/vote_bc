@@ -1,5 +1,5 @@
 <!-- District boundary data is only available for current election. Only create map if district exists in current election -->
-<% if @district.elections[0].year == 2017 %>
+<% if @district.elections[0].year == Election.current_election_year %>
   <div id="map"></div>
   <script>
     var map;
