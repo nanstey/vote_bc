@@ -1,4 +1,8 @@
 <!-- District boundary data is only available for current election. Only create map if district exists in current election -->
+
+<div class="container body-container">
+
+  <h1 class="top-header"><%= @district.name %></h1>
 <% if @district.elections[0].year == Election.current_election_year %>
   <div id="map"></div>
   <script>
@@ -38,41 +42,57 @@
         method: 'POST',
         data: {address: JSON.stringify(address)}
         });
+        ridingBoundary.setMap(map);
+
+        map.addListener('click', getClickInfo);
+
+        // when map is clicked outside of district, pulls up that districs info
+        function getClickInfo(event) {
+          var address = event.latLng.lat()+","+event.latLng.lng()
+          $.ajax({
+          url: '/districts',
+          method: 'POST',
+          data: {address: JSON.stringify(address)}
+          });
+        }
       }
       function hoverOtherDistrict(event) {
         map.setOptions({ draggableCursor: 'crosshair'});
       }
     }
   </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_JS_API_KEY']%>&callback=initMap">
+    </script>
+  <% else %>
+    <h3>District map only available for districts that exist in current election</h3>
+  <% end %>
 
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_JS_API_KEY']%>&callback=initMap">
-  </script>
-<% else %>
-  <h3>District map only available for districts that exist in current election</h3>
-<% end %>
+  <div class="one-half column">
+  </div>
 
-<h1><%= @district.name %></h1>
-
-<% @district.elections.each do |e| %>
-  <%= e.year %><br>
-  <% ceds = CandidateElectionDistrict.where(district_id: @district.id, election_id: e.id).order(votes_total: :desc) %>
-  <table>
-    <thead>
-      <th>Candidate</th>
-      <th>Party</th>
-      <th>Total Votes</th>
-      <th>Percent</th>
-    </thead>
-    <% ceds.each do |ced| %>
-      <tr>
-        <% candidate = Candidate.find(ced.candidate_id) %>
-        <td><%= candidate.name %></td>
-        <td>(<%= candidate.party.abbr %>)</td>
-        <td><%= ced.votes_total %></td>
-        <td><%= ced.votes_percent %>%</td>
-      </tr>
+  <div class="one-half column">
+    <% @district.elections.each do |e| %>
+      <%= e.year %><br>
+      <% ceds = CandidateElectionDistrict.where(district_id: @district.id, election_id: e.id).order(votes_total: :desc) %>
+      <table>
+        <thead>
+          <th>Candidate</th>
+          <th>Party</th>
+          <th>Total Votes</th>
+          <th>Percent</th>
+        </thead>
+        <% ceds.each do |ced| %>
+          <tr>
+            <% candidate = Candidate.find(ced.candidate_id) %>
+            <td><%= candidate.name %></td>
+            <td>(<%= candidate.party.abbr %>)</td>
+            <td><%= ced.votes_total %></td>
+            <td><%= ced.votes_percent %>%</td>
+          </tr>
+        <% end %>
+      </table>
+      <br>
     <% end %>
-  </table>
-  <br>
-<% end %>
+  </div>
+</div>
