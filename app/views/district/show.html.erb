@@ -8,14 +8,14 @@
         zoom: 9,
         center: {lat: <%= @district.centroid_lat %>, lng: <%= @district.centroid_lng %>}
       });
-      // Define the LatLng coordinates for the polygon.
+      // Define the LatLng coordinates for the district
       var coords = [
         <% boundary = DistrictPoint.where district_id: @district.id %>
         <% boundary.each do |point| %>
           {lat: <%= point.lat %>, lng: <%= point.lng %>},
         <% end %>
       ];
-      // Construct the polygon.
+      // Construct the district
       var ridingBoundary = new google.maps.Polygon({
         paths: coords,
         strokeColor: '#FF0000',
@@ -28,6 +28,7 @@
 
       map.addListener('click', getClickInfo);
 
+      // when map is clicked outside of district, pulls up that districs info
       function getClickInfo(event) {
         var address = event.latLng.lat()+","+event.latLng.lng()
         $.ajax({
@@ -36,9 +37,9 @@
         data: {address: JSON.stringify(address)}
         });
       }
-
     }
   </script>
+
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_JS_API_KEY']%>&callback=initMap">
   </script>
