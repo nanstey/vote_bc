@@ -8,6 +8,7 @@ class DistrictController < ApplicationController
   end
 
   def search
+    puts "tried"
     geolocation = District.get_geolocation(params[:address])
     if district = District.get_district(geolocation)
       redirect_to "/district/#{district.slug}"

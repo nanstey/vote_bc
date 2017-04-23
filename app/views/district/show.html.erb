@@ -25,6 +25,18 @@
         fillOpacity: 0.35
       });
       ridingBoundary.setMap(map);
+
+      map.addListener('click', getClickInfo);
+
+      function getClickInfo(event) {
+        var address = event.latLng.lat()+","+event.latLng.lng()
+        $.ajax({
+        url: '/districts',
+        method: 'POST',
+        data: {address: JSON.stringify(address)}
+        });
+      }
+
     }
   </script>
   <script async defer
