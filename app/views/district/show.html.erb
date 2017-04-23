@@ -3,6 +3,7 @@
   <div id="map"></div>
   <script>
     var map;
+    var infoWindow;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         zoom: 9,
@@ -26,16 +27,20 @@
       });
       ridingBoundary.setMap(map);
 
-      map.addListener('click', getClickInfo);
+      map.addListener('click', clickDistrict);
+      map.addListener('mousemove', hoverOtherDistrict);
 
       // when map is clicked outside of district, pulls up that districs info
-      function getClickInfo(event) {
+      function clickDistrict(event) {
         var address = event.latLng.lat()+","+event.latLng.lng()
         $.ajax({
         url: '/districts',
         method: 'POST',
         data: {address: JSON.stringify(address)}
         });
+      }
+      function hoverOtherDistrict(event) {
+        map.setOptions({ draggableCursor: 'crosshair'});
       }
     }
   </script>
