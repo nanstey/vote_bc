@@ -1,18 +1,19 @@
 <%= render 'layouts/parallax' %>
-<h1>Election#show</h1>
+<div class="container body-container">
+    <h1><%= @election.year %> Election</h1>
+    <h5>Major Party Leaders</h5>
+    <% @leaders.each do |pl| %>
+      <%= pl.name %>
+      <%= pl.party.abbr %>
+      <% if @premier && pl.id == @premier.id %>
+        <%= "(ELECTED!)" %>
+      <% end %>
+      <br/>
+    <% end %>
+  <div class="one-half column">
+    <%= render :partial => '/district/district_list', :locals => {districts: @districts} %>
+  </div>
+  <div class="one-half column">
 
-<p>Find me in app/views/election/show.html.erb</p>
-<h1><%= @election.year %></h1>
-
-<br>
-
-<br>
-<% @leaders.each do |pl| %>
-  <%= pl.name %>
-  <%= pl.party.abbr %>
-  <% if @premier && pl.id == @premier.id %>
-    <%= "(ELECTED!)" %>
-  <% end %>
-  <br>
-<% end %>
-<%= render :partial => '/district/district_list', :locals => {districts: @districts} %>
+  </div>
+</div>
