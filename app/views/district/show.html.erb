@@ -1,4 +1,8 @@
 <!-- District boundary data is only available for current election. Only create map if district exists in current election -->
+
+<div class="container body-container">
+
+  <h1 class="top-header"><%= @district.name %></h1>
 <% if @district.elections[0].year == Election.current_election_year %>
   <div id="map"></div>
   <%= render 'district_map', district: @district %>
