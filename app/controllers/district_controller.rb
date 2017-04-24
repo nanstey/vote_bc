@@ -8,9 +8,13 @@ class DistrictController < ApplicationController
   end
 
   def search
-    geolocation = District.get_geolocation(params[:address])
-    if district = District.get_district(geolocation)
-      redirect_to "/district/#{district.slug}"
+    if params[:address] && params[:address] != ""
+      geolocation = District.get_geolocation(params[:address])
+      if district = District.get_district(geolocation)
+        redirect_to "/district/#{district.slug}"
+      else
+        redirect_to "/"
+      end
     else
       redirect_to "/"
     end

@@ -1,0 +1,43 @@
+<script>
+  var map;
+  var infoWindow;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 9,
+      center: {lat: <%= @district.centroid_lat %>, lng: <%= @district.centroid_lng %>}
+    });
+    // Define the LatLng coordinates for the district
+    var coords = [
+      <% boundary = DistrictPoint.where district_id: @district.id %>
+      <% boundary.each do |point| %>
+        {lat: <%= point.lat %>, lng: <%= point.lng %>},
+      <% end %>
+    ];
+    // Construct the district
+    var ridingBoundary = new google.maps.Polygon({
+      paths: coords,
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 3,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35
+    });
+    ridingBoundary.setMap(map);
+
+    map.addListener('click', clickDistrict);
+    map.addListener('mousemove', hoverOtherDistrict);
+
+    // when map is clicked outside of district, pulls up that districts info
+    function clickDistrict(event) {
+      var address = event.latLng.lat()+","+event.latLng.lng()
+      $.ajax({
+      url: '/districts',
+      method: 'POST',
+      data: {address: JSON.stringify(address)}
+      });
+    }
+    function hoverOtherDistrict(event) {
+      map.setOptions({ draggableCursor: 'crosshair'});
+    }
+  }
+</script>

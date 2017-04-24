@@ -6,4 +6,8 @@ class Election < ApplicationRecord
   has_many :election_leaders
   has_many :leaders, through: :election_leaders
   has_many :parties, through: :leaders
+
+  def self.current_election_year
+    2017
+  end
 end

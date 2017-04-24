@@ -4,7 +4,7 @@ class ElectionController < ApplicationController
     if params[:year]
       @election = Election.find_by(year: params[:year])
     else
-      @election = Election.find_by(year: 2017)
+      @election = Election.find_by(year: Election.current_election_year)
     end
     if @election.premier_id
       @premier = Candidate.find(@election.premier_id)

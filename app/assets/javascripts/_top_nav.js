@@ -4,6 +4,13 @@ $(document).on("turbolinks:load", function() {
   $('.dropdown').on('click', function() {
     $('.dropdown-content').slideToggle(200);
     $('.dropdown i').toggleClass('up').toggleClass('down')
+    // Hides search form if elections menu is dropped while in mobile mode
+      if ($(".nav-menu").css("float") == "none" && $('.dropdown i').hasClass('down')) {
+        $('.search').fadeTo(200, 0);
+      }
+      if ($(".nav-menu").css("float") == "none" && $('.dropdown i').hasClass('up')) {
+        $('.search').fadeTo(200, 1);
+      }
   });
 
 // RESPONSIVE: checks if window is less than or greater than 550px
@@ -35,7 +42,6 @@ $(document).on("turbolinks:load", function() {
 
 // Adds or removes transparency on scroll
   $(window).scroll(function () {
-    console.log(document.body.scrollTop);
     if (window.location.pathname === '/election/2017') {
       if (document.body.scrollTop > 20) {
         $('.navbar').removeClass('at-top').addClass('scrolled-down');
