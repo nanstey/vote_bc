@@ -7,6 +7,10 @@ class District < ApplicationRecord
   has_many :elections, through: :election_districts
   has_many :candidate_election_districts
   has_many :candidates, through: :candidate_election_districts
+  has_one :district_alias
+  has_one :old_district, through: :district_alias
+  has_one :new_district_alias, class_name: "DistrictAlias", foreign_key: :old_district_id
+  has_one :new_district, through: :new_district_alias, source: :district
 
   # For acurate results, finds exact geolocation of addess to pinpoint specific riding using google maps api
   def self.get_geolocation(address)
@@ -30,6 +34,19 @@ class District < ApplicationRecord
       end
     end
     District.find_by name: @district_name
+  end
+
+  def get_district_history
+    all_districts = []
+    all_districts.push(self)
+    this = that = self
+    while this = this.new_district
+      all_districts.unshift(this)
+    end
+    while that = that.old_district
+      all_districts.push(that)
+    end
+    all_districts
   end
 
 end

@@ -3,6 +3,7 @@
 
 puts "Destroying tables..."
 
+DistrictAlias.destroy_all
 DistrictPoint.destroy_all
 CandidateElectionDistrict.destroy_all
 ElectionDistrict.destroy_all
@@ -29,5 +30,7 @@ require Rails.root.join('db', 'scripts', 'import_party_leaders_2017')
 require Rails.root.join('db', 'scripts', 'import_election_results_2013_2009')
 
 require Rails.root.join('db', 'scripts', 'import_party_leaders_2013_2009')
+
+require Rails.root.join('db', 'scripts', 'seed_electoral_redistribution_2015')
 
 puts "=============== DONE SEEDING ==============="
