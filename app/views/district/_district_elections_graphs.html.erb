@@ -1,22 +1,22 @@
-<% @district.elections.each do |e| %>
-  <%= e.year %><br>
-  <% ceds = CandidateElectionDistrict.where(district_id: @district.id, election_id: e.id).order(votes_total: :desc) %>
-  <table>
-    <thead>
-      <th>Candidate</th>
-      <th>Party</th>
-      <th>Total Votes</th>
-      <th>Percent</th>
-    </thead>
-    <% ceds.each do |ced| %>
-      <tr>
-        <% candidate = Candidate.find(ced.candidate_id) %>
-        <td><%= candidate.name %></td>
-        <td>(<%= candidate.party.abbr %>)</td>
-        <td><%= ced.votes_total %></td>
-        <td><%= ced.votes_percent %>%</td>
-      </tr>
-    <% end %>
-  </table>
-  <br>
-<% end %>
+  <div id="electionGraph"></div>
+  <div id="legend"></div>
+
+<script>
+  var electionGraph = Morris.Line({
+    element: 'electionGraph',
+    data: <%= @district.get_graph_data %>,
+    xkey: 'year',
+    ykeys: ['BCEX', 'BCM', 'CHP', 'CP', 'GP', 'LIB', 'NDP', 'Other'],
+    labels: ['BCEX', 'BCM', 'CHP', 'CP', 'GP', 'LIB', 'NDP', 'Other'],
+    hideHover: 'auto',
+    continuousLine: true,
+    postUnits: '%',
+    xLabels: 'year',
+    resize: 'true',
+  });
+
+  electionGraph.options.labels.forEach(function(label, i){
+  var legendItem = $('<span></span><br>').text(label).css('color', electionGraph.options.lineColors[i])
+  $('#legend').append(legendItem)
+  })
+</script>
