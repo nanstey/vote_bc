@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423212003) do
+ActiveRecord::Schema.define(version: 20170424190312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "candidate_aliases", force: :cascade do |t|
+    t.integer  "candidate_id"
+    t.integer  "old_candidate_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "candidate_election_districts", force: :cascade do |t|
     t.integer  "candidate_id"
