@@ -39,6 +39,8 @@ gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-r
 gem 'http'
 gem 'json'
 gem 'friendly_id', '~> 5.1.0'
+gem 'morrisjs-rails'
+gem 'raphael-rails'
 
 
 # Use Capistrano for deployment

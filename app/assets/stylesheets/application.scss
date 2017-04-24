@@ -14,8 +14,9 @@
  *= require_self
  *= require normalize
  *= require skeleton
+ *= require morris
  */
-
+@import 'morrisjs-rails';
 @import "font-awesome";
 
 .top-header {
