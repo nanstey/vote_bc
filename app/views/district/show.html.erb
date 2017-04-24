@@ -30,7 +30,7 @@
       map.addListener('click', clickDistrict);
       map.addListener('mousemove', hoverOtherDistrict);
 
-      // when map is clicked outside of district, pulls up that districs info
+      // when map is clicked outside of district, pulls up that districts info
       function clickDistrict(event) {
         var address = event.latLng.lat()+","+event.latLng.lng()
         $.ajax({
