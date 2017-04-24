@@ -49,4 +49,28 @@ class District < ApplicationRecord
     all_districts
   end
 
+  def get_graph_data
+    graph_data = []
+    self.elections.each do |e|
+      ceds = CandidateElectionDistrict.where(district_id: self.id, election_id: e.id).order(votes_total: :desc)
+      yearlyData = {}
+      yearlyData["year"] = e.year
+      otherPercent = 0.0
+      ceds.each_with_index do |ced|
+        candidate = Candidate.find(ced.candidate_id)
+        if candidate.party.abbr == "IND" || candidate.party.abbr == "" || candidate.party.abbr == "OTH"
+            otherPercent += ced.votes_percent
+        else
+          yearlyData[candidate.party.abbr] = ced.votes_percent
+        end
+      end
+      if otherPercent == 0.0
+        yearlyData["Other"] = nil
+      else
+        yearlyData["Other"] = otherPercent.round(2)
+      end
+      graph_data << yearlyData
+    end
+    graph_data.to_json.html_safe
+  end
 end
