@@ -2,17 +2,27 @@
   <div id="legend"></div>
 
 <script>
+  // Finds the parties abbr of all relavent parties for the graph
+  var data_keys = [];
+  <%= graph_data = @district.get_graph_data %>.forEach(function(element) {
+    data_keys = data_keys.concat(Object.keys(element));
+  })
+  var data_keys = Array.from(new Set(data_keys))
+  for(var i = data_keys.length-1; i--;){
+    if (data_keys[i] === "year") data_keys.splice(i, 1);
+  }
+
+  // graphs the election data from district.get_graph_data
   var electionGraph = Morris.Line({
     element: 'electionGraph',
-    data: <%= @district.get_graph_data %>,
+    data: <%= graph_data %>,
     xkey: 'year',
-    ykeys: ['BCEX', 'BCM', 'CHP', 'CP', 'GP', 'LIB', 'NDP', 'Other'],
-    labels: ['BCEX', 'BCM', 'CHP', 'CP', 'GP', 'LIB', 'NDP', 'Other'],
+    ykeys: data_keys,
+    labels: data_keys,
     hideHover: 'auto',
     continuousLine: true,
     postUnits: '%',
-    xLabels: 'year',
-    resize: 'true',
+    resize: 'true'
   });
 
   electionGraph.options.labels.forEach(function(label, i){
