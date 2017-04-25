@@ -2,7 +2,8 @@
   <%= render 'layouts/parallax' %>
 <% end %>
 <div class="container body-container">
-    <h1 id="election-top"><%= @election.year %> Election</h1>
+<div id="election-anchor"></div>
+    <h1><%= @election.year %> Election</h1>
     <h5>Major Party Leaders</h5>
     <% @leaders.each do |pl| %>
       <%= pl.name %>
