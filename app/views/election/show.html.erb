@@ -1,7 +1,8 @@
-<%if request.original_fullpath == "/election/#{Election.current_election_year}" || request.original_fullpath == "/" %>
+<% if request.original_fullpath == "/election/#{Election.current_election_year}" || request.original_fullpath == "/" %>
   <%= render 'layouts/parallax' %>
 <% end %>
 <div class="container body-container">
+<div id="election-anchor"></div>
     <h1><%= @election.year %> Election</h1>
     <h5>Major Party Leaders</h5>
     <% @leaders.each do |pl| %>
