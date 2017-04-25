@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424190312) do
+ActiveRecord::Schema.define(version: 20170425190659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,19 @@ ActiveRecord::Schema.define(version: 20170424190312) do
     t.integer  "year"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "district_geodata", force: :cascade do |t|
+    t.integer  "district_id"
+    t.float    "centroid_lat"
+    t.float    "centroid_lng"
+    t.float    "extent_south"
+    t.float    "extent_west"
+    t.float    "extent_north"
+    t.float    "extent_east"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["district_id"], name: "index_district_geodata_on_district_id", using: :btree
   end
 
   create_table "district_points", force: :cascade do |t|
@@ -124,6 +137,7 @@ ActiveRecord::Schema.define(version: 20170424190312) do
   add_foreign_key "candidate_election_districts", "districts"
   add_foreign_key "candidate_election_districts", "elections"
   add_foreign_key "candidates", "parties"
+  add_foreign_key "district_geodata", "districts"
   add_foreign_key "district_points", "districts"
   add_foreign_key "election_districts", "candidates", column: "winner_id"
   add_foreign_key "election_districts", "districts"

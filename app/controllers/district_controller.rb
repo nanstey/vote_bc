@@ -1,6 +1,12 @@
 class DistrictController < ApplicationController
   def index
     @districts = District.all
+    puts "================"
+    url = "https://represent.opennorth.ca/boundaries/british-columbia-electoral-districts-2015-redistribution/abbotsford-south/"
+    response = HTTP.get(url)
+    extent = JSON.parse(response)
+    puts extent['extent'][0]
+    puts "================"
   end
 
   def show

@@ -22,7 +22,7 @@ require Rails.root.join('db', 'scripts', 'seed_elections')
 
 require Rails.root.join('db', 'scripts', 'import_candidate_election_district_2017')
 
-require Rails.root.join('db', 'scripts', 'import_district_centroids')
+require Rails.root.join('db', 'scripts', 'import_district_geodata')
 
 require Rails.root.join('db', 'scripts', 'import_boundaries')
 
