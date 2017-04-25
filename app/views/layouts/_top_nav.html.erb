@@ -10,7 +10,11 @@
       <button class="dropbtn">Elections</button>
       <div class="dropdown-content">
         <% elections.each do |e| %>
-        <%= link_to "#{e.year}", "/election/#{e.year}" %>
+          <% if Election.current_election_year == e.year %>
+            <%= link_to "#{e.year}", "/election/#{e.year}#election-top" %>
+          <% else %>
+            <%= link_to "#{e.year}", "/election/#{e.year}" %>
+          <% end %>
         <% end %>
       </div>
     </div>
