@@ -59,7 +59,9 @@ class District < ApplicationRecord
       ceds.each_with_index do |ced|
         candidate = Candidate.find(ced.candidate_id)
         if candidate.party.abbr == "IND" || candidate.party.abbr == "" || candidate.party.abbr == "OTH"
+          if ced.votes_percent
             otherPercent += ced.votes_percent
+          end
         else
           yearlyData[candidate.party.abbr] = ced.votes_percent
         end
