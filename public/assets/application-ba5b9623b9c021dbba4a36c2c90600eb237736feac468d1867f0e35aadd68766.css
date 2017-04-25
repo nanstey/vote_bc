@@ -4288,6 +4288,14 @@ label {
   color: #157b9d;
   text-decoration: underline;
 }
+
+/* line 61, /vagrant/vote-bc/app/assets/stylesheets/application.scss */
+#election-anchor {
+  display: block;
+  position: relative;
+  top: -60px;
+  visibility: hidden;
+}
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 
 /**
