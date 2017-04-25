@@ -23,6 +23,18 @@
   z-index: 4;
 }
 
+.navbar h4 a:link {
+  text-decoration: none;
+}
+
+.navbar h4 a:hover {
+  color: #555;
+}
+
+.navbar h4 a:visited {
+  color: #555;
+}
+
 .nav-menu {
   -webkit-transition: background-color 200ms linear;
   -moz-transition: background-color 200ms linear;
@@ -157,6 +169,15 @@ transition:             transform 200ms ease;
 .navbar.at-top .nav-menu .dropdown-content a:hover {
   background-color:rgba(0, 0, 0, 0.1);
 }
+
+  .navbar.at-top h4 a:hover {
+    color: #f0f0f0;
+  }
+
+  .navbar.at-top h4 a:visited {
+    color: #f0f0f0;
+  }
+
 //RESPONSIVE
 @media screen and (max-width: 550px) {
   .nav-menu {

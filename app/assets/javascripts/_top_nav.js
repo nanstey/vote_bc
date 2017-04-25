@@ -31,18 +31,20 @@ $(document).on("turbolinks:load", function() {
       $('.dropdown-content').slideUp(100);
       $('.dropdown i').toggleClass('up').toggleClass('down')
       setTimeout(function(){}, 100);
+      $('.search').fadeTo(200, 1);
+
     }
     $(".nav-menu").slideToggle(200)
   })
 
 //Loads in transparent mode if most recent election is selected
-  if (window.location.pathname === '/election/2017') {
+  if (window.location.pathname === '/election/2017' || window.location.pathname === '/') { //FIX hardcoded /election/2017
     $('.navbar').addClass('at-top');
   }
 
 // Adds or removes transparency on scroll
   $(window).scroll(function () {
-    if (window.location.pathname === '/election/2017') {
+    if (window.location.pathname === '/election/2017' || window.location.pathname === '/') { //FIX hardcoded /election/2017
       if (document.body.scrollTop > 20) {
         $('.navbar').removeClass('at-top').addClass('scrolled-down');
       }
