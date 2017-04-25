@@ -8,6 +8,7 @@ class District < ApplicationRecord
   has_many :candidate_election_districts
   has_many :candidates, through: :candidate_election_districts
   has_one :district_alias
+  has_one :district_goedatum
   has_one :old_district, through: :district_alias
   has_one :new_district_alias, class_name: "DistrictAlias", foreign_key: :old_district_id
   has_one :new_district, through: :new_district_alias, source: :district
