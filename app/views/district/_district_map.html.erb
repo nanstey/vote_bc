@@ -1,10 +1,11 @@
 <script>
   var map;
-  var infoWindow;
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
+      <% geodatum = DistrictGeodatum.find_by(district_id: @district.id) %>
       zoom: 9,
-      center: {lat: <%= @district.centroid_lat %>, lng: <%= @district.centroid_lng %>},
+      center: {lat: <%= geodatum.centroid_lat %>, lng: <%= geodatum.centroid_lng %>},
+      // snazzy maps style
       styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#46bcec"},{"visibility":"on"}]}]
     });
     // Define the LatLng coordinates for the district
@@ -23,9 +24,19 @@
       fillColor: '#FF0000',
       fillOpacity: 0.35
     });
-    ridingBoundary.setMap(map);
+        ridingBoundary.setMap(map);
 
+    // resizes the map bases on the south-west and north-east most points
+    var bounds = new google.maps.LatLngBounds();
+    var south_west = new google.maps.LatLng(<%= geodatum.extent_west %>, <%= geodatum.extent_south %>);
+    var north_east = new google.maps.LatLng(<%= geodatum.extent_east %>, <%= geodatum.extent_north %>);
+    bounds.extend(south_west);
+    bounds.extend(north_east);
+    map.fitBounds(bounds);
+
+    // calls function to bring up other district when clicked
     map.addListener('click', clickDistrict);
+    // changes pointer to crosshairs when on other parts of map
     map.addListener('mousemove', hoverOtherDistrict);
 
     // when map is clicked outside of district, pulls up that districts info

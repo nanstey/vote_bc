@@ -5,11 +5,13 @@ districts = District.all
 # iterates through each district
 districts.each do |district|
   puts "  >> #{district.name}"
+  # gets the centoid data from opennorth
   url = "https://represent.opennorth.ca/boundaries/british-columbia-electoral-districts-2015-redistribution/#{district.slug}/centroid"
   response = HTTP.get(url)
   centroid = JSON.parse(response)
 
-  url = "https://represent.opennorth.ca/boundaries/british-columbia-electoral-districts-2015-redistribution/abbotsford-south/"
+  # gets the extent data from opennorth
+  url = "https://represent.opennorth.ca/boundaries/british-columbia-electoral-districts-2015-redistribution/#{district.slug}/"
   response = HTTP.get(url)
   extent = JSON.parse(response)
 
