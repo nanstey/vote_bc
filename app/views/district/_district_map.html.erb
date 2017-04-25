@@ -9,7 +9,7 @@
     });
     // Define the LatLng coordinates for the district
     var coords = [
-      <% boundary = DistrictPoint.where district_id: @district.id %>
+      <% boundary = DistrictPoint.where(district_id: @district.id).order('id') %>
       <% boundary.each do |point| %>
         {lat: <%= point.lat %>, lng: <%= point.lng %>},
       <% end %>
