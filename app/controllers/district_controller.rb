@@ -5,6 +5,7 @@ class DistrictController < ApplicationController
 
   def show
     @district = District.friendly.find(params[:name])
+    @district_info = @district.get_election_district_history
   end
 
   def search

@@ -49,6 +49,40 @@ class District < ApplicationRecord
     all_districts
   end
 
+  def get_district_history_ids
+    district_ids = []
+    district_ids.push(self.id)
+    this = that = self
+    while this = this.new_district
+      district_ids.unshift(this.id)
+    end
+    while that = that.old_district
+      district_ids.push(that.id)
+    end
+    district_ids
+  end
+
+  def get_election_district_history
+    ids = self.get_district_history_ids
+    eds = ElectionDistrict.includes(:election, :district).where(:district_id => ids).order(:id)
+    ceds = CandidateElectionDistrict.includes(candidate: [:party]).where(:district_id => ids).order(:id)
+    district_info = {}
+    i = 0
+    eds.each do |ed|
+      district_info[ed.id] = {
+        district: ed,
+        candidates: []
+      }
+      # pp ed
+      while ceds[i] && ceds[i].election_id == ed.election_id do
+        # pp ceds[i]
+        district_info[ed.id][:candidates].push(ceds[i])
+        i+=1
+      end
+    end
+    district_info
+  end
+
   def get_graph_data
     graph_data = []
     self.elections.each do |e|
