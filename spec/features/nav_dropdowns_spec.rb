@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Visitor clicks the elections dropdown", type: :feature, js: true do
 
-  before(:each) do
-    party_and_election
-  end
+  before { Election.create!(year: 2017) }
 
   scenario "They see all the years of the stored elections", js: true do
 
