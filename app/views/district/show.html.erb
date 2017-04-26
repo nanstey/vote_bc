@@ -3,17 +3,14 @@
 <div class="container body-container">
 
   <h1 class="top-header"><%= @district.name %></h1>
-<% if @district.elections[0].year == Election.current_election_year %>
-  <div id="map"></div>
-  <%= render 'district_map', district: @district %>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_JS_API_KEY']%>&callback=initMap">
-  </script>
-<% else %>
-  <h3>District map only available for districts that exist in current election</h3>
-<% end %>
+  <% if @district.elections[0].year == Election.current_election_year %>
+    <div id="map"></div>
+    <%#= render 'district_map', district: @district %>
+  <% else %>
+    <h3>District map only available for districts that exist in current election</h3>
+  <% end %>
 
-<h1><%= @district.name %></h1>
+  <h1><%= @district.name %></h1>
 
-<%= render 'district_elections_graphs', district: @district %>
-<%= render 'district_elections_tables', district: @district %>
+  <%= render 'district_elections_graphs', district: @district %>
+  <%= render 'district_elections_tables', district: @district_history %>
