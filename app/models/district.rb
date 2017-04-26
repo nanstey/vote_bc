@@ -65,18 +65,18 @@ class District < ApplicationRecord
   def get_election_district_history
     ids = self.get_district_history_ids
     eds = ElectionDistrict.includes(:election, :district).where(:district_id => ids).order(:id)
-    ceds = CandidateElectionDistrict.includes(candidate: [:party]).where(:district_id => ids).order(:id)
-    district_info = {}
+    ceds = CandidateElectionDistrict.includes(candidate: [:party]).where(:district_id => ids).order(:election_id, votes_total: :desc)
+    district_info = []
     i = 0
-    eds.each do |ed|
-      district_info[ed.id] = {
+    eds.each_with_index do |ed, index|
+      district_info.push({
         district: ed,
         candidates: []
-      }
+      })
       # pp ed
       while ceds[i] && ceds[i].election_id == ed.election_id do
         # pp ceds[i]
-        district_info[ed.id][:candidates].push(ceds[i])
+        district_info[index][:candidates].push(ceds[i])
         i+=1
       end
     end
