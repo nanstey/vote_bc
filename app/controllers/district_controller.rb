@@ -5,10 +5,10 @@ class DistrictController < ApplicationController
 
   def show
     @district = District.friendly.find(params[:name])
+    @district_history = @district.get_election_district_history
     # redirects home if incorrect district is inserted
     rescue ActiveRecord::RecordNotFound
       redirect_to(root_url, :notice => 'District not found')
-    @district_history = @district.get_election_district_history
   end
 
   def search
