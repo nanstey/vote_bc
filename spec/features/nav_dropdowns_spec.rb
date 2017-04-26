@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Visitor clicks the elections dropdown", type: :feature do
 
   before(:each) do
-    require Rails.root.join('db', 'scripts', 'seed_elections')
+    party_and_election
   end
 
   scenario "They see all the years of the stored elections" do
