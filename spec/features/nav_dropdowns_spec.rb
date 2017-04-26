@@ -6,7 +6,7 @@ RSpec.feature "Visitor clicks the elections dropdown", type: :feature do
     require Rails.root.join('db', 'scripts', 'seed_elections')
   end
 
-  xscenario "They see all the years of the stored elections" do
+  scenario "They see all the years of the stored elections" do
 
     visit root_path
 
