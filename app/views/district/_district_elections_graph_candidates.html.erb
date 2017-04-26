@@ -3,15 +3,20 @@
 
 <script>
   // Finds the parties abbr of all relavent parties for the graph
-  var data_keys = [];
+  var dataKeys = [];
   var graphData = [];
-   <% @district_history.each do |d| %>
-    data_keys = data_keys.concat(Object.keys(<%= d[:json] %> ));
+  var years = [];
+   <% @district_history.reverse_each do |d| %>
+    dataKeys = dataKeys.concat(Object.keys(<%= d[:json] %> ));
     graphData = graphData.concat(<%= d[:json] %>);
   <% end %>
-  var data_keys = Array.from(new Set(data_keys))
-  for(var i = data_keys.length-1; i--;){
-    if (data_keys[i] === "year") data_keys.splice(i, 1);
+  var dataKeys = Array.from(new Set(dataKeys))
+  for(var i = dataKeys.length-1; i--;){
+    if (dataKeys[i] === "year") {
+      // years.push(dataKeys[i]);
+      dataKeys.splice(i, 1);
+    }
+
   }
 
   // graphs the election data from district.get_graph_data
@@ -19,9 +24,10 @@
     element: 'electionGraph',
     data: graphData,
     xkey: 'year',
-    ykeys: data_keys,
-    labels: data_keys,
-    hideHover: 'auto',
+    ykeys: dataKeys,
+    labels: dataKeys,
+    parseTime: false,
+    hideHover: 'always',
     continuousLine: true,
     postUnits: '%',
     resize: 'true'

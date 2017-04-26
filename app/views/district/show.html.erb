@@ -1,7 +1,7 @@
 <!-- District boundary data is only available for current election. Only create map if district exists in current election -->
 
 <div class="container body-container">
-
+  <div class="buffer"></div>
   <h1 class="top-header"><%= @district.name %></h1>
   <% if @district.elections[0].year == Election.current_election_year %>
     <div id="map"></div>
@@ -9,8 +9,15 @@
   <% else %>
     <h3>District map only available for districts that exist in current election</h3>
   <% end %>
+  <div class="row">
+    <div class="one-half column">
+      <%= render 'district_elections_graph_candidates', district: @district_history %>
+      <%= render 'district_elections_table_candidates', district: @district_history %>
+    </div>
+    <div class="one-half column">
+      <%= render 'district_elections_graph_stats', district: @district_history %>
+      <%= render 'district_elections_table_stats', district: @district_history %>
 
-  <h1><%= @district.name %></h1>
-
-  <%= render 'district_elections_graphs', district: @district_history %>
-  <%= render 'district_elections_tables', district: @district_history %>
+    </div>
+  </div>
+</div>

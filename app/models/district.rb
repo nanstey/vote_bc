@@ -73,7 +73,7 @@ class District < ApplicationRecord
       district_info.push({
         district: ed,
         candidates: [],
-        json: {year: ed.election.year}
+        json: {year: ed.election.year.to_s}
       })
       # pp ed
       while ceds[i] && ceds[i].election_id == ed.election_id do
@@ -87,6 +87,7 @@ class District < ApplicationRecord
     end
     district_info
   end
+end
 
 #   def get_graph_data
 #     graph_data = []
@@ -115,7 +116,6 @@ class District < ApplicationRecord
 #     graph_data.to_json.html_safe
 #   end
 
-# end
 
 # [{"year":2017,"NDP":null,"LIB":null,"GP":null,"Other":null},
 # {"year":2013,"LIB":52.5,"NDP":32.43,"GP":10.98,"CP":3.04,"Other":1.05},
