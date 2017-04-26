@@ -3,7 +3,6 @@ def create_election_result
 
   def read_election_data(year)
     xlsx = Roo::Excelx.new(Rails.root.join('db', 'excel', "#{year}GE-Results-Excel.xlsx"))
-  puts "Seeding election results for #{year} ..."
 
     election = Election.find_by(year: year)
 
@@ -17,7 +16,6 @@ def create_election_result
           codes[ed_code] = ed_name
         end
       else
-        puts "  >> #{name}"
 
         # Get candidate info
         candidates = []
