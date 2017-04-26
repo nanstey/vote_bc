@@ -6,7 +6,7 @@ class ElectionController < ApplicationController
     else
       @election = Election.find_by(year: Election.current_election_year)
     end
-    if @election.premier_id
+    unless @election.premier_id.nil?
       @premier = Candidate.find(@election.premier_id)
     end
     @districts = @election.districts
