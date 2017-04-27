@@ -9,11 +9,11 @@ def read_election_data(year)
   xlsx.each_with_pagename do |name, sheet|
     # First page ED code collection
     if name == "ED Codes"
-      (1..sheet.last_row).each do |i|
-        ed_code = sheet.cell(i, 1)
-        ed_name = sheet.cell(i, 2)
-        codes[ed_code] = ed_name
-      end
+      # (1..sheet.last_row).each do |i|
+      #   ed_code = sheet.cell(i, 1)
+      #   ed_name = sheet.cell(i, 2)
+      #   codes[ed_code] = ed_name
+      # end
     else
 
       puts "  >> #{name}"
@@ -21,19 +21,22 @@ def read_election_data(year)
       # Get candidate info
       candidates = []
       row = sheet.first_row
-      until sheet.cell(row, 1) == "Advance voting"
+      until sheet.cell(row, 1) == "Advance Voting"
         row += 1
       end
       last_candidate = sheet.last_column - 3
       (2..last_candidate).each do |i|
         party = sheet.cell(row-1, i)
-        party = 'N/A' if party.nil?
-        candidates[i-2] = {name: sheet.cell(row-2, i).delete("\n"), party: party}
+        if party.nil? || party == ' '
+          party = 'N/A'
+        end
+        full_name = "#{sheet.cell(row-2, i).delete("\n")} #{sheet.cell(row-3, i).delete("\n")}"
+        candidates[i-2] = {name: full_name.titlecase, party: party}
       end
 
       # Get winning candidate
       row = sheet.last_row
-      until sheet.cell(row, 1) == "Candidate elected:"
+      until sheet.cell(row, 1) == "Candidate Elected:"
         row -= 1
       end
       winner = sheet.cell(row, 2)
@@ -45,7 +48,7 @@ def read_election_data(year)
       valid = sheet.cell(row-7, 2)
 
       # Get candidate stats
-      until sheet.cell(row, 1) == "Grand totals"
+      until sheet.cell(row, 1) == "Grand Totals"
         row -= 1
       end
       (2..last_candidate).each do |i|
@@ -72,7 +75,6 @@ def read_election_data(year)
           votes_percent: c[:votes_percent]
         )
       end
-
       winner_info = winner.scan(/[^()]+/)
       party = Party.find_by(abbr: winner_info[1])
       winning_candidate = Candidate.where(name: winner_info[0].strip, party_id: party.id ).first
@@ -91,5 +93,4 @@ def read_election_data(year)
   end
 end
 
-read_election_data(2013)
-read_election_data(2009)
+read_election_data(2005)

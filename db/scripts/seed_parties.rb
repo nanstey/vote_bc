@@ -20,7 +20,7 @@ Party.create!([
   {name: 'Independent', abbr: 'IND', color: '#DCDCDC'},
   {name: 'Libertarian', abbr: 'LBN', color: '#f6c259'},
   {name: 'National Alliance Party', abbr: 'NAP', color: '#DCDCDC'},
-  {name: 'No Affiliation', abbr: '', color: '#DCDCDC'},
+  {name: 'No Affiliation', abbr: 'N/A', color: '#DCDCDC'},
   {name: 'Other', abbr: 'OTH', color: '#DCDCDC'},
   {name: 'Peoples Front', abbr: 'PF', color: '#DCDCDC'},
   {name: 'Platinum Party', abbr: 'PLAT', color: '#DCDCDC'},
