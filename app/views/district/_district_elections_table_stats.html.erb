@@ -5,7 +5,7 @@
       <% tv = district_year[:district].total_votes.to_f %>
       <% vr = district_year[:district].voters_registered.to_f %>
       <% voter_turnout = ((tv / vr) * 100.00).round(2) %>
-       <div class="stats-table show-<%= district_year[:district].election.year %>">
+       <div class="stats-table district-data show-<%= district_year[:district].election.year %>">
         <table>
           <tr>
             <th>Winner</th>

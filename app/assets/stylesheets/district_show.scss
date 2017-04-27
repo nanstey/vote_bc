@@ -9,23 +9,20 @@
 
 .district-data {
   position: absolute;
+  visibility: hidden;
 }
 
-.candidates-table {
-  @extend .district-data;
+.show {
+  visibility: visible;
 }
+
 
 .donut-graph {
   margin: 10px 0 10px -20px;
-  @extend .district-data;
 }
 
 .donut-graph svg {
   width: 380px;
-}
-
-.stats-table {
-  @extend .district-data;
 }
 
 .candidate-tables {

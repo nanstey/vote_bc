@@ -1,6 +1,6 @@
 <div class="donut-graphs">
 <% @district_history.each do |district_year| %>
-  <div class="donut-graph show-<%= district_year[:district].election.year %>" id="stats-<%= district_year[:district].election.year %>"></div>
+  <div class="donut-graph district-data show-<%= district_year[:district].election.year %>" id="stats-<%= district_year[:district].election.year %>"></div>
   <script>
     var graphData = <%= district_year[:json_donut][:data] %>;
     var colors = <%= district_year[:json_donut][:colors] %>;
