@@ -31,5 +31,13 @@ Party.create!([
   {name: 'Unparty: The Consensus-Building Party', abbr: 'UCBP', color: '#DCDCDC'},
   {name: 'Western Canada Concept Party', abbr: 'WCC', color: '#DCDCDC'},
   {name: 'Work Less Party', abbr: 'WLP', color: '#DCDCDC'},
-  {name: 'Your Political Party of BC (YPP)', abbr: 'YPBC', color: '#222222'}
+  {name: 'Your Political Party of BC (YPP)', abbr: 'YPBC', color: '#222222'},
+  {name: 'BC Moderate Democratic Movement', abbr: 'MDM', color: '#DCDCDC'},
+  {name: 'BC Patriot Party', abbr: 'BCPA', color: '#DCDCDC'},
+  {name: 'BC Unity Party', abbr: 'UPBC', color: '#DCDCDC'},
+  {name: 'BC Youth Coalition', abbr: 'BCYC', color: '#DCDCDC'},
+  {name: 'Bloc BC Party', abbr: 'BLOC', color: '#DCDCDC'},
+  {name: 'Democratic Reform British Columbia', abbr: 'DRBC', color: '#DCDCDC'},
+  {name: 'Emerged Democracy Party of BC', abbr: 'EDBC', color: '#DCDCDC'},
+  {name: 'Freedom Party', abbr: 'FREE', color: '#DCDCDC'}
 ])

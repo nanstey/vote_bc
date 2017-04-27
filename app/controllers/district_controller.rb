@@ -13,11 +13,14 @@ class DistrictController < ApplicationController
 
   def search
     if params[:address] && params[:address] != ""
-      geolocation = District.get_geolocation(params[:address])
-      if district = District.get_district(geolocation)
-        redirect_to "/district/#{district.slug}"
+      if geolocation = District.get_geolocation(params[:address])
+        if district = District.get_district(geolocation)
+          redirect_to "/district/#{district.slug}"
+        else
+          redirect_to(root_url, :notice => 'District not found')
+        end
       else
-        redirect_to(root_url, :notice => 'District not found')
+        redirect_to(root_url, :notice => 'Address not found')
       end
     else
       redirect_to(root_url, :notice => 'Address not entered')

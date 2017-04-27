@@ -3,16 +3,23 @@
 
 puts "Destroying tables..."
 
+puts "Destroying Candidate join tables ..."
+CandidateAlias.destroy_all
+CandidateElectionDistrict.destroy_all
+
+puts "Destroying District join tables ..."
 DistrictGeodatum.destroy_all
 DistrictAlias.destroy_all
 DistrictPoint.destroy_all
-CandidateAlias.destroy_all
-CandidateElectionDistrict.destroy_all
+
+puts "Destroying Election join tables ..."
 ElectionDistrict.destroy_all
 ElectionLeader.destroy_all
-Election.destroy_all
-District.destroy_all
+
+puts "Destroying Core tables ..."
 Candidate.destroy_all
+District.destroy_all
+Election.destroy_all
 Party.destroy_all
 
 puts "=============== START SEEDING ==============="
