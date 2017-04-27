@@ -1,5 +1,41 @@
 #map {
   height: 60vh;
   width:100%;
+}
 
+.district-data-containers {
+  min-height: 411px;
+}
+
+.district-data {
+  position: absolute;
+}
+
+.candidates-table {
+  @extend .district-data;
+}
+
+.donut-graph {
+  margin: 10px 0 10px -20px;
+  @extend .district-data;
+}
+
+.donut-graph svg {
+  width: 380px;
+}
+
+.stats-table {
+  @extend .district-data;
+}
+
+.candidate-tables {
+  @extend .district-data-containers;
+}
+
+.donut-graphs {
+  @extend .district-data-containers;
+}
+
+.stat-tables {
+  @extend .district-data-containers;
 }
