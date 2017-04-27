@@ -3,6 +3,7 @@
 
 puts "Destroying tables..."
 
+DistrictGeodatum.destroy_all
 DistrictAlias.destroy_all
 DistrictPoint.destroy_all
 CandidateAlias.destroy_all

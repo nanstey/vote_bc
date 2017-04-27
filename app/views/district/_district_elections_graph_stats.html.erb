@@ -2,11 +2,18 @@
 <% @district_history.each do |district_year| %>
   <div id="stats-<%= district_year[:district].election.year %>"></div>
   <script>
-    var graphData = <%= district_year[:json_donut] %>;
+    var graphData = <%= district_year[:json_donut][:data] %>;
+    var colors = <%= district_year[:json_donut][:colors] %>;
+    if (graphData[0].value === 0) {
+      graphData = [{label: "TBA", value:1}];
+      colors = ['#DCDCDC'];
+    }
+
 
     Morris.Donut({
       element: "stats-<%= district_year[:district].election.year %>",
-      data: graphData
+      data: graphData,
+      colors: colors,
     });
   </script>
 <% end %>
