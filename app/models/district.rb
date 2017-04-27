@@ -39,7 +39,7 @@ class District < ApplicationRecord
         return District.find_by name: boundary_set['name']
       end
     end
-    return nil
+    nil
   end
 
   def get_district_history
