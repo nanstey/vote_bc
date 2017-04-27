@@ -1,6 +1,7 @@
 #map {
   height: 60vh;
   width:100%;
+  max-height: 500px;
 }
 
 .district-data-containers {
@@ -10,6 +11,22 @@
 .district-data {
   position: absolute;
   visibility: hidden;
+}
+
+.district-header {
+  margin-top: 20px;
+}
+
+.district-titles {
+  min-height: 80px;
+  position: relative;
+  text-align: center;
+}
+
+.district-title {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 
 .show {
