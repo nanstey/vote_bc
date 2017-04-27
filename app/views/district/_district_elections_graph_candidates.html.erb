@@ -1,5 +1,10 @@
   <div id="electionGraph"></div>
   <div id="legend"></div>
+<div class="year-tabs">
+  <% @district_history.each do |district_year| %>
+    <button class="button year-tab"><%= district_year[:district].election.year %></button>
+  <% end %>
+</div>
 
 <script>
   // Finds the parties abbr of all relavent parties for the graph
