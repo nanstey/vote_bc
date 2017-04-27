@@ -342,6 +342,32 @@
   height: 60vh;
   width: 100%;
 }
+
+/* line 6, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.district-data-containers, .candidate-tables, .donut-graphs, .stat-tables {
+  min-height: 411px;
+}
+
+/* line 10, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.district-data {
+  position: absolute;
+  visibility: hidden;
+}
+
+/* line 15, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.show {
+  visibility: visible;
+}
+
+/* line 20, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.donut-graph {
+  margin: 10px 0 10px -20px;
+}
+
+/* line 24, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.donut-graph svg {
+  width: 380px;
+}
 .morris-hover{position:absolute;z-index:1000}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255,255,255,0.8);border:solid 2px rgba(230,230,230,0.8);font-family:sans-serif;font-size:12px;text-align:center}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0}
 .morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0}
 /* line 1, /vagrant/vote-bc/app/assets/stylesheets/scaffolds.scss */
@@ -4295,6 +4321,11 @@ label {
   position: relative;
   top: -60px;
   visibility: hidden;
+}
+
+/* line 68, /vagrant/vote-bc/app/assets/stylesheets/application.scss */
+.buffer {
+  min-height: 20px;
 }
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 

@@ -76,44 +76,68 @@ class District < ApplicationRecord
     district_info = []
     i = 0
     eds.each_with_index do |ed, index|
+      if ed.voters_registered
+        didnt_vote = ed.voters_registered - ed.total_votes
+      else
+        didnt_vote = 0
+      end
+
       district_info.push({
         district: ed,
-        candidates: []
+        candidates: [],
+        json_line: {year: ed.election.year.to_s},
+        json_donut: {
+          data:[{label: "Didn't Vote", value: (didnt_vote)}],
+          colors: ['#24292e']
+        },
+        json_area: {}
       })
       # pp ed
       while ceds[i] && ceds[i].election_id == ed.election_id do
         # pp ceds[i]
-        district_info[index][:candidates].push(ceds[i])
+        district_info[index][:candidates] << ceds[i]
+        district_info[index][:json_line][ceds[i].candidate.party.abbr] = ceds[i].votes_percent
+        district_info[index][:json_donut][:data] << {label: ceds[i].candidate.party.abbr, value: ceds[i].votes_total}
+        district_info[index][:json_donut][:colors] << ceds[i].candidate.party.color
+
         i+=1
       end
+      district_info[index][:json_line] = district_info[index][:json_line].to_json.html_safe
+      district_info[index][:json_donut][:data] = district_info[index][:json_donut][:data].to_json.html_safe
+      district_info[index][:json_donut][:colors] = district_info[index][:json_donut][:colors].to_json.html_safe
     end
     district_info
   end
-
-  def get_graph_data
-    graph_data = []
-    self.elections.each do |e|
-      ceds = CandidateElectionDistrict.where(district_id: self.id, election_id: e.id).order(votes_total: :desc)
-      yearlyData = {}
-      yearlyData["year"] = e.year
-      otherPercent = 0.0
-      ceds.each_with_index do |ced|
-        candidate = Candidate.find(ced.candidate_id)
-        if candidate.party.abbr == "IND" || candidate.party.abbr == "" || candidate.party.abbr == "OTH"
-          if ced.votes_percent
-            otherPercent += ced.votes_percent
-          end
-        else
-          yearlyData[candidate.party.abbr] = ced.votes_percent
-        end
-      end
-      if otherPercent == 0.0
-        yearlyData["Other"] = nil
-      else
-        yearlyData["Other"] = otherPercent.round(2)
-      end
-      graph_data << yearlyData
-    end
-    graph_data.to_json.html_safe
-  end
 end
+
+#   def get_graph_data
+#     graph_data = []
+#     self.elections.each do |e|
+#       ceds = CandidateElectionDistrict.where(district_id: self.id, election_id: e.id).order(votes_total: :desc)
+#       yearlyData = {}
+#       yearlyData["year"] = e.year
+#       otherPercent = 0.0
+#       ceds.each_with_index do |ced|
+#         candidate = Candidate.find(ced.candidate_id)
+#         if candidate.party.abbr == "IND" || candidate.party.abbr == "" || candidate.party.abbr == "OTH"
+#           if ced.votes_percent
+#             otherPercent += ced.votes_percent
+#           end
+#         else
+#           yearlyData[candidate.party.abbr] = ced.votes_percent
+#         end
+#       end
+#       if otherPercent == 0.0
+#         yearlyData["Other"] = nil
+#       else
+#         yearlyData["Other"] = otherPercent.round(2)
+#       end
+#       graph_data << yearlyData
+#     end
+#     graph_data.to_json.html_safe
+#   end
+
+
+# [{"year":2017,"NDP":null,"LIB":null,"GP":null,"Other":null},
+# {"year":2013,"LIB":52.5,"NDP":32.43,"GP":10.98,"CP":3.04,"Other":1.05},
+# {"year":2009,"LIB":54.91,"NDP":22.9,"GP":22.19,"Other":null}]

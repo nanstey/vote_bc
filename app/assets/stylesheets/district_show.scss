@@ -1,5 +1,38 @@
 #map {
   height: 60vh;
   width:100%;
+}
 
+.district-data-containers {
+  min-height: 411px;
+}
+
+.district-data {
+  position: absolute;
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}
+
+
+.donut-graph {
+  margin: 10px 0 10px -20px;
+}
+
+.donut-graph svg {
+  width: 380px;
+}
+
+.candidate-tables {
+  @extend .district-data-containers;
+}
+
+.donut-graphs {
+  @extend .district-data-containers;
+}
+
+.stat-tables {
+  @extend .district-data-containers;
 }

@@ -1,0 +1,39 @@
+<div class="stat-tables">
+  <% @district_history.each do |district_year| %>
+    <% if district_year[:district].voters_registered %>
+      <% voter_turnout = ((district_year[:district].total_votes).to_i / (district_year[:district].voters_registered).to_i) * 100.00 %>
+      <% tv = district_year[:district].total_votes.to_f %>
+      <% vr = district_year[:district].voters_registered.to_f %>
+      <% voter_turnout = ((tv / vr) * 100.00).round(2) %>
+       <div class="stats-table district-data show-<%= district_year[:district].election.year %>">
+        <table>
+          <tr>
+            <th>Winner</th>
+            <td><%= "#{district_year[:candidates][0].candidate.name} (#{district_year[:candidates][0].candidate.party.abbr})" %></td>
+          </tr>
+          <tr>
+            <th>Voter Turnout</th>
+            <td><%= voter_turnout %>%</td>
+          </tr>
+          <tr>
+            <th>Registered Voters</th>
+            <td><%= district_year[:district].voters_registered %></td>
+          </tr>
+          <tr>
+            <th>Total Votes</th>
+            <td><%= district_year[:district].total_votes %></td>
+          </tr>
+
+          <tr>
+            <th>Ballots Valid</th>
+            <td><%= district_year[:district].ballots_valid %></td>
+          </tr>
+          <tr>
+            <th>Ballots Rejected</th>
+            <td><%= district_year[:district].ballots_rejected %></td>
+          </tr>
+        </table>
+      </div>
+    <% end %>
+  <% end %>
+</div>
