@@ -2,15 +2,11 @@
 <% @district_history.each do |district_year| %>
   <div id="stats-<%= district_year[:district].election.year %>"></div>
   <script>
-
+    var graphData = <%= district_year[:json_donut] %>;
 
     Morris.Donut({
       element: "stats-<%= district_year[:district].election.year %>",
-      data: [
-        {label: "Download Sales", value: 12},
-        {label: "In-Store Sales", value: 30},
-        {label: "Mail-Order Sales", value: 20}
-      ]
+      data: graphData
     });
   </script>
 <% end %>

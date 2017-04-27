@@ -7,8 +7,8 @@
   var graphData = [];
   var years = [];
    <% @district_history.reverse_each do |d| %>
-    dataKeys = dataKeys.concat(Object.keys(<%= d[:json] %> ));
-    graphData = graphData.concat(<%= d[:json] %>);
+    dataKeys = dataKeys.concat(Object.keys(<%= d[:json_line] %> ));
+    graphData = graphData.concat(<%= d[:json_line] %>);
   <% end %>
   var dataKeys = Array.from(new Set(dataKeys))
   for(var i = dataKeys.length-1; i--;){

@@ -70,20 +70,30 @@ class District < ApplicationRecord
     district_info = []
     i = 0
     eds.each_with_index do |ed, index|
+      if ed.voters_registered
+        didnt_vote = ed.voters_registered - ed.total_votes
+      else
+        didnt_vote = 0
+      end
+
       district_info.push({
         district: ed,
         candidates: [],
-        json: {year: ed.election.year.to_s}
+        json_line: {year: ed.election.year.to_s},
+        json_donut:[{label: "Didn't Vote", value: (didnt_vote)}],
+        json_area: {}
       })
       # pp ed
       while ceds[i] && ceds[i].election_id == ed.election_id do
         # pp ceds[i]
-        district_info[index][:candidates].push(ceds[i])
-        district_info[index][:json][ceds[i].candidate.party.abbr] = ceds[i].votes_percent
+        district_info[index][:candidates] << ceds[i]
+        district_info[index][:json_line][ceds[i].candidate.party.abbr] = ceds[i].votes_percent
+        district_info[index][:json_donut] << {label: ceds[i].candidate.party.abbr, value: ceds[i].votes_total}
+
         i+=1
       end
-      district_info[index][:json] = district_info[index][:json].to_json.html_safe
-
+      district_info[index][:json_line] = district_info[index][:json_line].to_json.html_safe
+      district_info[index][:json_donut] = district_info[index][:json_donut].to_json.html_safe
     end
     district_info
   end
