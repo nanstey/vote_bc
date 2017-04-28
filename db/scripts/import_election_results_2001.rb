@@ -1,4 +1,3 @@
-
 def read_election_data(year)
   xlsx = Roo::Excelx.new(Rails.root.join('db', 'excel', "#{year}GE-Results-Excel.xlsx"))
   puts "Seeding election results for #{year} ..."

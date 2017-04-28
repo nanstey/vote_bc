@@ -1,4 +1,5 @@
 class Election < ApplicationRecord
+  validates :year, presence: true, uniqueness: true
   has_many :election_districts
   has_many :candidate_election_districts
   has_many :districts, through: :election_districts

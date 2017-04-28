@@ -1,5 +1,6 @@
 class Candidate < ApplicationRecord
   belongs_to :party
+  validates_presence_of :name, :party_id
   has_many :candidate_election_districts
   has_many :districts, through: :candidate_election_districts
   has_many :elections, through: :candidate_election_districts
