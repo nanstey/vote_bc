@@ -39,7 +39,7 @@ Party.create!([
   {name: 'Bloc BC Party', abbr: 'BLOC', color: '#68686'},
   {name: 'Democratic Reform British Columbia', abbr: 'DRBC', color: '#686868'},
   {name: 'Emerged Democracy Party of BC', abbr: 'EDBC', color: '#68686'},
-  {name: 'Freedom Party', abbr: 'FREE', color: '#68686'}
+  {name: 'Freedom Party', abbr: 'FREE', color: '#68686'},
   {name: 'All Nations Party', abbr: 'ANP', color: '#68686'},
   {name: 'Western Reform', abbr: 'WR', color: '#68686'},
   {name: 'BC Citizens Alliance Now', abbr: 'BCCA', color: '#68686'},
