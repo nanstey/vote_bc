@@ -37,10 +37,9 @@ class District < ApplicationRecord
     district['objects'].each do |boundary_set|
       if boundary_set['boundary_set_name'] == 'British Columbia electoral district'
         return District.find_by name: boundary_set['name']
-      else
-        return nil
       end
     end
+    nil
   end
 
   def get_district_history

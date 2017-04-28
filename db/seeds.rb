@@ -3,23 +3,23 @@
 
 puts "Destroying tables..."
 
-puts "Destroying Candidate join tables ..."
+puts "  >> Destroying Candidate join tables ..."
 CandidateAlias.destroy_all
 CandidateElectionDistrict.destroy_all
 
-puts "Destroying District join tables ..."
+puts "  >> Destroying District join tables ..."
 DistrictGeodatum.destroy_all
 DistrictAlias.destroy_all
 DistrictPoint.destroy_all
 
-puts "Destroying Election join tables ..."
+puts "  >> Destroying Election join tables ..."
 ElectionDistrict.destroy_all
 ElectionLeader.destroy_all
 
-puts "Destroying Core tables ..."
+puts "  >> Destroying Core tables ..."
+Election.destroy_all
 Candidate.destroy_all
 District.destroy_all
-Election.destroy_all
 Party.destroy_all
 
 puts "=============== START SEEDING ==============="
@@ -37,6 +37,10 @@ require Rails.root.join('db', 'scripts', 'import_boundaries')
 require Rails.root.join('db', 'scripts', 'import_party_leaders_2017')
 
 require Rails.root.join('db', 'scripts', 'import_election_results_2013_2009')
+
+require Rails.root.join('db', 'scripts', 'import_election_results_2005')
+
+require Rails.root.join('db', 'scripts', 'import_election_results_2001')
 
 require Rails.root.join('db', 'scripts', 'import_party_leaders_2013_2009')
 

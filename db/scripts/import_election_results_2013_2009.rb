@@ -27,7 +27,7 @@ def read_election_data(year)
       last_candidate = sheet.last_column - 3
       (2..last_candidate).each do |i|
         party = sheet.cell(row-1, i)
-        party = '' if party.nil?
+        party = 'N/A' if party.nil?
         candidates[i-2] = {name: sheet.cell(row-2, i).delete("\n"), party: party}
       end
 
