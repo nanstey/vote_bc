@@ -9,11 +9,11 @@ def read_election_data(year)
   xlsx.each_with_pagename do |name, sheet|
     # First page ED code collection
     if name == "ED Codes"
-      # (1..sheet.last_row).each do |i|
-      #   ed_code = sheet.cell(i, 1)
-      #   ed_name = sheet.cell(i, 2)
-      #   codes[ed_code] = ed_name
-      # end
+      (1..sheet.last_row).each do |i|
+        ed_code = sheet.cell(i, 1)
+        ed_name = sheet.cell(i, 2)
+        codes[ed_code] = ed_name
+      end
     else
 
       puts "  >> #{name}"
