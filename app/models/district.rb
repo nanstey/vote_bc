@@ -115,7 +115,7 @@ class District < ApplicationRecord
         j+=1
       end
       district_info[index][:json_line][:data] = district_info[index][:json_line][:data].to_json.html_safe
-      district_info[index][:json_line][:colors] = district_info[index][:json_line][:colors].to_json.html_safe
+      district_info[index][:json_line][:colors] = district_info[index][:json_line][:colors]
       district_info[index][:json_donut][:data] = district_info[index][:json_donut][:data].to_json.html_safe
       district_info[index][:json_donut][:colors] = district_info[index][:json_donut][:colors].to_json.html_safe
 

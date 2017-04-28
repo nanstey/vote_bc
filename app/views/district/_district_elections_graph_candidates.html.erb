@@ -8,12 +8,15 @@
   var dataKeys = [];
   var graphData = [];
   var years = [];
-  var colors = [];
+  <% colors = [] %>
    <% @district_history.reverse_each do |d| %>
     dataKeys = dataKeys.concat(Object.keys(<%= d[:json_line][:data] %> ));
     graphData = graphData.concat(<%= d[:json_line][:data] %>);
-    colors = colors.concat(<%= d[:json_line][:colors] %>);
-
+    <% d[:json_line][:colors].each do |c|
+      if !c.in?(colors)
+        colors << c
+      end %>
+    <% end %>
   <% end %>
   var dataKeys = Array.from(new Set(dataKeys))
   for(var i = dataKeys.length-1; i--;){
@@ -22,7 +25,7 @@
       dataKeys.splice(i, 1);
     }
   }
-
+  console.log(colors);
   // graphs the election data from district.get_graph_data
   var electionGraph = Morris.Line({
     element: 'electionGraph',
@@ -35,7 +38,7 @@
     continuousLine: true,
     postUnits: '%',
     resize: false,
-    lineColors: colors
+    lineColors: <%= colors.to_json.html_safe %>
   });
 
 </script>
