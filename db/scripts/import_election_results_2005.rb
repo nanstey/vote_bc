@@ -48,12 +48,16 @@ def read_election_data(year)
       valid = sheet.cell(row-7, 2)
 
       # Get candidate stats
+      until sheet.cell(row, 1) == "\% of Valid Votes"
+        row -= 1
+      end
+      percent = row
       until sheet.cell(row, 1) == "Grand Totals"
         row -= 1
       end
       (2..last_candidate).each do |i|
         candidates[i-2][:votes_total] = sheet.cell(row, i)
-        candidates[i-2][:votes_percent] = sheet.cell(row+1, i).to_f * 100
+        candidates[i-2][:votes_percent] = (sheet.cell(percent, i).to_f * 10000).floor / 100.0
       end
 
       # Seed info

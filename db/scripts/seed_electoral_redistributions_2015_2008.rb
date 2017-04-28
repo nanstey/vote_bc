@@ -5,11 +5,13 @@ def link_districts(new_name, old_name, year)
   DistrictAlias.create!(district_id: new_district.id, old_district_id: old_district.id, year: year)
 end
 
+#########################################
+
 puts "seeding district aliases from 2015 ..."
 
 district_changes_2015 = [
   {new_name: 'Kelowna West', old_name: 'Westside-Kelowna'},
-  {new_name: 'Alberni-Pacific Rim', old_name: 'Mid Island-Pacific Rim'},
+  {new_name: 'Mid Island-Pacific Rim', old_name: 'Alberni-Pacific Rim'},
   {new_name: 'Chilliwack-Kent', old_name: 'Chilliwack-Hope'},
   {new_name: 'Courtenay-Comox', old_name: 'Comox Valley'},
   {new_name: 'Esquimalt-Metchosin', old_name: 'Esquimalt-Royal Roads'},
@@ -24,6 +26,8 @@ district_changes_2015.each do |dc|
   link_districts(dc[:new_name], dc[:old_name], 2015)
 end
 
+#########################################
+
 puts "seeding district aliases from 2008 ..."
 
 district_changes_2008 = [
@@ -37,7 +41,6 @@ district_changes_2008 = [
   {new_name: 'Burnaby-Deer Lake', old_name: 'Burnaby-Willingdon'},
   {new_name: 'Burnaby-Lougheed', old_name: 'Burquitlam'},
   {new_name: 'Cariboo-Chilcotin', old_name: 'Cariboo South'},
-  {new_name: 'Chilliwack-Hope', old_name: 'Chilliwack-Kent'},
   {new_name: 'Chilliwack', old_name: 'Chilliwack-Sumas'},
   {new_name: 'Cowichan Valley', old_name: 'Cowichan-Ladysmith'},
   {new_name: 'Kamloops-South Thompson', old_name: 'Kamloops'},
