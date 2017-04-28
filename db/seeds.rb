@@ -44,7 +44,7 @@ require Rails.root.join('db', 'scripts', 'import_election_results_2001')
 
 require Rails.root.join('db', 'scripts', 'import_party_leaders_2013_2009')
 
-require Rails.root.join('db', 'scripts', 'seed_electoral_redistribution_2015')
+require Rails.root.join('db', 'scripts', 'seed_electoral_redistributions_2015_2008')
 
 require Rails.root.join('db', 'scripts', 'seed_candidate_alias')
 
