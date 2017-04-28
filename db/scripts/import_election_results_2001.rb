@@ -44,7 +44,6 @@ def read_election_data(year)
         winner = sheet.cell(row, 2)
 
         # Get district stats
-        total_registered = (sheet.cell(row-3, 3)/(sheet.cell(row-3, 4) * 100) * 100).round
         total_voters = sheet.cell(row-3, 3)
         rejected = sheet.cell(row-4, 3)
         valid = sheet.cell(row-6, 3)
@@ -53,6 +52,7 @@ def read_election_data(year)
         until sheet.cell(row, 1) == "Grand Totals"
           row -= 1
         end
+        total_registered = sheet.cell(row, sheet.last_column)
         (4..last_candidate).each do |i|
           candidates[i-4][:votes_total] = sheet.cell(row, i)
           candidates[i-4][:votes_percent] = sheet.cell(row+1, i).to_f * 100
@@ -75,7 +75,6 @@ def read_election_data(year)
         winner = sheet.cell(row, 2)
 
         # Get district stats
-        total_registered = (sheet.cell(row-3, 3)/(sheet.cell(row-3, 4) * 100) * 100).round
         total_voters = sheet.cell(row-3, 3)
         rejected = sheet.cell(row-4, 3)
         valid = sheet.cell(row-6, 3)
@@ -84,6 +83,7 @@ def read_election_data(year)
         until sheet.cell(row, 1) == "Grand Totals"
           row -= 1
         end
+        total_registered = sheet.cell(row, sheet.last_column)
         (3..last_candidate).each do |i|
           candidates[i-3][:votes_total] = sheet.cell(row, i)
           candidates[i-3][:votes_percent] = sheet.cell(row+1, i).to_f * 100
