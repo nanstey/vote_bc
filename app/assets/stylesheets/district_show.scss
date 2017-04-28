@@ -1,6 +1,7 @@
 #map {
   height: 60vh;
   width:100%;
+  max-height: 500px;
 }
 
 .district-data-containers {
@@ -12,20 +13,46 @@
   visibility: hidden;
 }
 
+.district-header {
+  margin-top: 20px;
+}
+
+.district-titles {
+  min-height: 80px;
+  position: relative;
+  text-align: center;
+}
+
+.district-title {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
 .show {
   visibility: visible;
 }
 
 
 .donut-graph {
-  margin: 10px 0 10px -20px;
+  margin: 10px 0 10px 30px;
 }
 
 .donut-graph svg {
-  width: 380px;
+  width: 300px;
+}
+
+.candidates-table {
+  max-width: 45%;
+}
+
+.candidate-graph {
+  padding: 20px;
+  max-width: 45%;
 }
 
 .candidate-tables {
+  padding: 20px;
   @extend .district-data-containers;
 }
 
@@ -34,5 +61,6 @@
 }
 
 .stat-tables {
+  padding: 20px;
   @extend .district-data-containers;
 }

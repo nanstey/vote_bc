@@ -73,6 +73,7 @@ class District < ApplicationRecord
     eds = ElectionDistrict.includes(:election, :district).where(:district_id => ids).order(:id)
     ceds = CandidateElectionDistrict.includes(candidate: [:party]).where(:district_id => ids).order(:election_id, votes_total: :desc)
     district_info = []
+
     i = 0
     eds.each_with_index do |ed, index|
       if ed.voters_registered
@@ -84,26 +85,40 @@ class District < ApplicationRecord
       district_info.push({
         district: ed,
         candidates: [],
-        json_line: {year: ed.election.year.to_s},
+        json_line: {
+          data: {year: ed.election.year.to_s, },
+          colors: []
+          },
         json_donut: {
           data:[{label: "Didn't Vote", value: (didnt_vote)}],
           colors: ['#24292e']
         },
         json_area: {}
       })
-      # pp ed
+
+
+      j = 0
       while ceds[i] && ceds[i].election_id == ed.election_id do
-        # pp ceds[i]
         district_info[index][:candidates] << ceds[i]
-        district_info[index][:json_line][ceds[i].candidate.party.abbr] = ceds[i].votes_percent
         district_info[index][:json_donut][:data] << {label: ceds[i].candidate.party.abbr, value: ceds[i].votes_total}
         district_info[index][:json_donut][:colors] << ceds[i].candidate.party.color
-
+        if j < 3
+          district_info[index][:json_line][:data][ceds[i].candidate.party.abbr] = ceds[i].votes_percent
+          district_info[index][:json_line][:colors] << ceds[i].candidate.party.color
+        elsif j == 3 && ceds[i].votes_percent
+          district_info[index][:json_line][:data][:Other] = ceds[i].votes_percent
+          district_info[index][:json_line][:colors] << '#505050'
+        elsif j > 3 && ceds[i].votes_percent
+          district_info[index][:json_line][:data][:Other] += ceds[i].votes_percent
+        end
         i+=1
+        j+=1
       end
-      district_info[index][:json_line] = district_info[index][:json_line].to_json.html_safe
+      district_info[index][:json_line][:data] = district_info[index][:json_line][:data].to_json.html_safe
+      district_info[index][:json_line][:colors] = district_info[index][:json_line][:colors].to_json.html_safe
       district_info[index][:json_donut][:data] = district_info[index][:json_donut][:data].to_json.html_safe
       district_info[index][:json_donut][:colors] = district_info[index][:json_donut][:colors].to_json.html_safe
+
     end
     district_info
   end
