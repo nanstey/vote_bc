@@ -55,7 +55,7 @@ def read_election_data(year)
         end
         (4..last_candidate).each do |i|
           candidates[i-4][:votes_total] = sheet.cell(row, i)
-          candidates[i-4][:votes_percent] = (sheet.cell(row+1, i).to_f * 100).round(2)
+          candidates[i-4][:votes_percent] = sheet.cell(row+1, i).to_f * 100
         end
       else
         (3..last_candidate).each do |i|
@@ -91,7 +91,7 @@ def read_election_data(year)
       end
 
       # Seed info
-      ed_code = name.lines('-')[1]
+      ed_code = name.lines('_')[0].chop
       ed_name = codes[ed_code]
       district = District.find_by(name: ed_name)
       if district.nil?
