@@ -91,7 +91,7 @@ def read_election_data(year)
       end
 
       # Seed info
-      ed_code = name.lines('-')[1]
+      ed_code = name.lines('_')[0]
       ed_name = codes[ed_code]
       district = District.find_by(name: ed_name)
       if district.nil?
