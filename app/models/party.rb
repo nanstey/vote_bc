@@ -1,5 +1,5 @@
 class Party < ApplicationRecord
-  validates :name, uniqueness: true
-  validates :abbr, uniqueness: true
+  validates :name, presence: true, uniqueness: true
+  validates :abbr, presence: true, uniqueness: true
   has_many :candidates
 end
