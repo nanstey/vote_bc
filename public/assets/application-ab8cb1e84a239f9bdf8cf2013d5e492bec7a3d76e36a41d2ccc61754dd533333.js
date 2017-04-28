@@ -12247,15 +12247,11 @@ $(document).on("turbolinks:load", function() {
 
   $(`.show-${currentYear}`).addClass('show');
 
-
   $('.year-tabs').children().on('click', function(){
     var year = $(this).text();
     $('.district-data').removeClass('show');
     $(`.show-${year}`).addClass('show');
   });
-
-
-
 
 });
 (function() {

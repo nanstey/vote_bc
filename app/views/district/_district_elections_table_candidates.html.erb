@@ -1,7 +1,6 @@
 <div class="candidate-tables">
   <% @district_history.each do |district_year| %>
     <div class="candidates-table district-data show-<%= district_year[:district].election.year %>">
-      <%= district_year[:district].election.year %> - <%= district_year[:district].district.name %>
       <br>
       <div class="district-candidates">
         <table>
