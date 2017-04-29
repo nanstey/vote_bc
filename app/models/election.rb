@@ -11,4 +11,8 @@ class Election < ApplicationRecord
   def self.current_election_year
     2017
   end
+
+  def self.last_election_year
+    2013
+  end
 end

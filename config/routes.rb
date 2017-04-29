@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get '/districts' => 'district#index'
   post '/districts' => 'district#search'
   get '/district/:name' => 'district#show'
-
+  get '/district/:name/:year' => 'district#show'
 
 end
