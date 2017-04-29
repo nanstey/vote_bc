@@ -15,7 +15,7 @@ end
 
 puts "Seeding boundary points for districts..."
 
-districts = District.all
+districts = Election.find_by(:year => Election.current_election_year).districts
 
 # iterates through each district
 districts.each do |district|
