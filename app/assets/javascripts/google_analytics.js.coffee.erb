@@ -38,6 +38,6 @@ class @GoogleAnalytics
 
   @analyticsId: ->
     # your google analytics ID(s) here...
-    '<%= ENV['GOOGLE_ANALYTICS_TRACKING_ID'] %>'
+    'UA-98305669-1'
 
 GoogleAnalytics.load()
