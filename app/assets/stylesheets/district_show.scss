@@ -60,7 +60,15 @@
   @extend .district-data-containers;
 }
 
-.stat-tables {
+.stat-graphs {
   padding: 20px;
   @extend .district-data-containers;
+}
+
+.stat-graphs .morris-hover.morris-default-style {
+  visibility: hidden;
+}
+
+.stat-graphs .area-legend {
+  min-height: 30px;
 }

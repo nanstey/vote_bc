@@ -1,0 +1,38 @@
+<div class="stat-graphs">
+  <% @district_history.each do |district_year| %>
+    <% if district_year[:district].voters_registered %>
+      <% voter_turnout = ((district_year[:district].total_votes).to_i / (district_year[:district].voters_registered).to_i) * 100.00 %>
+      <% tv = district_year[:district].total_votes.to_f %>
+      <% vr = district_year[:district].voters_registered.to_f %>
+      <% voter_turnout = ((tv / vr) * 100.00).round(2) %>
+       <div class="stats-graph district-data show-<%= district_year[:district].election.year %>">
+
+      </div>
+    <% end %>
+  <% end %>
+
+
+
+  <div id="area-graph"></div>
+  <div class="area-legend"></div>
+<script>
+  var areaGraph = Morris.Area({
+    element: 'area-graph',
+    data: [
+      { y: '2006', a: 100, b: 90 },
+      { y: '2007', a: 75,  b: 65 },
+      { y: '2008', a: 50,  b: 40 },
+      { y: '2009', a: 75,  b: 65 },
+      { y: '2010', a: 50,  b: 40 },
+      { y: '2011', a: 75,  b: 65 },
+      { y: '2012', a: 100, b: 90 }
+    ],
+    xkey: 'y',
+    ykeys: ['a', 'b'],
+    labels: ['Series A', 'Series B'],
+    hideHover: false
+  });
+
+</script>
+
+</div>

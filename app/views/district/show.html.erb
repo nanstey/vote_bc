@@ -7,7 +7,7 @@
     <div id="map"></div>
     <%= render 'district_map', district: @district %>
   <% else %>
-    <h3>District map only available for districts that exist in current election</h3>
+    <h5>District map only available for districts that exist in the 2017 election</h5>
   <% end %>
 
   <div class="district-header">
@@ -26,18 +26,12 @@
   </div>
   <div class="row">
     <div class="one-half column">
+      <%= render 'district_elections_graph_candidates', district: @district_history %>
       <%= render 'district_elections_table_candidates', district: @district_history %>
     </div>
     <div class="one-half column">
+      <%= render 'district_elections_graph_stats', district: @district_history %>
       <%= render 'district_elections_donut_graph', district: @district_history %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="one-half column">
-      <%= render 'district_elections_graph_candidates', district: @district_history %>
-    </div>
-    <div class="one-half column">
-      <%= render 'district_elections_table_stats', district: @district_history %>
     </div>
   </div>
 </div>

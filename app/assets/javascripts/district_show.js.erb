@@ -10,4 +10,16 @@ $(document).on("turbolinks:load", function() {
     $(`.show-${year}`).addClass('show');
   });
 
+  var legend = $('.stat-graphs .morris-hover.morris-default-style').contents();
+  $('.stat-graphs .area-legend').append(legend);
+
+  $('.stat-graphs').mousemove(function(){
+    legend = $('.stat-graphs .morris-hover.morris-default-style').contents();
+    if (legend.length) {
+      $('.stat-graphs .area-legend').html(legend)
+      console.log(legend);
+    }
+
+  })
+
 });
