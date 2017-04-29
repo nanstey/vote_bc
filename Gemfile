@@ -42,6 +42,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'morrisjs-rails'
 gem 'raphael-rails'
 
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do
