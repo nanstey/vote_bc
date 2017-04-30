@@ -5,7 +5,7 @@
 }
 
 .district-data-containers {
-  min-height: 411px;
+  min-height: 300px;
 }
 
 .district-data {
@@ -14,11 +14,14 @@
 }
 
 .district-header {
-  margin-top: 20px;
+  margin-top: 30px;
+}
+
+.column .district-header h4 {
+  margin: 20px;
 }
 
 .district-titles {
-  min-height: 80px;
   position: relative;
   text-align: center;
 }
@@ -29,38 +32,59 @@
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
+.year-tabs {
+  margin: 30px;
+}
+
+.year-tabs button {
+  font-size: 20px;
+  height: 60px;
+  width: 130px;
+}
+
 .show {
   visibility: visible;
 }
 
-
 .donut-graph {
-  margin: 10px 0 10px 30px;
+  margin-top: 20px;
 }
 
+
 .donut-graph svg {
-  width: 300px;
+  width: 240px;
+  height: 240px;
+  font-size: 15px;
+}
+
+.candidates-graph {
+  padding: 20px;
 }
 
 .candidates-table {
-  max-width: 45%;
+  margin-top: -30px;
+  // @extend .district-data-containers;
 }
 
-.candidate-graph {
-  padding: 20px;
-  max-width: 45%;
+.candidate-tables .candidates-table.district-data table {
+  margin: 0;
 }
+
 
 .candidate-tables {
-  padding: 20px;
-  @extend .district-data-containers;
+  padding: 0 20px;
+  // @extend .district-data-containers;
 }
 
-.donut-graphs {
-  @extend .district-data-containers;
+.stat-graphs {
+  padding: 20px;
+  // @extend .district-data-containers;
 }
 
-.stat-tables {
-  padding: 20px;
-  @extend .district-data-containers;
+.stat-graphs .morris-hover.morris-default-style {
+  visibility: hidden;
+}
+
+.stat-graphs .area-legend {
+  min-height: 30px;
 }

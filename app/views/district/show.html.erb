@@ -7,37 +7,44 @@
     <div id="map"></div>
     <%= render 'district_map', district: @district %>
   <% else %>
-    <h3>District map only available for districts that exist in current election</h3>
+    <h5>District map only available for districts that exist in the 2017 election</h5>
   <% end %>
-
-  <div class="district-header">
-    <div class="district-titles">
-      <% @district_history.each do |district_year| %>
-        <div class="district-title district-data show-<%= district_year[:district].election.year %>">
-          <h3><%= district_year[:district].district.name %> ~ <%= district_year[:district].election.year %> </h3>
-        </div>
-      <% end %>
-    </div>
-    <div class="year-tabs">
-      <% @district_history.reverse_each do |district_year| %>
-        <button class="button year-tab"><%= district_year[:district].election.year %></button>
-      <% end %>
-    </div>
-  </div>
   <div class="row">
     <div class="one-half column">
-      <%= render 'district_elections_table_candidates', district: @district_history %>
+      <div class="district-header">
+        <div class="district-titles">
+          <% @district_history.each do |district_year| %>
+            <div class="district-title district-data show-<%= district_year[:district].election.year %>">
+              <h4><%= district_year[:district].district.name %></h4>
+            </div>
+          <% end %>
+        </div>
+        <div class="year-tabs">
+          <% @district_history.reverse_each do |district_year| %>
+            <button class="button year-tab"><%= district_year[:district].election.year %></button>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="one-half column">
       <%= render 'district_elections_donut_graph', district: @district_history %>
     </div>
+  </div>
+
+  <div class="row">
+    <div class="one-full column">
+      <%= render 'district_elections_table_candidates', district: @district_history %>
+    </div>
+    <!-- <div class="five columns"> -->
+      <%#= render 'district_elections_donut_graph', district: @district_history %>
+    <!-- </div> -->
   </div>
   <div class="row">
     <div class="one-half column">
       <%= render 'district_elections_graph_candidates', district: @district_history %>
     </div>
     <div class="one-half column">
-      <%= render 'district_elections_table_stats', district: @district_history %>
+      <%= render 'district_elections_graph_stats', district: @district_history %>
     </div>
   </div>
 </div>

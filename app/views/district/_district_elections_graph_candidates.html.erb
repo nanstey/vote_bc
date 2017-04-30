@@ -8,21 +8,25 @@
   var dataKeys = [];
   var graphData = [];
   var years = [];
-  var colors = [];
-   <% @district_history.reverse_each do |d| %>
-    dataKeys = dataKeys.concat(Object.keys(<%= d[:json_line][:data] %> ));
-    graphData = graphData.concat(<%= d[:json_line][:data] %>);
-    colors = colors.concat(<%= d[:json_line][:colors] %>);
-
+  <% colors = [] %>
+  <% @district_history.reverse_each do |d|
+    if d[:district].voters_registered %>
+      dataKeys = dataKeys.concat(Object.keys(<%= d[:json_line][:data] %> ));
+      graphData = graphData.concat(<%= d[:json_line][:data] %>);
+      <% d[:json_line][:colors].each do |c|
+        if !c.in?(colors)
+          colors << c
+        end %>
+      <% end %>
+    <% end %>
   <% end %>
   var dataKeys = Array.from(new Set(dataKeys))
-  for(var i = dataKeys.length-1; i--;){
+  for(var i = dataKeys.length - 1; i--;){
     if (dataKeys[i] === "year") {
       // years.push(dataKeys[i]);
       dataKeys.splice(i, 1);
     }
   }
-
   // graphs the election data from district.get_graph_data
   var electionGraph = Morris.Line({
     element: 'electionGraph',
@@ -34,8 +38,8 @@
     hideHover: 'always',
     continuousLine: true,
     postUnits: '%',
-    resize: false,
-    lineColors: colors
+    smooth: false,
+    lineColors: <%= colors.to_json.html_safe %>
   });
 
 </script>
