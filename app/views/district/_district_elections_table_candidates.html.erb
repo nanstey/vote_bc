@@ -3,12 +3,12 @@
     <div class="candidates-table district-data show-<%= district_year[:district].election.year %>">
       <br>
       <div class="district-candidates">
-        <table>
+        <table width="100%">
           <thead>
-            <th>Candidate</th>
-            <th>Party</th>
-            <th>Total Votes</th>
-            <th>Percent</th>
+            <th width="40%">Candidate</th>
+            <th width="20%">Party</th>
+            <th width="20%">Total Votes</th>
+            <th width="20%">Percent</th>
           </thead>
           <% district_year[:candidates].each do |ced| %>
             <tr>

@@ -7,7 +7,7 @@ function insertLegend(){
   if ($legend.length) {
   var tv = findStats(1, $legend);
   var rv = findStats(2, $legend);
-  var voterTurnout = Math.round(100 *(rv / tv))
+  var voterTurnout = Math.round(10000 * (rv / tv)) / 100
     $('.stat-graphs .area-legend').html($($legend))
     $('.stat-graphs .area-legend').append('<div>' + 'Voter Turnout: ' + voterTurnout.toString() + '%</div>')
   }
@@ -17,12 +17,12 @@ var currentYear = <%= Election.current_election_year %> - 4;
 
 $(document).on("turbolinks:load", function() {
 
-  $(`.show-${currentYear}`).addClass('show');
+  $(`.show-${currentYear}`).addClass('show').css( 'position', 'static');
 
   $('.year-tabs').children().on('click', function(){
     var year = $(this).text();
-    $('.district-data').removeClass('show');
-    $(`.show-${year}`).addClass('show');
+    $('.district-data').removeClass('show').css( 'position', 'absolute');
+    $(`.show-${year}`).addClass('show').css( 'position', 'static');
   });
 
   insertLegend();

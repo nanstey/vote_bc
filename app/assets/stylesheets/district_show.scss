@@ -5,7 +5,7 @@
 }
 
 .district-data-containers {
-  min-height: 411px;
+  min-height: 300px;
 }
 
 .district-data {
@@ -33,34 +33,35 @@
   visibility: visible;
 }
 
-.donut-graph {
-  margin: 10px 0 10px 30px;
-}
 
 .donut-graph svg {
-  width: 300px;
-}
-
-.candidates-table {
-  max-width: 45%;
+  width: 240px;
+  height: 240px;
+  font-size: 15px;
 }
 
 .candidates-graph {
   padding: 20px;
 }
 
-.candidate-tables {
-  padding: 20px;
-  @extend .district-data-containers;
+.candidates-table {
+  margin-top: -30px;
+  // @extend .district-data-containers;
 }
 
-.donut-graphs {
-  @extend .district-data-containers;
+.candidate-tables .candidates-table.district-data table {
+  margin: 0;
+}
+
+
+.candidate-tables {
+  padding: 0 20px;
+  // @extend .district-data-containers;
 }
 
 .stat-graphs {
   padding: 20px;
-  @extend .district-data-containers;
+  // @extend .district-data-containers;
 }
 
 .stat-graphs .morris-hover.morris-default-style {
