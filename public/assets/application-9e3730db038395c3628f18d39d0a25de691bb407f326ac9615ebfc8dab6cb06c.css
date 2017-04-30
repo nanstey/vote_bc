@@ -345,8 +345,8 @@
 }
 
 /* line 7, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
-.district-data-containers, .candidate-tables, .donut-graphs, .stat-tables {
-  min-height: 411px;
+.district-data-containers {
+  min-height: 300px;
 }
 
 /* line 11, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
@@ -357,17 +357,21 @@
 
 /* line 16, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
 .district-header {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 /* line 20, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.column .district-header h4 {
+  margin: 20px;
+}
+
+/* line 24, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
 .district-titles {
-  min-height: 80px;
   position: relative;
   text-align: center;
 }
 
-/* line 26, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+/* line 29, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
 .district-title {
   margin: auto;
   position: absolute;
@@ -377,40 +381,73 @@
   right: 0;
 }
 
-/* line 32, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+/* line 35, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.year-tabs {
+  margin: 30px;
+}
+
+/* line 39, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.year-tabs button {
+  font-size: 20px;
+  height: 60px;
+  width: 130px;
+}
+
+/* line 45, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
 .show {
   visibility: visible;
 }
 
-/* line 37, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
-.donut-graph {
-  margin: 10px 0 10px 30px;
-}
-
-/* line 41, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
-.donut-graph svg {
-  width: 300px;
-}
-
-/* line 45, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
-.candidates-table {
-  max-width: 45%;
-}
-
 /* line 49, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
-.candidate-graph {
-  padding: 20px;
-  max-width: 45%;
+.donut-graph {
+  margin-top: 20px;
 }
 
 /* line 54, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
-.candidate-tables {
+.donut-graph svg {
+  width: 240px;
+  height: 240px;
+  font-size: 15px;
+}
+
+/* line 60, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.candidates-graph {
   padding: 20px;
 }
 
-/* line 63, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
-.stat-tables {
+/* line 64, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.candidates-graph .morris-hover.morris-default-style {
+  visibility: hidden;
+}
+
+/* line 68, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.candidates-table {
+  margin-top: -30px;
+}
+
+/* line 73, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.candidate-tables .candidates-table.district-data table {
+  margin: 0;
+}
+
+/* line 78, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.candidate-tables {
+  padding: 0 20px;
+}
+
+/* line 83, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.voters-graph {
   padding: 20px;
+}
+
+/* line 88, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.voters-graph .morris-hover.morris-default-style {
+  visibility: hidden;
+}
+
+/* line 92, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+.voters-graph .area-legend {
+  min-height: 30px;
 }
 .morris-hover{position:absolute;z-index:1000}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255,255,255,0.8);border:solid 2px rgba(230,230,230,0.8);font-family:sans-serif;font-size:12px;text-align:center}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0}
 .morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0}

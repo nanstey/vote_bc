@@ -12241,21 +12241,73 @@ $(document).on("turbolinks:load", function() {
 
 
 }).call(this);
+// Fetches registered voters or total votes numbers
+function findStats(index, legend) {
+  return new Number($($(legend).find('.morris-hover-row-label').prevObject[index]).contents().text().split(':')[1].replace(/[^\d\.]/g, ''));
+}
+// Inserts voter legend and calculates and appends voter turnout
+function insertVotersLegend(toLegend, fromLegend){
+  if (fromLegend.length) {
+  var tv = findStats(1, fromLegend);
+  var rv = findStats(2, fromLegend);
+  var voterTurnout = Math.round(10000 * (rv / tv)) / 100
+    toLegend.html($(fromLegend))
+    toLegend.append('<div>' + 'Voter Turnout: ' + voterTurnout.toString() + '%</div>')
+  }
+}
+
+// Inserts candidates legend and removes any stat with a value of '-'
+function insertCandidatesLegend(toLegend, fromLegend){
+  if (fromLegend.length) {
+    toLegend.html($(fromLegend))
+    if (toLegend.find(".morris-hover-point:contains('-%')")) {
+      toLegend.find(".morris-hover-point:contains('-%')").remove();
+    }
+  }
+}
+
 $(document).on("turbolinks:load", function() {
+// Finds year from params, or sets to last election
   if (parseInt(window.location.pathname.slice(-4))) {
-    var currentYear = window.location.pathname.slice(-4);
+    var year = window.location.pathname.slice(-4);
   }
   else {
-    var currentYear = 2013;
+    var year = 2013;
   }
 
-  $(`.show-${currentYear}`).addClass('show');
+// Sets year-tabs style on load and selects which year to display
+  $('.show-' + year).addClass('show').css( 'position', 'static');
+  $('.year-tabs button').css({'border-width': '1px', 'border-color': '#bbb', 'color': '#555'});
+  $('.year-tabs button:contains(' + year + ')').css({'border-width': '3px', 'border-color': '#888', 'color': 'black'});
 
-  $('.year-tabs').children().on('click', function(){
-    var year = $(this).text();
-    $('.district-data').removeClass('show');
-    $(`.show-${year}`).addClass('show');
+  // Appends trophy icon to eletion winner
+  $('.candidate-tables tbody').each(function(){
+    if ($(this).find('td').last().prev().text()) {
+    $(this).find('td').first().append(' <i class="fa fa-trophy" aria-hidden="true"></i>');
+    }
   });
+
+// sets year-tabs style on click and selects which year to display
+  $('.year-tabs').children().on('click', function(){
+    year = $(this).text();
+    $('.year-tabs button').css({'border-width': '1px', 'border-color': '#bbb', 'color': '#555'});
+    $(this).css({'border-width': '3px', 'border-color': '#888', 'color': 'black'});
+    $('.district-data').removeClass('show').css( 'position', 'absolute');
+    $('.show-' + year).addClass('show').css( 'position', 'static');
+  });
+
+  //calls to functions for appending legends to graphs (page load)
+  insertVotersLegend($('.voters-graph .area-legend'), $('.voters-graph .morris-hover.morris-default-style').contents());
+  insertCandidatesLegend($('.candidates-graph .candidates-legend'), $('.candidates-graph .morris-hover.morris-default-style').contents());
+
+  //calls to functions for appending legends to graphs (hover)
+  $('.voters-graph').mousemove(function(){
+    insertVotersLegend($('.voters-graph .area-legend'), $('.voters-graph .morris-hover.morris-default-style').contents());
+  })
+
+  $('.candidates-graph').mousemove(function(){
+    insertCandidatesLegend($('.candidates-graph .candidates-legend'), $('.candidates-graph .morris-hover.morris-default-style').contents());
+  })
 
 });
 (function() {
