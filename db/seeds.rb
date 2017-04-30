@@ -15,6 +15,7 @@ DistrictAlias.destroy_all
 puts "  >> Destroying Election join tables ..."
 ElectionDistrict.destroy_all
 ElectionLeader.destroy_all
+ElectionParty.destroy_all
 
 puts "  >> Destroying Core tables ..."
 Election.destroy_all
@@ -39,6 +40,8 @@ require Rails.root.join('db', 'scripts', 'import_election_results_2001')
 require Rails.root.join('db', 'scripts', 'import_election_results_1996')
 
 require Rails.root.join('db', 'scripts', 'seed_party_leaders')
+
+require Rails.root.join('db', 'scripts', 'seed_election_stats')
 
 require Rails.root.join('db', 'scripts', 'seed_electoral_redistributions_2015_2008')
 
