@@ -21,6 +21,8 @@ $(document).on("turbolinks:load", function() {
 
   $('.year-tabs').children().on('click', function(){
     var year = $(this).text();
+    $('.year-tabs button').css('border-width', '1px');
+    $(this).css('border-width', '3px');
     $('.district-data').removeClass('show').css( 'position', 'absolute');
     $(`.show-${year}`).addClass('show').css( 'position', 'static');
   });

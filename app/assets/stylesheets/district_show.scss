@@ -14,11 +14,14 @@
 }
 
 .district-header {
-  margin-top: 20px;
+  margin-top: 30px;
+}
+
+.column .district-header h4 {
+  margin: 20px;
 }
 
 .district-titles {
-  min-height: 80px;
   position: relative;
   text-align: center;
 }
@@ -29,8 +32,22 @@
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
+.year-tabs {
+  margin: 30px;
+}
+
+.year-tabs button {
+  font-size: 20px;
+  height: 60px;
+  width: 130px;
+}
+
 .show {
   visibility: visible;
+}
+
+.donut-graph {
+  margin-top: 20px;
 }
 
 

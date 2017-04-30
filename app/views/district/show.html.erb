@@ -15,7 +15,7 @@
         <div class="district-titles">
           <% @district_history.each do |district_year| %>
             <div class="district-title district-data show-<%= district_year[:district].election.year %>">
-              <h3><%= district_year[:district].district.name %></h3>
+              <h4><%= district_year[:district].district.name %></h4>
             </div>
           <% end %>
         </div>
