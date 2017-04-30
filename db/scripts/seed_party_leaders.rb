@@ -82,3 +82,22 @@ ElectionLeader.create!([
 election.premier_id = liberal.id
 election.save!
 
+#########################################
+
+puts "Seeding party leaders 1996 ..."
+
+election = Election.find_by(year: 1996)
+
+ndp = Candidate.find_by(name: 'Glen Clark')
+reform = Candidate.find_by(name: 'Jack Weisgerber')
+progdem = Candidate.find_by(name: 'Gordon Wilson')
+
+ElectionLeader.create!([
+  {candidate_id: reform.id, election_id: election.id},
+  {candidate_id: progdem.id, election_id: election.id},
+  {candidate_id: liberal.id, election_id: election.id},
+  {candidate_id: ndp.id, election_id: election.id}
+])
+
+election.premier_id = ndp.id
+election.save!

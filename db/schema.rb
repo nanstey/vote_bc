@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170427025408) do
+ActiveRecord::Schema.define(version: 20170429205806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,11 +104,28 @@ ActiveRecord::Schema.define(version: 20170427025408) do
     t.index ["election_id"], name: "index_election_leaders_on_election_id", using: :btree
   end
 
+  create_table "election_parties", force: :cascade do |t|
+    t.integer  "election_id"
+    t.integer  "party_id"
+    t.integer  "candidates_running"
+    t.integer  "seats_won"
+    t.integer  "votes_total"
+    t.float    "votes_percent"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
   create_table "elections", force: :cascade do |t|
     t.integer  "year"
     t.integer  "premier_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "seats"
+    t.integer  "voters_registered"
+    t.integer  "total_votes"
+    t.integer  "ballots_rejected"
+    t.integer  "ballots_valid"
+    t.float    "voter_turnout"
     t.index ["premier_id"], name: "index_elections_on_premier_id", using: :btree
   end
 
