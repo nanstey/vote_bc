@@ -61,6 +61,10 @@
   padding: 20px;
 }
 
+.candidates-graph .morris-hover.morris-default-style {
+  visibility: hidden;
+}
+
 .candidates-table {
   margin-top: -30px;
   // @extend .district-data-containers;
@@ -76,15 +80,15 @@
   // @extend .district-data-containers;
 }
 
-.stat-graphs {
+.voters-graph {
   padding: 20px;
   // @extend .district-data-containers;
 }
 
-.stat-graphs .morris-hover.morris-default-style {
+.voters-graph .morris-hover.morris-default-style {
   visibility: hidden;
 }
 
-.stat-graphs .area-legend {
+.voters-graph .area-legend {
   min-height: 30px;
 }

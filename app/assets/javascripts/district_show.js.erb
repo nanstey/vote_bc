@@ -2,41 +2,54 @@ function findStats(index, legend) {
   return new Number($($(legend).find('.morris-hover-row-label').prevObject[index]).contents().text().split(':')[1].replace(/[^\d\.]/g, ''));
 }
 
-function insertLegend(){
-  $legend = $('.stat-graphs .morris-hover.morris-default-style').contents();
-  if ($legend.length) {
-  var tv = findStats(1, $legend);
-  var rv = findStats(2, $legend);
+function insertVotersLegend(toLegend, fromLegend){
+  if (fromLegend.length) {
+  var tv = findStats(1, fromLegend);
+  var rv = findStats(2, fromLegend);
   var voterTurnout = Math.round(10000 * (rv / tv)) / 100
-    $('.stat-graphs .area-legend').html($($legend))
-    $('.stat-graphs .area-legend').append('<div>' + 'Voter Turnout: ' + voterTurnout.toString() + '%</div>')
+    toLegend.html($(fromLegend))
+    toLegend.append('<div>' + 'Voter Turnout: ' + voterTurnout.toString() + '%</div>')
+  }
+}
+function insertCandidatesLegend(toLegend, fromLegend){
+  if (fromLegend.length) {
+    toLegend.html($(fromLegend))
+    if (toLegend.find(".morris-hover-point:contains('-%')")) {
+      toLegend.find(".morris-hover-point:contains('-%')").remove();
+    }
   }
 }
 
-var currentYear = <%= Election.current_election_year %> - 4;
-
 $(document).on("turbolinks:load", function() {
   if (parseInt(window.location.pathname.slice(-4))) {
-    var currentYear = window.location.pathname.slice(-4);
+    var year = window.location.pathname.slice(-4);
   }
   else {
-    var currentYear = <%= Election.last_election_year %>;
+    var year = <%= Election.last_election_year %>;
   }
 
-  $(`.show-${currentYear}`).addClass('show').css( 'position', 'static');
+  $('.show-' + year).addClass('show').css( 'position', 'static');
+  $('.year-tabs button').css({'border-width': '1px', 'border-color': '#bbb', 'color': '#555'});
+  $('.year-tabs button:contains(' + year + ')').css({'border-width': '3px', 'border-color': '#888', 'color': 'black'});
 
   $('.year-tabs').children().on('click', function(){
-    var year = $(this).text();
-    $('.year-tabs button').css('border-width', '1px');
-    $(this).css('border-width', '3px');
+    year = $(this).text();
+    $('.year-tabs button').css({'border-width': '1px', 'border-color': '#bbb', 'color': '#555'});
+    $(this).css({'border-width': '3px', 'border-color': '#888', 'color': 'black'});
     $('.district-data').removeClass('show').css( 'position', 'absolute');
-    $(`.show-${year}`).addClass('show').css( 'position', 'static');
+    $('.show-' + year).addClass('show').css( 'position', 'static');
   });
 
-  insertLegend();
+  insertVotersLegend($('.voters-graph .area-legend'), $('.voters-graph .morris-hover.morris-default-style').contents());
+  insertCandidatesLegend($('.candidates-graph .candidates-legend'), $('.candidates-graph .morris-hover.morris-default-style').contents());
 
-  $('.stat-graphs').mousemove(function(){
-    insertLegend();
+  $('.voters-graph').mousemove(function(){
+    insertVotersLegend($('.voters-graph .area-legend'), $('.voters-graph .morris-hover.morris-default-style').contents());
   })
+
+  $('.candidates-graph').mousemove(function(){
+    insertCandidatesLegend($('.candidates-graph .candidates-legend'), $('.candidates-graph .morris-hover.morris-default-style').contents());
+  })
+
 
 });

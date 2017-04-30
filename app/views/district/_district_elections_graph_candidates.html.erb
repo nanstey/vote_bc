@@ -1,5 +1,7 @@
 <div class="candidates-graph">
-  <div id="electionGraph"></div>
+  <h5>Candidate Stats</h5>
+  <div id="candidates-graph"></div>
+  <div class="candidates-legend"></div>
 </div>
 
 
@@ -29,13 +31,12 @@
   }
   // graphs the election data from district.get_graph_data
   var electionGraph = Morris.Line({
-    element: 'electionGraph',
+    element: 'candidates-graph',
     data: graphData,
     xkey: 'year',
     ykeys: dataKeys,
     labels: dataKeys,
     parseTime: false,
-    hideHover: 'always',
     continuousLine: true,
     postUnits: '%',
     smooth: false,

@@ -1,21 +1,19 @@
-<div class="stat-graphs">
+<div class="voters-graph">
 <% district_data = []
     @district_history.each do |district_year|
     if district_year[:district].voters_registered
-      voter_turnout = ((district_year[:district].total_votes).to_i / (district_year[:district].voters_registered).to_i) * 100.00
-        tv = district_year[:district].total_votes.to_f
-        rv = district_year[:district].voters_registered.to_f
+        tv = district_year[:district].total_votes
+        rv = district_year[:district].voters_registered
         vb = district_year[:district].ballots_valid
         rb = district_year[:district].ballots_rejected
-        pp district_year[:district].inspect
         year = district_year[:district].election.year
-        year_data = {year: "#{year}", rv: "#{rv.to_i}", tv: "#{tv.to_i}", vb: "#{vb.to_i}", rb: "#{rb.to_i}" }
+        year_data = {year: "#{year}", rv: "#{rv}", tv: "#{tv}", vb: "#{vb}", rb: "#{rb}" }
         district_data << year_data %>
     <% end %>
   <% end %>
  <% json_data = district_data.to_json.html_safe %>
 
-
+  <h5>Voter Stats</h5>
   <div id="area-graph"></div>
   <div class="area-legend"></div>
 <script>
