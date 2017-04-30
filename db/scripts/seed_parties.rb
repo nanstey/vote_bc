@@ -46,5 +46,9 @@ Party.create!([
   {name: 'Council of British Columbians', abbr: 'COBC', color: '#68686'},
   {name: 'Party of Citizens Who Have Decided to Think for Themselves and Be Their Own Politicians', abbr: 'POC', color: '#68686'},
   {name: 'Citizens Commonwealth Federation', abbr: 'CFED', color: '#68686'},
-  {name: 'Central', abbr: 'CENT', color: '#68686'}
+  {name: 'Central', abbr: 'CENT', color: '#68686'},
+  {name: 'Progressive Democratic Alliance', abbr: 'PDA', color: '#68686'},
+  {name: 'Common Sense, Community, Family', abbr: 'CCF', color: '#68686'},
+  {name: 'Natural Law', abbr: 'NLP', color: '#68686'},
+  {name: 'Family Coalition', abbr: 'FCP', color: '#68686'}
 ])

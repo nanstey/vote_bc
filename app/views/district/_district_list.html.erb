@@ -9,7 +9,11 @@
   <tbody>
     <% districts.each do |district| %>
       <tr>
-        <td><%= link_to district.name, "/district/#{district.slug}" %></td>
+        <% if (defined?(@election.year)).nil? %>
+          <td><%= link_to district.name, "/district/#{district.slug}" %></td>
+        <% else %>
+          <td><%= link_to district.name, "/district/#{district.slug}/#{@election.year}" %></td>
+        <% end %>
         <td><%= district.abbr %></td>
       </tr>
     <% end %>

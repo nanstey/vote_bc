@@ -12241,9 +12241,13 @@ $(document).on("turbolinks:load", function() {
 
 
 }).call(this);
-var currentYear = 2017 - 4;
-
 $(document).on("turbolinks:load", function() {
+  if (parseInt(window.location.pathname.slice(-4))) {
+    var currentYear = window.location.pathname.slice(-4);
+  }
+  else {
+    var currentYear = 2013;
+  }
 
   $(`.show-${currentYear}`).addClass('show');
 
@@ -12260,6 +12264,15 @@ $(document).on("turbolinks:load", function() {
 }).call(this);
 (function() {
 
+
+}).call(this);
+(function() {
+  document.addEventListener('turbolinks:load', function(event) {
+    if (typeof ga === 'function') {
+      ga('set', 'location', event.data.url);
+      return ga('send', 'pageview');
+    }
+  });
 
 }).call(this);
 $(document).on("turbolinks:load", function() {

@@ -16,6 +16,12 @@ function insertLegend(){
 var currentYear = <%= Election.current_election_year %> - 4;
 
 $(document).on("turbolinks:load", function() {
+  if (parseInt(window.location.pathname.slice(-4))) {
+    var currentYear = window.location.pathname.slice(-4);
+  }
+  else {
+    var currentYear = <%= Election.last_election_year %>;
+  }
 
   $(`.show-${currentYear}`).addClass('show').css( 'position', 'static');
 

@@ -1,4 +1,3 @@
-
 def read_election_data(year)
   xlsx = Roo::Excelx.new(Rails.root.join('db', 'excel', "#{year}GE-Results-Excel.xlsx"))
   puts "Seeding election results for #{year} ..."
@@ -44,7 +43,6 @@ def read_election_data(year)
         winner = sheet.cell(row, 2)
 
         # Get district stats
-        total_registered = (sheet.cell(row-3, 3)/(sheet.cell(row-3, 4) * 100) * 100).round
         total_voters = sheet.cell(row-3, 3)
         rejected = sheet.cell(row-4, 3)
         valid = sheet.cell(row-6, 3)
@@ -53,9 +51,10 @@ def read_election_data(year)
         until sheet.cell(row, 1) == "Grand Totals"
           row -= 1
         end
+        total_registered = sheet.cell(row, sheet.last_column)
         (4..last_candidate).each do |i|
           candidates[i-4][:votes_total] = sheet.cell(row, i)
-          candidates[i-4][:votes_percent] = (sheet.cell(row+1, i).to_f * 100).round(2)
+          candidates[i-4][:votes_percent] = sheet.cell(row+1, i).to_f * 100
         end
       else
         (3..last_candidate).each do |i|
@@ -75,7 +74,6 @@ def read_election_data(year)
         winner = sheet.cell(row, 2)
 
         # Get district stats
-        total_registered = (sheet.cell(row-3, 3)/(sheet.cell(row-3, 4) * 100) * 100).round
         total_voters = sheet.cell(row-3, 3)
         rejected = sheet.cell(row-4, 3)
         valid = sheet.cell(row-6, 3)
@@ -84,6 +82,7 @@ def read_election_data(year)
         until sheet.cell(row, 1) == "Grand Totals"
           row -= 1
         end
+        total_registered = sheet.cell(row, sheet.last_column)
         (3..last_candidate).each do |i|
           candidates[i-3][:votes_total] = sheet.cell(row, i)
           candidates[i-3][:votes_percent] = sheet.cell(row+1, i).to_f * 100
@@ -91,7 +90,7 @@ def read_election_data(year)
       end
 
       # Seed info
-      ed_code = name.lines('_')[0]
+      ed_code = name.lines('_')[0].chop
       ed_name = codes[ed_code]
       district = District.find_by(name: ed_name)
       if district.nil?

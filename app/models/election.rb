@@ -1,4 +1,5 @@
 class Election < ApplicationRecord
+  validates :year, presence: true, uniqueness: true
   has_many :election_districts
   has_many :candidate_election_districts
   has_many :districts, through: :election_districts
@@ -9,5 +10,9 @@ class Election < ApplicationRecord
 
   def self.current_election_year
     2017
+  end
+
+  def self.last_election_year
+    2013
   end
 end
