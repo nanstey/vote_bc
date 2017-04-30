@@ -1,3 +1,18 @@
+function findStats(index, legend) {
+  return new Number($($(legend).find('.morris-hover-row-label').prevObject[index]).contents().text().split(':')[1].replace(/[^\d\.]/g, ''));
+}
+
+function insertLegend(){
+  $legend = $('.stat-graphs .morris-hover.morris-default-style').contents();
+  if ($legend.length) {
+  var tv = findStats(1, $legend);
+  var rv = findStats(2, $legend);
+  var voterTurnout = Math.round(100 *(rv / tv))
+    $('.stat-graphs .area-legend').html($($legend))
+    $('.stat-graphs .area-legend').append('<div>' + 'Voter Turnout: ' + voterTurnout.toString() + '%</div>')
+  }
+}
+
 var currentYear = <%= Election.current_election_year %> - 4;
 
 $(document).on("turbolinks:load", function() {
@@ -10,15 +25,10 @@ $(document).on("turbolinks:load", function() {
     $(`.show-${year}`).addClass('show');
   });
 
-  var legend = $('.stat-graphs .morris-hover.morris-default-style').contents();
-  $('.stat-graphs .area-legend').append(legend);
+  insertLegend();
 
   $('.stat-graphs').mousemove(function(){
-    legend = $('.stat-graphs .morris-hover.morris-default-style').contents();
-    if (legend.length) {
-      $('.stat-graphs .area-legend').html(legend)
-    }
-
+    insertLegend();
   })
 
 });

@@ -11,9 +11,6 @@
         year = district_year[:district].election.year
         year_data = {year: "#{year}", rv: "#{rv.to_i}", tv: "#{tv.to_i}", vb: "#{vb.to_i}", rb: "#{rb.to_i}" }
         district_data << year_data %>
-       <div class="stats-graph district-data show-<%= year %>">
-
-      </div>
     <% end %>
   <% end %>
  <% json_data = district_data.to_json.html_safe %>
@@ -36,8 +33,6 @@ var districtData = <%= raw json_data %>.reverse()
     parseTime: false,
     behaveLikeLine: true,
     lineColors: ['#24292e', '#999999', '#00802b', '#990000']
-
-
   });
 
 </script>
