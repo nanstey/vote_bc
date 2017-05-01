@@ -2,21 +2,37 @@
   <%= render 'layouts/parallax' %>
 <% end %>
 <div class="container body-container">
-<div id="buffer"></div>
-    <h1><%= @election.year %> Election</h1>
-    <h5>Major Party Leaders</h5>
-    <% @leaders.each do |pl| %>
-      <%= pl.name %>
-      <%= pl.party.abbr %>
-      <% if @premier && pl.id == @premier.id %>
-        <i class='fa fa-trophy' aria-hidden='true'></i>
-      <% end %>
-      <br/>
+  
+  <div id="election-anchor"></div>
+  <div class="buffer"></div>
+  <h1><%= @election.year %> Election</h1>
+  <h5>Major Party Leaders</h5>
+  <% @leaders.each do |pl| %>
+    <%= pl.name %>
+    <%= pl.party.abbr %>
+    <% if @premier && pl.id == @premier.id %>
+      <%= "(ELECTED!)" %>
     <% end %>
-  <div class="one-half column">
+    <br/>
+  <% end %>
 
-  </div>
-  <div class="one-half column">
-
-  </div>
+  <% if @party_stats %>
+    <div class="row">
+      <div class="one-half column">
+        <%= render 'election_stats' %>
+      </div>
+      <div class="one-half column">
+        <%= render 'election_votes_donut_graph', election_votes: @party_stats[:json_votes] %>
+        <%= render 'election_seats_donut_graph', election_seats: @party_stats[:json_seats] %>
+      </div>
+    </div>
+    <div class="row">
+      <%= render 'election_party_table', party_stats: @party_stats[:all_parties] %>
+    </div>
+  <% else %>
+    <br>
+    <div class="row">
+      <h5>No stats available for <%= @election.year %></h5>
+    </div>
+  <% end %>
 </div>

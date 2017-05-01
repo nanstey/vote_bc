@@ -1,0 +1,16 @@
+<div class="donut-graph" id="election-votes"></div>
+<script>
+  var graphData = <%= election_votes[:data] %>;
+  var colors = <%= election_votes[:colors] %>;
+
+  if (graphData[0].value === 0) {
+    graphData = [{label: "TBA", value: 1}];
+    colors = ['#DCDCDC'];
+  }
+
+  Morris.Donut({
+    element: "election-votes",
+    data: graphData,
+    colors: colors
+  });
+</script>
