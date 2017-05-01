@@ -1,6 +1,7 @@
 class ElectionDistrict < ApplicationRecord
   belongs_to :election
   belongs_to :district
+  belongs_to :winner, class_name: "Candidate", foreign_key: :winner_id
   validates :election_id, presence: true
   validates :district_id, presence: true
   validates_presence_of :winner_id, if: :previous_year
