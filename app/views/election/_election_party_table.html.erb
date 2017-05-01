@@ -1,7 +1,8 @@
 <div class="party-table">
   <table width="100%">
     <thead>
-      <th width="35%">Party</th>
+      <th width="1%"></th>
+      <th width="34%">Party</th>
       <th width="10%">Abbr</th>
       <th width="15%">Total Votes</th>
       <th width="10%">Popular Vote</th>
@@ -10,7 +11,8 @@
     </thead>
     <% party_stats.each do |ep| %>
       <tr>
-        <td><i class="fa fa-square" aria-hidden="true" style="color:<%= ep.party.color %>"></i> <%= ep.party.name %></td>
+        <td><i class="fa fa-square" aria-hidden="true" style="color:<%= ep.party.color %>"></i></td>
+        <td><%= ep.party.name %></td>
         <td><%= ep.party.abbr %></td>
         <td><%= number_with_delimiter(ep.votes_total, :delimiter => ",") %></td>
         <td><%= ep.votes_percent %>%</td>

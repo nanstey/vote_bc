@@ -1,4 +1,4 @@
-<div class="donut-graph" id="election-votes"></div>
+<div class="election-donut" id="election-votes"></div>
 <script>
   var graphData = <%= election_votes[:data] %>;
   var colors = <%= election_votes[:colors] %>;
@@ -8,7 +8,7 @@
     colors = ['#DCDCDC'];
   }
 
-  Morris.Donut({
+  var electionVotes = Morris.Donut({
     element: "election-votes",
     data: graphData,
     colors: colors
