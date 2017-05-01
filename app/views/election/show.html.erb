@@ -15,11 +15,7 @@
       <br/>
     <% end %>
   <div class="one-half column">
-    <% if @election.year == Election.current_election_year %>
-      <%= render :partial => '/district/district_list', :locals => {election_districts: @election_districts} %>
-    <% else %>
-      <%= render :partial => '/district/district_election_list', :locals => {election_districts: @election_districts} %>
-    <% end %>
+
   </div>
   <div class="one-half column">
 

@@ -122,4 +122,5 @@ class District < ApplicationRecord
     end
     district_info
   end
+
 end
