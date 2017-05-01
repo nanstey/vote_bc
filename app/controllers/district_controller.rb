@@ -1,6 +1,6 @@
 class DistrictController < ApplicationController
   def index
-    @districts = District.all
+    @districts = ElectionDistrict.includes(:district, winner: [:party])
   end
 
   def show

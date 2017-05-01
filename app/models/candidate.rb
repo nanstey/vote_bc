@@ -5,6 +5,7 @@ class Candidate < ApplicationRecord
   has_many :districts, through: :candidate_election_districts
   has_many :elections, through: :candidate_election_districts
   has_many :election_leaders
+  has_many :election_district, foreign_key: :winner_id
   has_one :candidate_alias
   has_one :old_candidate, through: :candidate_alias
   has_one :new_candidate_alias, class_name: "CandidateAlias", foreign_key: :old_candidate_id

@@ -9,11 +9,8 @@ class ElectionController < ApplicationController
     unless @election.premier_id.nil?
       @premier = Candidate.find(@election.premier_id)
     end
-    @districts = @election.districts
+    @election_districts = ElectionDistrict.includes(:district, winner: [:party]).where(:election_id => @election.id)
     @leaders = @election.leaders
-
   end
-
-
 
 end
