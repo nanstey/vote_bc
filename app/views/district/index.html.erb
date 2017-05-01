@@ -9,10 +9,12 @@
         <%= link_to year, "#anchor-#{year}", class: 'button' %>
     <% end %>
     <% (@years).each do |election| %>
-      <% year = election.year %>
-      <div class="district-anchor" id="anchor-<%= year %>">
-      </div>
-        <%= render 'district_list', election_districts: @districts.where(:election_id => election.id).order('districts.name'), year: year %>
+      <% cache(election) do %>
+        <% year = election.year %>
+        <div class="district-anchor" id="anchor-<%= year %>">
+        </div>
+          <%= render 'district_list', election_districts: @districts.where(:election_id => election.id).order('districts.name'), year: year %>
+      <% end %>
     <% end %>
   </div>
 </div>
