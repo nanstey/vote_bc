@@ -1,6 +1,5 @@
 $(document).on("turbolinks:load", function() {
 // Toggles elections dropdown menu
-  $('.dropdown-content').hide();
   $('.dropdown').on('click', function() {
     $('.dropdown-content').slideToggle(200);
     $('.dropdown i').toggleClass('up').toggleClass('down')
