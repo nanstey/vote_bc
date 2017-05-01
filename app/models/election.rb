@@ -15,4 +15,8 @@ class Election < ApplicationRecord
   def self.last_election_year
     2013
   end
+
+  def party_stats
+    ElectionParty.includes(:party).where(:election_id => self.id).order(:votes_total => :DESC)
+  end
 end

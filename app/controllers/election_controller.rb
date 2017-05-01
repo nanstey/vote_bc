@@ -11,7 +11,7 @@ class ElectionController < ApplicationController
     end
     @districts = @election.districts
     @leaders = @election.leaders
-
+    @party_stats = @election.party_stats
   end
 
 

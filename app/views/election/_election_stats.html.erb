@@ -1,0 +1,18 @@
+
+<div class="donut-graph"></div>
+
+<script>
+  var graphData = <%= district_year[:json_donut][:data] %>;
+  var colors = <%= district_year[:json_donut][:colors] %>;
+  if (graphData[0].value === 0) {
+    graphData = [{label: "TBA", value: 1}];
+    colors = ['#DCDCDC'];
+  }
+
+
+  Morris.Donut({
+    element: "stats-<%= district_year[:district].election.year %>",
+    data: graphData,
+    colors: colors
+  });
+</script>
