@@ -110,3 +110,11 @@
     font-size: 12px;
   }
 }
+
+@media screen and (max-width: 400px) {
+.container.body-container.district-show-container {
+  padding: 0;
+}
+
+
+}
