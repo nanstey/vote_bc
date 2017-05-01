@@ -1,6 +1,7 @@
 <div class="container body-container">
-<div id="buffer"></div>
-<h1 class="top-header">District Index</h1>
+  <div id="buffer"></div>
+  <h1 class="top-header">District Index</h1>
+
   <div class="one-full column">
     <% (1..@years.count).each do |i| %>
       <%= link_to year = @years.find(i).year, "#anchor-#{year}", class: 'button' %>
