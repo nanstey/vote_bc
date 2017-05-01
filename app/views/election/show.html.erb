@@ -1,10 +1,9 @@
 <% if request.original_fullpath == "/election/#{Election.current_election_year}" || request.original_fullpath == "/" %>
   <%= render 'layouts/parallax' %>
 <% end %>
-<div class="container body-container">
-  
-  <div id="election-anchor"></div>
-  <div class="buffer"></div>
+<div id="buffer"></div>
+<div class="container body-container election-container">
+  <div class="top-margin"></div>
   <h1><%= @election.year %> Election</h1>
   <h5>Major Party Leaders</h5>
   <% @leaders.each do |pl| %>
@@ -21,13 +20,17 @@
       <div class="one-half column">
         <%= render 'election_stats' %>
       </div>
-      <div class="one-half column">
+      <div class="one-half column donut">
+        <h5>Popular Vote</h5>
         <%= render 'election_votes_donut_graph', election_votes: @party_stats[:json_votes] %>
+        <h5>Seats Won</h5>
         <%= render 'election_seats_donut_graph', election_seats: @party_stats[:json_seats] %>
       </div>
     </div>
     <div class="row">
-      <%= render 'election_party_table', party_stats: @party_stats[:all_parties] %>
+      <div class="one-full column">
+        <%= render 'election_party_table', party_stats: @party_stats[:all_parties] %>
+      </div>
     </div>
   <% else %>
     <br>
@@ -36,3 +39,13 @@
     </div>
   <% end %>
 </div>
+<script>
+  $(window).on('resize', function() {
+    if (!window.recentResize) {
+      electionVotes.redraw();
+      electionSeats.redraw();
+      window.recentResize = true;
+      setTimeout(function(){ window.recentResize = false; }, 300);
+    }
+  });
+</script>

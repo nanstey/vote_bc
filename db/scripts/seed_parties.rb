@@ -11,7 +11,7 @@ Party.create!([
   {name: 'BC Marijuana Party', abbr: 'BCM', color: '#7d8c2f'},
   {name: 'BC NDP', abbr: 'NDP', color: '#e87722'},
   {name: 'BC Party', abbr: 'BCP', color: '#87cefa'},
-  {name: 'BC Refederation Party', abbr: 'REFD', color: '#FFFF99'},
+  {name: 'BC Refed', abbr: 'REFD', color: '#FFFF99'},
   {name: 'BC Social Credit Party', abbr: 'SC', color: '#add8e6'},
   {name: 'BC Vision Party', abbr: 'BCV', color: '#b803e7'},
   {name: 'Christian Heritage Party of B.C.', abbr: 'CHP', color: '#cc6699'},
