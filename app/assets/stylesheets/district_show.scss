@@ -1,12 +1,12 @@
+.voters-graph svg { width: 100% !important; }
+.candidates-graph svg { width: 100% !important; }
+
 #map {
   height: 60vh;
   width:100%;
   max-height: 500px;
 }
 
-.district-data-containers {
-  min-height: 300px;
-}
 
 .district-data {
   position: absolute;
@@ -65,24 +65,12 @@
   visibility: hidden;
 }
 
-.candidates-table {
-  margin-top: -30px;
-  // @extend .district-data-containers;
-}
-
-.candidate-tables .candidates-table.district-data table {
-  margin: 0;
-}
-
-
 .candidate-tables {
   padding: 0 20px;
-  // @extend .district-data-containers;
 }
 
 .voters-graph {
   padding: 20px;
-  // @extend .district-data-containers;
 }
 
 .voters-graph .morris-hover.morris-default-style {
@@ -93,8 +81,32 @@
   min-height: 30px;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1141px) {
+  .year-tabs button {
+    font-size: 16px;
+    height: 50px;
+    width: 100px;
+  }
+}
 
+@media screen and (max-width: 900px) {
+  .container .column.one-half.graph-column {
+    width: 100%;
+    margin-left: 0;
+  }
+}
 
+@media screen and (max-width: 900px) {
+  .content .container {
+    width: 100%;
+  }
+}
 
+@media screen and (max-width: 550px) {
+  .candidate-tables .candidates-table.district-data table td {
+    font-size: 12px;
+  }
+  .candidate-tables .candidates-table.district-data table th {
+    font-size: 12px;
+  }
 }

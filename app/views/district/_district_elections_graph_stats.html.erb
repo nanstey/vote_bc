@@ -11,14 +11,14 @@
         district_data << year_data %>
     <% end %>
   <% end %>
- <% json_data = district_data.to_json.html_safe %>
+  <% json_data = district_data.to_json.html_safe %>
 
   <h5>Voter Stats</h5>
   <div id="area-graph"></div>
   <div class="area-legend"></div>
-<script>
+  <script>
 
-var districtData = <%= raw json_data %>.reverse()
+  var districtData = <%= raw json_data %>.reverse()
 
   var areaGraph = Morris.Area({
     element: 'area-graph',
@@ -33,6 +33,7 @@ var districtData = <%= raw json_data %>.reverse()
     lineColors: ['#24292e', '#999999', '#00802b', '#990000']
   });
 
-</script>
+
+  </script>
 
 </div>
