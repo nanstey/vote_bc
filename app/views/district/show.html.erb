@@ -1,7 +1,7 @@
 <!-- District boundary data is only available for current election. Only create map if district exists in current election -->
 
 <div class="container body-container">
-  <div class="buffer"></div>
+  <div id="buffer"></div>
   <h1 class="top-header"><%= @district.name %></h1>
   <% if @district.elections[0].year == Election.current_election_year %>
     <div id="map"></div>
@@ -38,11 +38,21 @@
     </div>
   </div>
   <div class="row">
-    <div class="one-half column">
+    <div class="one-half column graph-column">
       <%= render 'district_elections_graph_candidates', district: @district_history %>
     </div>
-    <div class="one-half column">
+    <div class="one-half column graph-column">
       <%= render 'district_elections_graph_stats', district: @district_history %>
     </div>
   </div>
 </div>
+<script>
+  $(window).on('resize', function() {
+    if (!window.recentResize) {
+      electionGraph.redraw();
+      areaGraph.redraw();
+      window.recentResize = true;
+      setTimeout(function(){ window.recentResize = false; }, 300);
+    }
+  });
+</script>

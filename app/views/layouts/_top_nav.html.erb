@@ -11,7 +11,7 @@
       <div class="dropdown-content">
         <% elections.each do |e| %>
           <% if Election.current_election_year == e.year %>
-            <%= link_to "#{e.year}", "/election/#{e.year}#election-anchor" %>
+            <%= link_to "#{e.year}", "/election/#{e.year}#buffer" %>
           <% else %>
             <%= link_to "#{e.year}", "/election/#{e.year}" %>
           <% end %>
