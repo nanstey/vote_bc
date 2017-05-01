@@ -337,6 +337,21 @@
     color: #e3e3e3;
   }
 }
+/* line 1, /vagrant/vote-bc/app/assets/stylesheets/district_index.scss */
+.container.body-container.district-index-container .one-full.column {
+  margin: 0;
+}
+
+/* line 5, /vagrant/vote-bc/app/assets/stylesheets/district_index.scss */
+.district-anchor {
+  position: absolute;
+  margin-top: -80px;
+}
+
+/* line 10, /vagrant/vote-bc/app/assets/stylesheets/district_index.scss */
+.district-index-container .one-full.column h5 {
+  margin: 20px 0 10px 0;
+}
 /* line 1, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
 .voters-graph svg {
   width: 100% !important;
@@ -475,6 +490,104 @@
   /* line 109, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
   .candidate-tables .candidates-table.district-data table th {
     font-size: 12px;
+  }
+}
+/* line 1, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.election-votes svg {
+  width: 100% !important;
+}
+
+/* line 2, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.election-seats svg {
+  width: 100% !important;
+}
+
+/* line 4, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.election-donut svg {
+  height: 240px;
+  width: 100%;
+  font-size: 15px;
+}
+
+/* line 10, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.donut h5 {
+  margin: 10px 0 0 0;
+}
+
+/* line 14, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.party-table {
+  padding: 20px;
+}
+
+/* line 18, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.row .one-full.column .party-table table {
+  margin: 0;
+}
+
+/* line 22, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.party-table table td {
+  padding: 8px 2px;
+}
+
+/* line 26, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.party-table table th {
+  font-size: 16px;
+  padding: 5px 2px;
+}
+
+/* line 31, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.party-leaders {
+  padding: 0 20px;
+}
+
+/* line 34, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.party-leaders table td {
+  padding: 16px 0;
+  text-align: right;
+}
+
+/* line 40, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.election-stats-column h5 {
+  margin: 10px 0 0 0;
+}
+
+/* line 44, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.election-stats {
+  padding: 0 20px;
+}
+
+/* line 48, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.election-stats table td {
+  text-align: right;
+  padding: 16px 0;
+}
+
+@media screen and (max-width: 550px) {
+  /* line 56, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  .row .one-full.column .party-table table td {
+    font-size: 12px;
+  }
+
+  /* line 60, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  .row .one-full.column .party-table table th {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 427px) {
+  /* line 68, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  .row .one-full.column .party-table table td {
+    font-size: 10px;
+  }
+
+  /* line 72, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  .row .one-full.column .party-table table th {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 400px) {
+  /* line 80, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  .container.body-container.election-container {
+    padding: 0;
   }
 }
 .morris-hover{position:absolute;z-index:1000}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255,255,255,0.8);border:solid 2px rgba(230,230,230,0.8);font-family:sans-serif;font-size:12px;text-align:center}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0}
@@ -4379,8 +4492,8 @@ label {
 }
 
 /* line 23, /vagrant/vote-bc/app/assets/stylesheets/application.scss */
-.top-header {
-  margin-top: 20px;
+.top-margin {
+  height: 30px;
 }
 
 /* line 27, /vagrant/vote-bc/app/assets/stylesheets/application.scss */
@@ -4434,7 +4547,8 @@ label {
 
 /* line 68, /vagrant/vote-bc/app/assets/stylesheets/application.scss */
 #buffer {
-  min-height: 80px;
+  min-height: 60px;
+  background-color: white;
 }
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 

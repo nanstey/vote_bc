@@ -28,12 +28,26 @@
   padding: 5px 2px;
 }
 
+.party-leaders {
+  padding: 0 20px;
+}
+.party-leaders table td {
+  padding: 16px 0;
+  text-align: right;
+}
+
+
+.election-stats-column h5 {
+  margin: 10px 0 0 0;
+}
+
 .election-stats {
-  padding: 20px;
+  padding: 0 20px;
 }
 
 .election-stats table td {
-  padding: 35px 0;
+  text-align: right;
+  padding: 16px 0;
 }
 
 
