@@ -66,4 +66,12 @@ $(document).on("turbolinks:load", function() {
     insertCandidatesLegend($('.candidates-graph .candidates-legend'), $('.candidates-graph .morris-hover.morris-default-style').contents());
   })
 
+  $(window).on('resize', function() {
+   if (!window.recentResize) {
+      electionGraph.redraw();
+      window.recentResize = true;
+      setTimeout(function(){ window.recentResize = false; }, 200);
+   }
+});
+
 });

@@ -1,20 +1,22 @@
+<h5><%= year %> Districts <%= link_to "Top", "#top", class: 'button' %></h5>
 <table>
   <thead>
     <tr>
       <th>District Name</th>
       <th>Abbreviation</th>
-      <th></th>
+      <% if year != Election.current_election_year %>
+        <th>Winner</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
-    <% districts.each do |district| %>
+    <% election_districts.each do |ed| %>
       <tr>
-        <% if (defined?(@election.year)).nil? %>
-          <td><%= link_to district.name, "/district/#{district.slug}" %></td>
-        <% else %>
-          <td><%= link_to district.name, "/district/#{district.slug}/#{@election.year}" %></td>
+        <td><%= link_to ed.district.name, "/district/#{ed.district.slug}/#{year}" %></td>
+        <td><%= ed.district.abbr %></td>
+        <% if year != Election.current_election_year %>
+          <td><i class="fa fa-square" aria-hidden="true" style="color:<%= ed.winner.party.color %>"></i> <%= ed. winner.name %><td>
         <% end %>
-        <td><%= district.abbr %></td>
       </tr>
     <% end %>
   </tbody>

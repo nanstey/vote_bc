@@ -20,7 +20,7 @@
 @import "font-awesome";
 
 .top-header {
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 .body-container {
@@ -64,6 +64,6 @@
   visibility: hidden;
 }
 
-.buffer {
-  min-height: 20px;
+#buffer {
+  min-height: 80px;
 }
