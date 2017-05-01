@@ -33,7 +33,7 @@
 }
 
 .year-tabs {
-  margin: 30px;
+  margin: 20px;
 }
 
 .year-tabs button {
@@ -91,4 +91,10 @@
 
 .voters-graph .area-legend {
   min-height: 30px;
+}
+
+@media screen and (max-width: 1150px) {
+
+
+
 }
