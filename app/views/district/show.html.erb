@@ -5,7 +5,7 @@
   <h1 class="top-header"><%= @district.name %></h1>
   <% if @district.elections[0].year == Election.current_election_year %>
     <div id="map"></div>
-    <%#= render 'district_map', district: @district %>
+    <%= render 'district_map', district: @district %>
   <% else %>
     <h5>District map only available for districts that exist in the 2017 election</h5>
   <% end %>
