@@ -4,11 +4,14 @@
   <h1>District Index</h1>
 
   <div class="one-full column">
-    <% (1..@years.count).each do |i| %>
-      <%= link_to year = @years.find(i).year, "#anchor-#{year}", class: 'button' %>
+    <% (@years).each do |election| %>
+        <% year = election.year %>
+        <%= link_to year, "#anchor-#{year}", class: 'button' %>
     <% end %>
-    <% (1..@years.count).each do |i| %>
-      <div class="district-anchor" id="anchor-<%= year = @years.find(i).year %>">
+    <% (@years).each do |election| %>
+      <% year = election.year %>
+      <div id="anchor-<%= year %>">
+        <%= render 'district_list', election_districts: @districts.where(:election_id => election.id).order('districts.name'), year: year %>
       </div>
         <%= render 'district_list', election_districts: @districts.where(:election_id => i).order('districts.name'), year: year %>
     <% end %>
