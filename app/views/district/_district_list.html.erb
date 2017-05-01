@@ -1,24 +1,29 @@
-<h5><%= year %> Districts</h5>
-<%= link_to "Back to Top", "#top", class: 'button back-to-top' %>
-<table>
-  <thead>
-    <tr>
-      <th>District Name</th>
-      <th>Abbreviation</th>
-      <% if year != Election.current_election_year %>
-        <th>Winner</th>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <% election_districts.each do |ed| %>
+<div class="district-index-table">
+  <h5><%= year %> Districts</h5>
+  <%= link_to "Back to Top", "#top", class: 'button back-to-top' %>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to ed.district.name, "/district/#{ed.district.slug}/#{year}" %></td>
-        <td><%= ed.district.abbr %></td>
+        <th>District Name</th>
+        <th>Abbr.</th>
         <% if year != Election.current_election_year %>
-          <td><i class="fa fa-square" aria-hidden="true" style="color:<%= ed.winner.party.color %>"></i> <%= ed. winner.name %><td>
+          <th>Winner</th>
+          <th>Party</th>
+          <th></th>
         <% end %>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% election_districts.each do |ed| %>
+        <tr>
+          <td><%= link_to ed.district.name, "/district/#{ed.district.slug}/#{year}" %></td>
+          <td><%= ed.district.abbr %></td>
+          <% if year != Election.current_election_year %>
+            <td> <%= ed.winner.name %></td>
+            <td><i class="fa fa-square" aria-hidden="true" style="color:<%= ed.winner.party.color %>"></i> <%= ed.winner.party.abbr %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

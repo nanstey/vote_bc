@@ -352,6 +352,47 @@
 .district-index-container .one-full.column h5 {
   margin: 20px 0 10px 0;
 }
+
+/* line 14, /vagrant/vote-bc/app/assets/stylesheets/district_index.scss */
+.district-index-table {
+  padding: 20px;
+}
+
+/* line 18, /vagrant/vote-bc/app/assets/stylesheets/district_index.scss */
+.explanation {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 550px) {
+  /* line 24, /vagrant/vote-bc/app/assets/stylesheets/district_index.scss */
+  .district-index-table table th {
+    font-size: 14px;
+  }
+
+  /* line 28, /vagrant/vote-bc/app/assets/stylesheets/district_index.scss */
+  .one-full.column .district-index-table table tbody tr td {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 475px) {
+  /* line 36, /vagrant/vote-bc/app/assets/stylesheets/district_index.scss */
+  .district-index-table table th {
+    font-size: 12px;
+    padding: 5px 2px;
+  }
+
+  /* line 41, /vagrant/vote-bc/app/assets/stylesheets/district_index.scss */
+  .one-full.column .district-index-table table tbody tr td {
+    font-size: 12px;
+    padding: 5px 2px;
+  }
+}
+@media screen and (max-width: 400px) {
+  /* line 50, /vagrant/vote-bc/app/assets/stylesheets/district_index.scss */
+  .container.body-container.district-index-container {
+    padding: 0;
+  }
+}
 /* line 1, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
 .voters-graph svg {
   width: 100% !important;
@@ -490,6 +531,12 @@
   /* line 109, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
   .candidate-tables .candidates-table.district-data table th {
     font-size: 12px;
+  }
+}
+@media screen and (max-width: 400px) {
+  /* line 115, /vagrant/vote-bc/app/assets/stylesheets/district_show.scss */
+  .container.body-container.district-show-container {
+    padding: 0;
   }
 }
 /* line 1, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
