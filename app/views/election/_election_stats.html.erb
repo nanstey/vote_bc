@@ -1,18 +1,30 @@
-
-<div class="donut-graph"></div>
-
-<script>
-  var graphData = <%= district_year[:json_donut][:data] %>;
-  var colors = <%= district_year[:json_donut][:colors] %>;
-  if (graphData[0].value === 0) {
-    graphData = [{label: "TBA", value: 1}];
-    colors = ['#DCDCDC'];
-  }
-
-
-  Morris.Donut({
-    element: "stats-<%= district_year[:district].election.year %>",
-    data: graphData,
-    colors: colors
-  });
-</script>
+<div class="election-stats">
+  <table width="50%">
+    <tbody>
+      <tr>
+        <th>Number of Seats</th>
+        <td><%= @election.seats %></td>
+      </tr>
+      <tr>
+        <th>Voter Turnout</th>
+        <td><%= @election.voter_turnout %>%</td>
+      </tr>
+      <tr>
+        <th>Registered Voters</th>
+        <td><%= number_with_delimiter(@election.voters_registered, :delimiter => ",") %></td>
+      </tr>
+      <tr>
+        <th>Total Votes</th>
+        <td><%= number_with_delimiter(@election.total_votes, :delimiter => ",") %></td>
+      </tr>
+      <tr>
+        <th>Ballots Valid</th>
+        <td><%= number_with_delimiter(@election.ballots_valid, :delimiter => ",") %></td>
+      </tr>
+      <tr>
+        <th>Ballots Valid</th>
+        <td><%= number_with_delimiter(@election.ballots_rejected, :delimiter => ",") %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

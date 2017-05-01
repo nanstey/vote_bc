@@ -14,13 +14,24 @@
     <% end %>
     <br/>
   <% end %>
-  <div class="row">
-    <%= render 'election_party_table', party_stats: @party_stats %>
-  </div>
-  <div class="one-half column">
-    <%= render :partial => '/district/district_list', :locals => {districts: @districts} %>
-  </div>
-  <div class="one-half column">
 
-  </div>
+  <% if @party_stats %>
+    <div class="row">
+      <div class="one-half column">
+        <%= render 'election_stats' %>
+      </div>
+      <div class="one-half column">
+        <%= render 'election_votes_donut_graph', election_votes: @party_stats[:json_votes] %>
+        <%= render 'election_seats_donut_graph', election_seats: @party_stats[:json_seats] %>
+      </div>
+    </div>
+    <div class="row">
+      <%= render 'election_party_table', party_stats: @party_stats[:all_parties] %>
+    </div>
+  <% else %>
+    <br>
+    <div class="row">
+      <h5>No stats available for <%= @election.year %></h5>
+    </div>
+  <% end %>
 </div>

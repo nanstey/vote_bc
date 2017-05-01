@@ -12,7 +12,7 @@
       <tr>
         <td><i class="fa fa-square" aria-hidden="true" style="color:<%= ep.party.color %>"></i> <%= ep.party.name %></td>
         <td><%= ep.party.abbr %></td>
-        <td><%= ep.votes_total %></td>
+        <td><%= number_with_delimiter(ep.votes_total, :delimiter => ",") %></td>
         <td><%= ep.votes_percent %>%</td>
         <td><%= ep.candidates_running %></td>
         <td><%= ep.seats_won %></td>

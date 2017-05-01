@@ -5,7 +5,7 @@
     var graphData = <%= district_year[:json_donut][:data] %>;
     var colors = <%= district_year[:json_donut][:colors] %>;
     if (graphData[0].value === 0) {
-      graphData = [{label: "TBA", value: 1}];
+      graphData = [{label: "TBD", value: 1}];
       colors = ['#DCDCDC'];
     }
 
