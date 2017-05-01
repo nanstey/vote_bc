@@ -13,7 +13,6 @@
       <div id="anchor-<%= year %>">
         <%= render 'district_list', election_districts: @districts.where(:election_id => election.id).order('districts.name'), year: year %>
       </div>
-        <%= render 'district_list', election_districts: @districts.where(:election_id => i).order('districts.name'), year: year %>
     <% end %>
   </div>
 </div>
