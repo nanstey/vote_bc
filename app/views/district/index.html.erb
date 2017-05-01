@@ -10,9 +10,9 @@
     <% end %>
     <% (@years).each do |election| %>
       <% year = election.year %>
-      <div id="anchor-<%= year %>">
-        <%= render 'district_list', election_districts: @districts.where(:election_id => election.id).order('districts.name'), year: year %>
+      <div class="district-anchor" id="anchor-<%= year %>">
       </div>
+        <%= render 'district_list', election_districts: @districts.where(:election_id => election.id).order('districts.name'), year: year %>
     <% end %>
   </div>
 </div>
