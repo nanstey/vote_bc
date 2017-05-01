@@ -2,6 +2,7 @@ class DistrictController < ApplicationController
   def index
     @districts = ElectionDistrict.includes(:district, winner: [:party])
     @years = Election.all
+    render stream: true
   end
 
   def show
