@@ -2,7 +2,7 @@ party_gp = Party.find_by(abbr: "GP")
 party_lib = Party.find_by(abbr: "LIB")
 party_ndp = Party.find_by(abbr: "NDP")
 party_pda = Party.find_by(abbr: "PDA")
-party_drbc = Party.find_by(abbr: "DRBC")
+party_rp = Party.find_by(abbr: "RP")
 
 
 puts "Seeding party leaders 2017 ..."
@@ -96,7 +96,7 @@ puts "Seeding party leaders 1996 ..."
 election = Election.find_by(year: 1996)
 
 ndp = Candidate.find_by(name: 'Glen Clark', party_id: party_ndp.id)
-reform = Candidate.find_by(name: 'Jack Weisgerber', party_id: party_drbc.id)
+reform = Candidate.find_by(name: 'Jack Weisgerber', party_id: party_rp.id)
 progdem = Candidate.find_by(name: 'Gordon Wilson', party_id: party_pda.id)
 
 ElectionLeader.create!([
