@@ -4,8 +4,40 @@
 <div id="buffer"></div>
 <div class="container body-container election-container">
   <div class="top-margin"></div>
-  <h1><%= @election.year %> Election</h1>
-  <%= link_to "View Districts #{@election.year}", "/districts#anchor-#{@election.year}", class: 'button' %>
+
+  <% election_list = []
+    elections.each do |e|
+      election_list << e.year
+    end
+    next_election = election_list[election_list.index(@election.year) - 1]
+    prev_election = election_list[election_list.index(@election.year) + 1] %>
+    <div class="elections-header">
+      <h1><%= @election.year %> Election</h1>
+      <div class="navigate-elections">
+        <div class="navigate-container navigate-container-left">
+          <% unless @election.year == Election.earliest_election_year %>
+            <%= link_to "/election/#{prev_election}", :class => "elections-prev" do %>
+              <span><i class="fa fa-chevron-left" aria-hidden="true"></i> <%= prev_election %></span>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="navigate-container navigate-container-right">
+          <% unless @election.year == Election.current_election_year %>
+            <% if next_election == Election.current_election_year %>
+              <%= link_to "/election/#{next_election}#buffer", :class => "elections-next" do %>
+                <span><%= next_election %> <i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+              <% end %>
+            <% else %>
+              <%= link_to "/election/#{next_election}", :class => "elections-next" do %>
+                <span><%= next_election %> <i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <%= link_to "View #{@election.year} Districts", "/districts#anchor-#{@election.year}", class: 'button' %>
+      </div>
+    </div>
+
 
   <% if @party_stats %>
     <div class="row">
@@ -13,10 +45,10 @@
         <%= render 'election_stats' %>
       </div>
       <div class="one-half column donut">
-        <h5>Popular Vote</h5>
-        <%= render 'election_votes_donut_graph', election_votes: @party_stats[:json_votes] %>
         <h5>Seats Won</h5>
         <%= render 'election_seats_donut_graph', election_seats: @party_stats[:json_seats] %>
+        <h5>Popular Vote</h5>
+        <%= render 'election_votes_donut_graph', election_votes: @party_stats[:json_votes] %>
       </div>
     </div>
     <div class="row">

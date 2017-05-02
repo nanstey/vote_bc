@@ -16,6 +16,10 @@ class Election < ApplicationRecord
     2013
   end
 
+  def self.earliest_election_year
+    1996
+  end
+
   def party_stats
     if self.voters_registered.nil?
       return nil
