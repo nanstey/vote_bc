@@ -546,94 +546,165 @@
 }
 
 /* line 4, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.elections-header {
+  margin-bottom: 20px;
+}
+
+/* line 8, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.navigate-elections {
+  margin: 0 26%;
+}
+
+/* line 12, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.navigate-container {
+  width: 65px;
+  height: 30px;
+}
+
+/* line 17, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.navigate-container-left {
+  float: left;
+}
+
+/* line 21, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.navigate-container-right {
+  float: right;
+}
+
+/* line 25, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.navigate-elections a.button {
+  margin: -3px 0 0 0;
+}
+
+/* line 29, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.navigate-elections .elections-prev {
+  font-size: 20px;
+  text-decoration: none;
+}
+
+/* line 34, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+.navigate-elections .elections-next {
+  font-size: 20px;
+  text-decoration: none;
+}
+
+/* line 39, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
 .election-donut svg {
-  height: 240px;
+  height: 250px;
   width: 100%;
   font-size: 15px;
 }
 
-/* line 10, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+/* line 45, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
 .donut h5 {
   margin: 10px 0 0 0;
 }
 
-/* line 14, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+/* line 49, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
 .party-table {
   padding: 20px;
 }
 
-/* line 18, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+/* line 53, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
 .row .one-full.column .party-table table {
   margin: 0;
 }
 
-/* line 22, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+/* line 57, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
 .explanation {
   font-size: 14px;
 }
 
-/* line 26, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+/* line 61, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
 .party-table table td {
   padding: 8px 2px;
 }
 
-/* line 30, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+/* line 65, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
 .party-table table th {
   font-size: 16px;
   padding: 5px 2px;
 }
 
-/* line 35, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+/* line 70, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
 .party-leaders {
   padding: 0 20px;
 }
 
-/* line 38, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+/* line 73, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
 .party-leaders table td {
   padding: 16px 0;
   text-align: right;
 }
 
-/* line 44, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+/* line 79, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
 .election-stats-column h5 {
   margin: 10px 0 0 0;
 }
 
-/* line 48, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+/* line 83, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
 .election-stats {
   padding: 0 20px;
 }
 
-/* line 52, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+/* line 87, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
 .election-stats table td {
   text-align: right;
   padding: 16px 0;
 }
 
+@media screen and (max-width: 730px) {
+  /* line 95, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  .navigate-elections {
+    margin: 0 10%;
+  }
+}
 @media screen and (max-width: 550px) {
-  /* line 60, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  /* line 103, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  .navigate-elections {
+    margin: 0 8%;
+  }
+
+  /* line 107, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
   .row .one-full.column .party-table table td {
     font-size: 12px;
   }
 
-  /* line 64, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  /* line 111, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
   .row .one-full.column .party-table table th {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 427px) {
-  /* line 72, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  /* line 120, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  .navigate-elections {
+    margin: 0 5%;
+  }
+
+  /* line 124, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
   .row .one-full.column .party-table table td {
     font-size: 10px;
   }
 
-  /* line 76, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  /* line 128, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
   .row .one-full.column .party-table table th {
     font-size: 10px;
   }
 }
 @media screen and (max-width: 400px) {
-  /* line 84, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  /* line 136, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  .navigate-elections a.button {
+    padding: 0 2px;
+    font-size: 10px;
+    width: 150px;
+  }
+
+  /* line 142, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
+  .navigate-elections {
+    margin: 0 3%;
+  }
+
+  /* line 146, /vagrant/vote-bc/app/assets/stylesheets/election.scss */
   .container.body-container.election-container {
     padding: 0;
   }
