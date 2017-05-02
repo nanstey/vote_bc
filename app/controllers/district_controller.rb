@@ -19,13 +19,13 @@ class DistrictController < ApplicationController
         if district = District.get_district(geolocation)
           redirect_to "/district/#{district.slug}"
         else
-          redirect_to(root_url, :notice => 'District not found')
+          redirect_to(request.referer, :notice => 'District not found')
         end
       else
-        redirect_to(root_url, :notice => 'Address not found')
+        redirect_to(request.referer, :notice => 'Address not found')
       end
     else
-      redirect_to(root_url, :notice => 'Address not entered')
+      redirect_to(request.referer, :notice => 'Address not entered')
     end
   end
 
