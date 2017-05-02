@@ -47,13 +47,4 @@
     </div>
   </div>
 </div>
-<script>
-  $(window).on('resize', function() {
-    if (!window.recentResize) {
-      electionGraph.redraw();
-      areaGraph.redraw();
-      window.recentResize = true;
-      setTimeout(function(){ window.recentResize = false; }, 300);
-    }
-  });
-</script>
+

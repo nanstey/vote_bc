@@ -63,13 +63,3 @@
     </div>
   <% end %>
 </div>
-<script>
-  $(window).on('resize', function() {
-    if (!window.recentResize) {
-      electionVotes.redraw();
-      electionSeats.redraw();
-      window.recentResize = true;
-      setTimeout(function(){ window.recentResize = false; }, 300);
-    }
-  });
-</script>

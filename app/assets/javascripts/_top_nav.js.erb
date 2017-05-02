@@ -44,10 +44,10 @@ $(document).on("turbolinks:load", function() {
 // Adds or removes transparency on scroll
   $(window).scroll(function () {
     if (window.location.pathname === '/election/' + <%= Election.current_election_year %> || window.location.pathname === '/') {
-      if (document.body.scrollTop > 20) {
+      if ($(window).scrollTop() > 20) {
         $('.navbar').removeClass('at-top').addClass('scrolled-down');
       }
-      if (document.body.scrollTop < 20) {
+      if ($(window).scrollTop() < 20) {
         $('.navbar').addClass('at-top').removeClass('scrolled-down');
       }
     }
