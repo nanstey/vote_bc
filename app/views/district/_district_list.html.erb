@@ -6,7 +6,7 @@
       <tr>
         <th>District Name</th>
         <th>Abbr.</th>
-        <% if year != Election.current_election_year %>
+        <% if election_districts[0].winner %>
           <th>Winner</th>
           <th>Party</th>
           <th></th>
@@ -18,7 +18,7 @@
         <tr>
           <td><%= link_to ed.district.name, "/district/#{ed.district.slug}/#{year}" %></td>
           <td><%= ed.district.abbr %></td>
-          <% if year != Election.current_election_year %>
+          <% if election_districts[0].winner %>
             <td> <%= ed.winner.name %></td>
             <td><i class="fa fa-square" aria-hidden="true" style="color:<%= ed.winner.party.color %>"></i> <%= ed.winner.party.abbr %></td>
           <% end %>
