@@ -1,5 +1,7 @@
 puts "Seeding Election stats ..."
 
+ELECTION_2017_HAS_DATA = false
+
 election_2017 = Election.find_by(:year => 2017)
 
 ed_aggs = ElectionDistrict.select("election_id,
@@ -9,7 +11,11 @@ ed_aggs = ElectionDistrict.select("election_id,
   SUM(ballots_valid) AS ballots_valid,
   COUNT(*) AS seats").where("election_id > ?", election_2017.id).group(:election_id).order(:election_id)
 
-elections = Election.where("id > ?", election_2017.id).order(:id)
+if ELECTION_2017_HAS_DATA
+  elections = Election.order(:id)
+else
+  elections = Election.where("id > ?", election_2017.id).order(:id)
+end
 
 ed_aggs.each_with_index do |ed_a, index|
   elections[index].update!(
