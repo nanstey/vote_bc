@@ -186,7 +186,7 @@
 /* line 92, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
 .dropdown-content a {
   color: #333;
-  padding: 12px 16px;
+  padding: 0 16px;
   text-decoration: none;
   display: block;
 }
@@ -207,12 +207,12 @@
   z-index: 4;
 }
 
-/* line 115, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+/* line 113, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
 .menu-icon:hover {
   color: black;
 }
 
-/* line 120, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+/* line 118, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
 .down {
   transform: rotate(-270deg);
   -moz-transform: rotate(-270deg);
@@ -226,7 +226,7 @@
   -webkit-transition: -webkit-transform 200ms ease;
 }
 
-/* line 133, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+/* line 131, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
 .up {
   transform: rotate(-360deg);
   -moz-transform: rotate(-360deg);
@@ -240,50 +240,50 @@
   -webkit-transition: -webkit-transform 200ms ease;
 }
 
-/* line 147, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+/* line 145, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
 .navbar.at-top {
   background-color: rgba(240, 240, 240, 0);
   box-shadow: none;
   color: #F0F0F0;
 }
 
-/* line 153, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+/* line 151, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
 .navbar.at-top .dropdown button {
   color: #F0F0F0;
 }
 
-/* line 157, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+/* line 155, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
 .navbar.at-top .dropdown i:before {
   color: #F0F0F0;
 }
 
-/* line 161, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+/* line 159, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
 .navbar.at-top .nav-menu a {
   color: #F0F0F0;
 }
 
-/* line 165, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+/* line 163, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
 .navbar.at-top .nav-menu .dropdown-content {
   background: transparent;
 }
 
-/* line 169, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+/* line 167, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
 .navbar.at-top .nav-menu .dropdown-content a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 173, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+/* line 171, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
 .navbar.at-top h4 a:hover {
   color: #f0f0f0;
 }
 
-/* line 177, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+/* line 175, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
 .navbar.at-top h4 a:visited {
   color: #f0f0f0;
 }
 
 @media screen and (max-width: 550px) {
-  /* line 183, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+  /* line 181, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
   .nav-menu {
     position: relative;
     top: -60px;
@@ -295,45 +295,45 @@
     z-index: 2;
   }
 
-  /* line 194, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+  /* line 192, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
   .nav-menu a {
     display: block;
   }
 
-  /* line 198, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+  /* line 196, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
   .nav-menu .dropdown {
     display: block;
     padding: 0;
   }
 
-  /* line 202, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+  /* line 200, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
   .menu-icon {
     display: inline-block;
   }
 
-  /* line 206, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+  /* line 204, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
   .dropdown-content {
     position: absolute;
     top: 178px;
     width: 100%;
   }
 
-  /* line 212, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+  /* line 210, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
   .navbar.at-top .nav-menu {
     background-color: rgba(0, 0, 0, 0.3);
   }
 
-  /* line 216, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+  /* line 214, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
   .navbar.at-top .nav-menu .dropdown-content {
     background-color: rgba(0, 0, 0, 0.3);
   }
 
-  /* line 219, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+  /* line 217, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
   .navbar.at-top .nav-menu .dropdown-content a:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
 
-  /* line 223, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
+  /* line 221, /vagrant/vote-bc/app/assets/stylesheets/_top_nav.scss */
   .navbar.at-top .menu-icon:hover {
     color: #e3e3e3;
   }
