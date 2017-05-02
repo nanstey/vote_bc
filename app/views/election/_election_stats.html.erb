@@ -2,20 +2,35 @@
 <div class= "party-leaders">
   <table width="100%">
     <% @leaders.each do |pl| %>
-      <tr>
-        <td width="2%">
-          <i class="fa fa-square" aria-hidden="true" style="color:<%= pl.party.color %>"></i>
-        </td>
-        <th>
-          <%= pl.party.abbr %>
-        </th>
-        <td>
-          <%= pl.name %>
-          <% if @premier && pl.id == @premier.id %>
+      <% if @premier && pl.id == @premier.id %>
+        <tr>
+          <td width="2%">
+            <i class="fa fa-square" aria-hidden="true" style="color:<%= pl.party.color %>"></i>
+          </td>
+          <th>
+            <%= pl.party.abbr %>
+          </th>
+          <td>
+            <%= pl.name %>
             <i class="fa fa-trophy" aria-hidden="true"></i>
-          <% end %>
-        </td>
-      </tr>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+    <% @leaders.each do |pl| %>
+      <% if @premier && pl.id != @premier.id %>
+        <tr>
+          <td width="2%">
+            <i class="fa fa-square" aria-hidden="true" style="color:<%= pl.party.color %>"></i>
+          </td>
+          <th>
+            <%= pl.party.abbr %>
+          </th>
+          <td>
+            <%= pl.name %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </table>
 </div>
