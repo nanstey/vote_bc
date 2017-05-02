@@ -11599,7 +11599,7 @@ $(document).on("turbolinks:load", function() {
     // Closes the elections dropdown if it is open when the menu dropdown is closed
     if ($('.dropdown i').hasClass('down')) {
       $('.dropdown-content').slideUp(100);
-      $('.dropdown i').toggleClass('up').toggleClass('down')
+      $('.dropdown i').toggleClass('up').toggleClass('down');
       setTimeout(function(){}, 100);
       $('.search').fadeTo(200, 1);
 
@@ -11615,10 +11615,10 @@ $(document).on("turbolinks:load", function() {
 // Adds or removes transparency on scroll
   $(window).scroll(function () {
     if (window.location.pathname === '/election/' + 2017 || window.location.pathname === '/') {
-      if (document.body.scrollTop > 20) {
+      if ($(window).scrollTop() > 20) {
         $('.navbar').removeClass('at-top').addClass('scrolled-down');
       }
-      if (document.body.scrollTop < 20) {
+      if ($(window).scrollTop() < 20) {
         $('.navbar').addClass('at-top').removeClass('scrolled-down');
       }
     }
@@ -12309,12 +12309,17 @@ $(document).on("turbolinks:load", function() {
   })
 
   $(window).on('resize', function() {
-   if (!window.recentResize) {
-      electionGraph.redraw();
-      window.recentResize = true;
-      setTimeout(function(){ window.recentResize = false; }, 200);
-   }
-});
+    try{
+      if (!window.recentResize) {
+        electionGraph.redraw();
+        areaGraph.redraw();
+        window.recentResize = true;
+        setTimeout(function(){ window.recentResize = false; }, 300);
+      }
+    }
+    catch(e) {
+    }
+  });
 
 });
 (function() {
@@ -12325,6 +12330,22 @@ $(document).on("turbolinks:load", function() {
 
 
 }).call(this);
+  $(document).on("turbolinks:load", function() {
+
+  $(window).on('resize', function() {
+    try{
+      if (!window.recentResize) {
+        electionVotes.redraw();
+        electionSeats.redraw();
+        window.recentResize = true;
+        setTimeout(function(){ window.recentResize = false; }, 300);
+      }
+    }
+    catch(e) {
+    }
+  });
+
+});
 (function() {
   document.addEventListener('turbolinks:load', function(event) {
     if (typeof ga === 'function') {
