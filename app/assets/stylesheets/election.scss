@@ -1,8 +1,43 @@
 .election-votes svg { width: 100% !important; }
 .election-seats svg { width: 100% !important; }
 
+.elections-header {
+  margin-bottom: 20px;
+}
+
+.navigate-elections {
+  margin: 0 26%;
+}
+
+.navigate-container {
+  width: 65px;
+  height: 30px;
+}
+
+.navigate-container-left {
+  float: left;
+}
+
+.navigate-container-right {
+  float: right;
+}
+
+.navigate-elections a.button {
+  margin: -3px 0 0 0;
+}
+
+.navigate-elections .elections-prev {
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.navigate-elections .elections-next {
+  font-size: 20px;
+  text-decoration: none;
+}
+
 .election-donut svg {
-  height: 240px;
+  height: 250px;
   width: 100%;
   font-size: 15px;
 }
@@ -55,7 +90,19 @@
 }
 
 
+@media screen and (max-width: 730px) {
+
+  .navigate-elections {
+    margin: 0 10%;
+  }
+
+}
+
 @media screen and (max-width: 550px) {
+
+  .navigate-elections {
+    margin: 0 8%;
+  }
 
   .row .one-full.column .party-table table td {
     font-size: 12px;
@@ -65,9 +112,14 @@
     font-size: 12px;
   }
 
+
 }
 
 @media screen and (max-width: 427px) {
+
+  .navigate-elections {
+    margin: 0 5%;
+  }
 
   .row .one-full.column .party-table table td {
     font-size: 10px;
@@ -80,6 +132,16 @@
 }
 
 @media screen and (max-width: 400px) {
+
+  .navigate-elections a.button {
+    padding: 0 2px;
+    font-size: 10px;
+    width: 150px;
+  }
+
+  .navigate-elections {
+    margin: 0 3%;
+  }
 
   .container.body-container.election-container {
     padding: 0;
