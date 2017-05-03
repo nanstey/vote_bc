@@ -7,10 +7,17 @@
   <% if @district.elections[0].year == Election.current_election_year %>
     <div id="map"></div>
     <%= render 'district_map', district: @district %>
+    <div class="tips">
+      <span>
+      Click the map to change district.<br/>
+      Click the buttons below to change year.
+      </span>
+    </div>
   <% else %>
     <h5>District map only available for districts that exist in the 2017 election</h5>
   <% end %>
-
+  <%= social_share_button_tag(@district.name) %>
+    <!-- Go to www.addthis.com/dashboard to customize your tools --> <div class="addthis_inline_share_toolbox"></div>
   <div class="row">
     <div class="one-half column">
       <div class="district-header">
@@ -22,7 +29,7 @@
           <% end %>
         </div>
         <div class="year-tabs">
-          <% @district_history.reverse_each do |district_year| %>
+          <% @district_history.each do |district_year| %>
             <button class="button year-tab"><%= district_year[:district].election.year %></button>
           <% end %>
         </div>
@@ -47,4 +54,5 @@
     </div>
   </div>
 </div>
-
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-590931e84018f1e1"></script>

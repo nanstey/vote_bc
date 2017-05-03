@@ -50,6 +50,10 @@
   font-size: 16px;
 }
 
+.nav-menu a:visited {
+  color: #555;
+}
+
 .districts-btn {
   display: inline-block;
 }
@@ -109,8 +113,6 @@ background-color: #E8E8E8
   line-height: 60px;
   z-index: 4;
 }
-
-
 
 .menu-icon:hover {
 color: black;
@@ -223,7 +225,5 @@ transition:             transform 200ms ease;
   .navbar.at-top .menu-icon:hover {
     color: #e3e3e3;
   }
-
-
 }
 

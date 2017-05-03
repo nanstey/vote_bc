@@ -8,11 +8,11 @@ if (CURRENT_ELECTION.premier_id.nil?)
   seats = ElectionDistrict.where(:election_id => ELECTION_ID).count
   CURRENT_ELECTION.update!(
     :seats => seats,
-    :voters_registered => "N/A",
-    :total_votes => "N/A",
-    :ballots_rejected => "N/A",
-    :ballots_valid => "N/A",
-    :voter_turnout => "N/A"
+    :voters_registered => 0,
+    :total_votes => 0,
+    :ballots_rejected => 0,
+    :ballots_valid => 0,
+    :voter_turnout => 0
   )
 
   ceds = CandidateElectionDistrict.includes(candidate: [:party]).where("election_id = ?", ELECTION_ID).order(:district_id)
