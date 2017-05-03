@@ -7,6 +7,12 @@
   max-height: 500px;
 }
 
+.tips {
+  margin: 10px 0;
+  font-style: italic;
+  line-height: 1.5;
+  color: #555;
+}
 
 .district-data {
   position: absolute;
@@ -109,12 +115,21 @@
   .candidate-tables .candidates-table.district-data table th {
     font-size: 12px;
   }
+
+  .year-tabs {
+    margin: 20px 68px;
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+  .year-tabs {
+    margin: 20px;
+  }
 }
 
 @media screen and (max-width: 400px) {
-.container.body-container.district-show-container {
-  padding: 0;
-}
-
-
+  .container.body-container.district-show-container {
+    padding: 0;
+  }
 }
