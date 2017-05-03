@@ -8,6 +8,10 @@ class Election < ApplicationRecord
   has_many :leaders, through: :election_leaders
   has_many :parties, through: :leaders
 
+  def self.current_election
+    Election.find_by(:year => Election.current_election_year)
+  end
+
   def self.current_election_year
     2017
   end
@@ -21,12 +25,13 @@ class Election < ApplicationRecord
   end
 
   def party_stats
-    if self.voters_registered.nil?
-      eps = ElectionParty.includes(:party).where(:election_id => self.id).order(:seats_won => :DESC, :votes_total => :DESC)
+    if self.premier_id.nil?
+      eps = ElectionParty.includes(:party).where(:election_id => self.id).order(:candidates_running => :DESC)
+      seats = ElectionDistrict.where(:election_id => self.id).count
       party_stats = {
         all_parties: eps,
         json_seats: {
-          data: [{label: "TBD", value: 1}],
+          data:[{label: "TBD", value: seats}],
           colors: ['#DCDCDC']
         },
         json_votes: {
@@ -34,10 +39,6 @@ class Election < ApplicationRecord
           colors: ['#DCDCDC']
         }
       }
-      # party_stats[:json_votes][:data] = party_stats[:json_votes][:data].to_json.html_safe
-      # party_stats[:json_votes][:colors] = party_stats[:json_votes][:colors].to_json.html_safe
-      # party_stats[:json_seats][:data] = party_stats[:json_seats][:data].to_json.html_safe
-      # party_stats[:json_seats][:colors] = party_stats[:json_seats][:colors].to_json.html_safe
     else
       eps = ElectionParty.includes(:party).where(:election_id => self.id).order(:seats_won => :DESC, :votes_total => :DESC)
       didnt_vote = self.voters_registered - self.total_votes
