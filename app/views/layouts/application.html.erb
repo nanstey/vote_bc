@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-590931e84018f1e1"></script>
 
 
     <% if Rails.env.production? %>
@@ -26,6 +25,6 @@
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
-
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-590931e84018f1e1"></script>
   </body>
 </html>
