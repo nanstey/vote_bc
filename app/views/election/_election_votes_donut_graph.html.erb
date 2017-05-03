@@ -3,9 +3,13 @@
   var graphData = <%= election_votes[:data] %>;
   var colors = <%= election_votes[:colors] %>;
 
-  var electionVotes = Morris.Donut({
-    element: "election-votes",
-    data: graphData,
-    colors: colors
-  });
+
+  graph = $('#election-votes')
+  if (graph.find('svg').length === 0) {
+    var electionVotes = Morris.Donut({
+      element: "election-votes",
+      data: graphData,
+      colors: colors
+    });
+  }
 </script>

@@ -27,8 +27,8 @@ class DistrictController < ApplicationController
         redirect_to(request.referer, flash = { notice: 'Address not found'})
       end
     else
-      flash.now = { notice: 'Address not entered' }
-      puts "++++++++++++++++++++++++"
+      # flash.now = { notice: 'Address not entered' }
+      # puts "++++++++++++++++++++++++"
       puts flash.inspect
       redirect_to(request.referer)
     end
