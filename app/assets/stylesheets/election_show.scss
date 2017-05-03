@@ -38,7 +38,6 @@
   color: none;
 }
 
-
 .navigate-elections .elections-prev {
   font-size: 20px;
   text-decoration: none;
@@ -53,6 +52,10 @@
   height: 250px;
   width: 100%;
   font-size: 15px;
+}
+
+.election-donut {
+  opacity: 0;
 }
 
 .donut h5 {
