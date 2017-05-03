@@ -16,5 +16,6 @@
           <%= render 'district_list', election_districts: @districts.where(:election_id => election.id).order('districts.name'), year: year %>
       <% end %>
     <% end %>
+    <%= link_to "Back to Top", "#top", class: 'button back-to-top' %>
   </div>
 </div>
