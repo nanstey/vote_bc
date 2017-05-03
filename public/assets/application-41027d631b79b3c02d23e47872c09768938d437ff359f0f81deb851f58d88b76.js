@@ -11608,7 +11608,7 @@ $(document).on("turbolinks:load", function() {
   })
 
 //Loads in transparent mode if most recent election is selected
-  if ((window.location.pathname === '/election/' + 2017 || window.location.pathname === '/') && document.body.scrollTop < 20) {
+  if ((window.location.pathname === '/election/' + 2017 || window.location.pathname === '/') && $(window).scrollTop() < 20) {
     $('.navbar').addClass('at-top');
   }
 
