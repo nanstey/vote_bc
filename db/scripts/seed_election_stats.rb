@@ -1,15 +1,51 @@
 puts "Seeding Election stats ..."
 
-election_2017 = Election.find_by(:year => 2017)
+CURRENT_ELECTION = Election.current_election
+
+if (CURRENT_ELECTION.premier_id.nil?)
+  ELECTION_ID = CURRENT_ELECTION.id
+
+  seats = ElectionDistrict.where(:election_id => ELECTION_ID).count
+  CURRENT_ELECTION.update!(
+    :seats => seats,
+    :voters_registered => "N/A",
+    :total_votes => "N/A",
+    :ballots_rejected => "N/A",
+    :ballots_valid => "N/A",
+    :voter_turnout => "N/A"
+  )
+
+  ceds = CandidateElectionDistrict.includes(candidate: [:party]).where("election_id = ?", ELECTION_ID).order(:district_id)
+  party_stats = {}
+  i = 0
+  while ceds[i] do
+    party_id = ceds[i].candidate.party.id
+    if party_stats[party_id].nil?
+      party_stats[party_id] = {candidates_running: 0}
+    end
+    party_stats[party_id][:candidates_running] += 1
+    i += 1
+  end
+  puts "  >> #{CURRENT_ELECTION.year}"
+  party_stats.each do |pid, stats|
+    ElectionParty.create!(
+      :election_id => ELECTION_ID,
+      :party_id => pid,
+      :candidates_running => stats[:candidates_running],
+    )
+  end
+else
+  ELECTION_ID = CURRENT_ELECTION.id - 1
+end
 
 ed_aggs = ElectionDistrict.select("election_id,
   SUM(voters_registered) AS voters_registered,
   SUM(total_votes) AS total_votes,
   SUM(ballots_rejected) AS ballots_rejected,
   SUM(ballots_valid) AS ballots_valid,
-  COUNT(*) AS seats").where("election_id > ?", election_2017.id).group(:election_id).order(:election_id)
+  COUNT(*) AS seats").where("election_id > ?", ELECTION_ID).group(:election_id).order(:election_id)
 
-elections = Election.where("id > ?", election_2017.id).order(:id)
+elections = Election.where("id > ?", ELECTION_ID).order(:id)
 
 ed_aggs.each_with_index do |ed_a, index|
   elections[index].update!(
@@ -24,8 +60,8 @@ end
 
 puts "Seeding Election Party stats ..."
 
-eds = ElectionDistrict.where("election_id > ?", election_2017.id).order(:election_id, :district_id)
-ceds = CandidateElectionDistrict.includes(candidate: [:party]).where("election_id > ?", election_2017.id).order(:election_id, :district_id)
+eds = ElectionDistrict.where("election_id > ?", ELECTION_ID).order(:election_id, :district_id)
+ceds = CandidateElectionDistrict.includes(candidate: [:party]).where("election_id > ?", ELECTION_ID).order(:election_id, :district_id)
 
 i = 0
 j = 0
