@@ -16,3 +16,4 @@
 //= require_tree .
 //= require raphael
 //= require morris
+//= require social-share-button
