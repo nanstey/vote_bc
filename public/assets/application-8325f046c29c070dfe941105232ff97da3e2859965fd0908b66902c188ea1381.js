@@ -11608,7 +11608,7 @@ $(document).on("turbolinks:load", function() {
   })
 
 //Loads in transparent mode if most recent election is selected
-  if ((window.location.pathname === '/election/' + 2017 || window.location.pathname === '/') && document.body.scrollTop < 20) {
+  if ((window.location.pathname === '/election/' + 2017 || window.location.pathname === '/') && $(window).scrollTop() < 20) {
     $('.navbar').addClass('at-top');
   }
 
@@ -12332,6 +12332,9 @@ $(document).on("turbolinks:load", function() {
 }).call(this);
   $(document).on("turbolinks:load", function() {
 
+  $('.election-donut').fadeTo(500, 1);
+
+
   $(window).on('resize', function() {
     try{
       if (!window.recentResize) {
@@ -12346,6 +12349,9 @@ $(document).on("turbolinks:load", function() {
   });
 
 });
+
+
+
 (function() {
   document.addEventListener('turbolinks:load', function(event) {
     if (typeof ga === 'function') {

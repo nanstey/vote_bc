@@ -26,8 +26,16 @@
   margin: -3px 0 0 0;
 }
 
-.navigate-elections a:hover {
+.navigate-elections .navigate-container a:hover {
+  color: black;
+}
+
+.navigate-elections a:link{
   color: #555;
+}
+
+.navigate-elections a:link{
+  color: none;
 }
 
 .navigate-elections .elections-prev {
@@ -44,6 +52,10 @@
   height: 250px;
   width: 100%;
   font-size: 15px;
+}
+
+.election-donut {
+  opacity: 0;
 }
 
 .donut h5 {
