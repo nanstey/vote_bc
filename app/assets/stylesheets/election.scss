@@ -26,6 +26,10 @@
   margin: -3px 0 0 0;
 }
 
+.navigate-elections a:hover {
+  color: #555;
+}
+
 .navigate-elections .elections-prev {
   font-size: 20px;
   text-decoration: none;
@@ -91,15 +95,12 @@
 
 
 @media screen and (max-width: 730px) {
-
   .navigate-elections {
     margin: 0 10%;
   }
-
 }
 
 @media screen and (max-width: 550px) {
-
   .navigate-elections {
     margin: 0 8%;
   }
@@ -111,12 +112,9 @@
   .row .one-full.column .party-table table th {
     font-size: 12px;
   }
-
-
 }
 
 @media screen and (max-width: 427px) {
-
   .navigate-elections {
     margin: 0 5%;
   }
@@ -128,11 +126,9 @@
   .row .one-full.column .party-table table th {
     font-size: 10px;
   }
-
 }
 
 @media screen and (max-width: 400px) {
-
   .navigate-elections a.button {
     padding: 0 2px;
     font-size: 10px;
@@ -146,5 +142,4 @@
   .container.body-container.election-container {
     padding: 0;
   }
-
 }

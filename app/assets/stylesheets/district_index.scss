@@ -4,7 +4,7 @@
 
 .district-anchor {
   position: absolute;
-  margin-top: -80px;
+  margin-top: -70px;
 }
 
 .district-index-container .one-full.column h5 {
@@ -16,7 +16,6 @@
 }
 
 @media screen and (max-width: 550px) {
-
   .district-index-table table th {
     font-size: 14px;
   }
@@ -24,11 +23,9 @@
   .one-full.column .district-index-table table tbody tr td {
     font-size: 14px;
   }
-
 }
 
 @media screen and (max-width: 475px) {
-
   .district-index-table table th {
     font-size: 12px;
     padding: 5px 2px;
@@ -38,11 +35,9 @@
     font-size: 12px;
     padding: 5px 2px;
   }
-
 }
 
 @media screen and (max-width: 400px) {
-
   .container.body-container.district-index-container {
     padding: 0;
   }
