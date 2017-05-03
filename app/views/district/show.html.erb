@@ -8,10 +8,7 @@
     <div id="map"></div>
     <%= render 'district_map', district: @district %>
     <div class="tips">
-      <span>
-      Click the map to change district.<br/>
-      Click the buttons below to change year.
-      </span>
+      <span>Click the map to change district</span>
     </div>
   <% else %>
     <h5>District map only available for districts that exist in the 2017 election</h5>
@@ -28,6 +25,9 @@
           <% end %>
         </div>
         <div class="year-tabs">
+          <div class="tips">
+            <span>Click the buttons below to change election</span>
+          </div>
           <% @district_history.each do |district_year| %>
             <button class="button year-tab"><%= district_year[:district].election.year %></button>
           <% end %>

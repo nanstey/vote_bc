@@ -9,11 +9,14 @@
       colors = ['#DCDCDC'];
     }
 
+  graph = $('#stats-<%= district_year[:district].election.year %>')
+  if (graph.find('svg').length === 0) {
     Morris.Donut({
       element: "stats-<%= district_year[:district].election.year %>",
       data: graphData,
       colors: colors
     });
+  }
   </script>
 <% end %>
 </div>

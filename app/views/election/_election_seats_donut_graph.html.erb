@@ -1,11 +1,14 @@
-<div class="election-donut" id="election-seats" style="opacity:0"></div>
+<div class="election-donut" id="election-seats"></div>
 <script>
   var graphData = <%= election_seats[:data] %>;
   var colors = <%= election_seats[:colors] %>;
 
-  var electionSeats = Morris.Donut({
-    element: "election-seats",
-    data: graphData,
-    colors: colors
-  });
+  graph = $('#election-seats')
+  if (graph.find('svg').length === 0) {
+    var electionSeats = Morris.Donut({
+      element: "election-seats",
+      data: graphData,
+      colors: colors
+    });
+  }
 </script>
