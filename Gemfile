@@ -41,6 +41,7 @@ gem 'json'
 gem 'friendly_id', '~> 5.1.0'
 gem 'morrisjs-rails'
 gem 'raphael-rails'
+gem 'social-share-button'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
