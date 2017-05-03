@@ -69,13 +69,13 @@ class Election < ApplicationRecord
           party_stats[:json_seats][:colors] << ep.party.color
         end
       end
-      party_stats[:json_votes][:data] = party_stats[:json_votes][:data].to_json.html_safe
-      party_stats[:json_votes][:colors] = party_stats[:json_votes][:colors].to_json.html_safe
-      party_stats[:json_seats][:data] = party_stats[:json_seats][:data].to_json.html_safe
-      party_stats[:json_seats][:colors] = party_stats[:json_seats][:colors].to_json.html_safe
-
-      party_stats
     end
+    party_stats[:json_votes][:data] = party_stats[:json_votes][:data].to_json.html_safe
+    party_stats[:json_votes][:colors] = party_stats[:json_votes][:colors].to_json.html_safe
+    party_stats[:json_seats][:data] = party_stats[:json_seats][:data].to_json.html_safe
+    party_stats[:json_seats][:colors] = party_stats[:json_seats][:colors].to_json.html_safe
+
+    party_stats
   end
 
 end
