@@ -4723,6 +4723,11 @@ label {
 #buffer {
   min-height: 60px;
 }
+
+/* line 76, /vagrant/vote-bc/app/assets/stylesheets/application.scss */
+.addthis_inline_share_toolbox {
+  height: 30px;
+}
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 
 /**
