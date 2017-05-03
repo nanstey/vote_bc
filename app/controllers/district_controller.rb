@@ -19,18 +19,13 @@ class DistrictController < ApplicationController
         if district = District.get_district(geolocation)
           redirect_to "/district/#{district.slug}"
         else
-          # flash[:error] = 'District not found'
           redirect_to(request.referer, flash = { notice: 'District not found' })
         end
       else
-        # flash[:error] = 'Address not found'
         redirect_to(request.referer, flash = { notice: 'Address not found'})
       end
     else
-      flash.now = { notice: 'Address not entered' }
-      puts "++++++++++++++++++++++++"
-      puts flash.inspect
-      redirect_to(request.referer)
+      redirect_to(request.referer, flash = { notice: 'Address not entered'})
     end
   end
 

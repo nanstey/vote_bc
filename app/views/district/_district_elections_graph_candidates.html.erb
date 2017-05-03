@@ -29,18 +29,21 @@
     }
   }
   // graphs the election data from district.get_graph_data
-  var electionGraph = Morris.Line({
-    element: 'candidates-graph',
-    data: graphData,
-    xkey: 'year',
-    ykeys: dataKeys,
-    labels: dataKeys,
-    parseTime: false,
-    continuousLine: true,
-    postUnits: '%',
-    smooth: false,
-    hideHover: false,
-    lineColors: <%= colors.to_json.html_safe %>
-  });
+  graph = $('#candidates-graph')
+  if (graph.find('svg').length === 0) {
+    var electionGraph = Morris.Line({
+      element: 'candidates-graph',
+      data: graphData,
+      xkey: 'year',
+      ykeys: dataKeys,
+      labels: dataKeys,
+      parseTime: false,
+      continuousLine: true,
+      postUnits: '%',
+      smooth: false,
+      hideHover: false,
+      lineColors: <%= colors.to_json.html_safe %>
+    });
+  }
 
 </script>
