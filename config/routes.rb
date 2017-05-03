@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   post '/districts' => 'district#search'
   get '/district/:name' => 'district#show'
   get '/district/:name/:year' => 'district#show'
+  get '/about' => 'about#show'
 
 end
