@@ -6,7 +6,7 @@
   <h1><%= @district.name %></h1>
   <% if @district_history[0][:district].election.year == Election.current_election_year %>
     <div id="map"></div>
-    <%= render 'district_map', district: @district_history[0][:district] %>
+    <%= render 'district_map', district: @district_history[0][:district].district %>
     <div class="tips">
       <span>Click the map to change district</span>
     </div>
