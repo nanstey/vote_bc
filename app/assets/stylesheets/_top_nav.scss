@@ -14,20 +14,21 @@
   z-index: 3;
 }
 
-.navbar h4 {
-  margin-left: 20px;
+.navbar h3 {
+  margin: 2px 15px 2px 15px;
   display: inline-block;
   position: relative;
   top: 7px;
   line-height: 40px;
   z-index: 4;
+  font-family: 'Work Sans', sans-serif;
 }
 
-.navbar h4 a:link {
+.navbar h3 a:link {
   text-decoration: none;
 }
 
-.navbar h4 a:hover {
+.navbar h3 a:hover {
   color: black;
 }
 
@@ -178,11 +179,11 @@ transition:             transform 200ms ease;
   background-color:rgba(0, 0, 0, 0.1);
 }
 
-  .navbar.at-top h4 a:hover {
+  .navbar.at-top h3 a:hover {
     color: #f0f0f0;
   }
 
-  .navbar.at-top h4 a:visited {
+  .navbar.at-top h3 a:visited {
     color: #f0f0f0;
   }
 
