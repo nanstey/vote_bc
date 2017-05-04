@@ -67,7 +67,7 @@ end
 
 puts "seeding district aliases from 1996 ..."
 
-district_changes_2008 = [
+district_changes_1996 = [
   {new_name: 'Abbotsford-Mount Lehman', old_name: 'Abbotsford'},
   {new_name: 'Alberni-Qualicum', old_name: 'Alberni'},
   {new_name: 'Chilliwack-Kent', old_name: 'Mission-Kent'},
@@ -82,6 +82,6 @@ district_changes_2008 = [
   {new_name: 'Vancouver-Fairview', old_name: 'Vancouver-Little Mountain'},
 ]
 
-district_changes_2008.each do |dc|
-  link_districts(dc[:new_name], dc[:old_name], 2008)
+district_changes_1996.each do |dc|
+  link_districts(dc[:new_name], dc[:old_name], 1996)
 end
