@@ -1,3 +1,40 @@
 // Place all the styles related to the about controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+p a {
+  text-decoration: none;
+}
+
+.git-hub {
+  margin: 20px;
+}
+
+.git-hub a {
+  color: #24292e;
+  text-decoration: none;
+  display: inline;
+}
+
+.git-hub a:visited {
+  color: #24292e;
+}
+
+
+.tech-specs {
+  margin-top: 40px;
+}
+
+.tech-specs a {
+  text-decoration: none;
+}
+
+.stack img {
+  padding: 0 15px;
+  vertical-align: middle;
+}
+
+.api img {
+  padding: 0 15px;
+  vertical-align: middle;
+}
