@@ -1,6 +1,10 @@
 // Place all the styles related to the about controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.about  {
+  margin-bottom: 40px;
+}
+
 .about p {
   margin-bottom: 5px;
 }
@@ -37,12 +41,19 @@
   text-decoration: none;
 }
 
+.stack {
+  margin-bottom: 20px;
+}
 .stack img {
-  padding: 0 15px;
+  margin: 10px;
   vertical-align: middle;
 }
 
+.api {
+  margin-bottom: 20px;
+}
+
 .api img {
-  padding: 0 15px;
+  margin: 15px;
   vertical-align: middle;
 }

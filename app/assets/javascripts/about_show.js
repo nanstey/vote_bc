@@ -1,10 +1,11 @@
 $(document).on("turbolinks:load", function() {
 
   iPosition = $('.lolz').position()
-  var $xp = iPosition.left + 200, $yp = iPosition.top + 50;
-  var $mouseX = iPosition.left, $mouseY = iPosition.top;
-  $("#yao").css({left: $xp +'px', top: $yp +'px'});
-
+  if (iPosition) {
+    var $xp = iPosition.left + 200, $yp = iPosition.top + 50;
+    var $mouseX = iPosition.left, $mouseY = iPosition.top;
+    $("#yao").css({left: $xp +'px', top: $yp +'px'});
+  }
   $('.lolz').mouseenter(function(){
     $('body').css('cursor', 'none');
     $(document).mousemove(function(e){
