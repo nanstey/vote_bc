@@ -30,7 +30,7 @@ duplicate_candidates = [
   "Laery Braaten",
   "Laura McDiarmid",
   "Lawrence Chen",
-  ["Michael de Jong", "Michael G. de Jong", "Michael G. De Jong"]
+  ["Michael de Jong", "Michael G. de Jong", "Michael G. De Jong"],
   "Michael Henshall",
   "Michael Markwick",
   "Mike Hansen",
