@@ -4,9 +4,9 @@
 <div class="container body-container district-show-container">
   <div class="top-margin"></div>
   <h1><%= @district.name %></h1>
-  <% if @district.elections[0].year == Election.current_election_year %>
+  <% if @district_history[0][:district].election.year == Election.current_election_year %>
     <div id="map"></div>
-    <%= render 'district_map', district: @district %>
+    <%= render 'district_map', district: @district_history[0][:district] %>
     <div class="tips">
       <span>
       Click the map to change district.<br/>
@@ -14,7 +14,7 @@
       </span>
     </div>
   <% else %>
-    <h5>District map only available for districts that exist in the 2017 election</h5>
+    <h5>No map available for this district.</h5>
   <% end %>
   <div class="addthis_inline_share_toolbox"></div>
   <div class="row">
