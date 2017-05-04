@@ -11633,13 +11633,13 @@ $(document).on("turbolinks:load", function() {
 
 $(document).on("turbolinks:load", function() {
 
-  iPosition = $('.lolz').position()
+  iPosition = $('.its-a-trap').position()
   if (iPosition) {
     var $xp = iPosition.left + 200, $yp = iPosition.top + 50;
     var $mouseX = iPosition.left, $mouseY = iPosition.top;
     $("#yao").css({left: $xp +'px', top: $yp +'px'});
   }
-  $('.lolz').mouseenter(function(){
+  $('.its-a-trap').mouseenter(function(){
     $('body').css('cursor', 'none');
     $(document).mousemove(function(e){
       $mouseX = e.pageX;
