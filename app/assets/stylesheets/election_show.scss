@@ -26,12 +26,16 @@
   margin: -3px 0 0 0;
 }
 
-.navigate-elections a:hover {
-  color: #555;
+.navigate-elections .navigate-container a:hover {
+  color: black;
 }
 
 .navigate-elections a:link{
   color: #555;
+}
+
+.navigate-elections a:link{
+  color: none;
 }
 
 .navigate-elections .elections-prev {

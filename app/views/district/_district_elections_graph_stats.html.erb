@@ -20,19 +20,21 @@
 
   var districtData = <%= raw json_data %>.reverse()
 
-  var areaGraph = Morris.Area({
-    element: 'area-graph',
-    data: districtData,
-    xkey: 'year',
-    ykeys: ['rv', 'tv', 'vb', 'rb'],
-    labels: ['Registered Voters', 'Total Votes', 'Valid Ballots', 'Rejected Ballots'],
-    hideHover: false,
-    smooth: false,
-    parseTime: false,
-    behaveLikeLine: true,
-    lineColors: ['#24292e', '#999999', '#00802b', '#990000']
-  });
-
+  graph = $('#area-graph')
+  if (graph.find('svg').length === 0) {
+    var areaGraph = Morris.Area({
+      element: 'area-graph',
+      data: districtData,
+      xkey: 'year',
+      ykeys: ['rv', 'tv', 'vb', 'rb'],
+      labels: ['Registered Voters', 'Total Votes', 'Valid Ballots', 'Rejected Ballots'],
+      hideHover: false,
+      smooth: false,
+      parseTime: false,
+      behaveLikeLine: true,
+      lineColors: ['#24292e', '#999999', '#00802b', '#990000']
+    });
+  }
 
   </script>
 

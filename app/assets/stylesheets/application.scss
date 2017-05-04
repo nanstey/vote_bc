@@ -18,9 +18,11 @@
  */
 @import 'morrisjs-rails';
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:900');
 
 .content {
   background-color: #F0F0F0;
+  padding-bottom: 60px;
 }
 
 .top-margin {
@@ -70,4 +72,8 @@
 
 #buffer {
   min-height: 60px;
+}
+
+.addthis_inline_share_toolbox {
+  height: 30px;
 }

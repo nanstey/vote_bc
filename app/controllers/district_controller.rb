@@ -6,8 +6,9 @@ class DistrictController < ApplicationController
   end
 
   def show
-    @district = District.friendly.find(params[:name])
-    @district_history = @district.get_election_district_history
+    req_district = District.friendly.find(params[:name])
+    @district_history = req_district.get_election_district_history
+    @district = @district_history[0][:district].district
     # redirects home if incorrect district is inserted
     rescue ActiveRecord::RecordNotFound
       redirect_to(root_url, :notice => 'District not found')
@@ -19,13 +20,13 @@ class DistrictController < ApplicationController
         if district = District.get_district(geolocation)
           redirect_to "/district/#{district.slug}"
         else
-          redirect_to(request.referer, :notice => 'District not found')
+          redirect_to(request.referer, flash = { notice: 'District not found' })
         end
       else
-        redirect_to(request.referer, :notice => 'Address not found')
+        redirect_to(request.referer, flash = { notice: 'Address not found'})
       end
     else
-      redirect_to(request.referer, :notice => 'Address not entered')
+      redirect_to(request.referer, flash = { notice: 'Address not entered'})
     end
   end
 

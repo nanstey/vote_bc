@@ -1,0 +1,71 @@
+// Place all the styles related to the about controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.about  {
+  margin-bottom: 40px;
+}
+
+.about p {
+  margin-bottom: 5px;
+}
+
+.about p a {
+  text-decoration: none;
+}
+
+.about p a:visited {
+  color: #157b9d;
+}
+
+.about .its-a-trap {
+  color: #1EAEDB;
+}
+
+.about #yao {
+  display: none;
+  position: fixed;
+}
+
+.created-by {
+  margin : 0 20px 30px 20px;
+}
+
+.tech-specs {
+  margin: 0 17px 40px 17px;
+}
+
+.tech-specs a {
+  text-decoration: none;
+}
+
+.git-hub {
+  margin: 20px;
+}
+
+.git-hub a h6 {
+  font-weight: 800;
+  color: #24292e;
+  text-decoration: none;
+  display: inline;
+}
+
+.git-hub a:visited {
+  color: #24292e;
+}
+
+.stack {
+  margin-bottom: 20px;
+}
+.stack img {
+  margin: 10px;
+  vertical-align: middle;
+}
+
+.api {
+  margin-bottom: 20px;
+}
+
+.api img {
+  margin: 15px;
+  vertical-align: middle;
+}
