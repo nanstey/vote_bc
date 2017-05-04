@@ -1,17 +1,67 @@
 <div id="buffer"></div>
 <div class="container body-container">
   <div class="top-margin"></div>
-  <h1>About</h1>
-  <p>
-    Vote-BC is data visualization application that displays vote statistics for BC elections.
-  </p>
-  <p>
-    Originally created as a final projects for <%= link_to "Lighthouse Labs", "https://lighthouselabs.ca/" %>, it has taken on a life of its own.
-  </p>
-  <div>
-    <h4>Creators</h4>
+  <div class="about">
+    <h1>About</h1>
+    <p>
+      Created as a final project for <%= link_to "Lighthouse Labs", "https://lighthouselabs.ca/" %>, Vote-BC is a data visualization application for BC election data. Frustrated and confused by a lack of consistency and centralization of BC election data, we decided to aggregate it all into one web app. We retreived most of the election data from .xls spreadsheets released by Elections BC, which of course were formatted with <span class="lolz"><b><i>immaculate consistency</i></b></span>.
+    </p>
+    <p>...But actually, it was a lot of work. Sometimes even within the same year, there were discrepancies in the formatting, making parsing the data a challenging task.  District boundary information was reterived from the Represent project at Open North. We combined this data with the Google Maps API to create the address/postal code search and the dynamic maps.
+    </p>
+    <img id="yao" src="http://www.freepngimg.com/thumb/yao_ming_face/3-2-yao-ming-face-png-thumb.png" alt="Yao Ming Laugh" height="60px">
+  </div>
+  <div class="created-by">
+    <h4>Created By</h4>
+    <%= link_to raw("<i class='fa fa-github' aria-hidden='true'></i> Noel Anstey"), "https://github.com/nanstey", class: 'button'  %>
     <%= link_to raw("<i class='fa fa-github' aria-hidden='true'></i> Couragyn Chretien"), "https://github.com/Couragyn", class: 'button'  %>
-    <%= link_to raw("<i class='fa fa-github' aria-hidden='true'></i> Dace Hunter"), "https://github.com/nanstey", class: 'button'  %>
-    <%= link_to raw("<i class='fa fa-github' aria-hidden='true'></i> Noel Antsey"), "https://github.com/Sporradik", class: 'button' %>
+    <%= link_to raw("<i class='fa fa-github' aria-hidden='true'></i> Dace Hunter"), "https://github.com/Sporradik", class: 'button' %>
+  </div>
+  <div class="tech-specs">
+    <h4>Technologies</h4>
+  <div class="git-hub">
+    <a href="https://github.com/nanstey/vote_bc" target="_blank">
+      <h5>
+        Check out the repository on
+        <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Logo.png" alt="GitHub" height="20px">
+      </h5>
+    </a>
+  </div>
+    <div class="stack">
+      <a href="http://rubyonrails.org/" target="_blank">
+        <img src="https://www.endpoint.com/images/logos/rails.png" alt="Rails" height="50px">
+      </a>
+      <a href="https://jquery.com/" target="_blank">
+      <img src="https://www.jerwinpastoral.com/wp-content/uploads/2016/01/jquery-logo.png" alt="jQuery" height="70px">
+      </a>
+      <a href="https://www.postgresql.org/"  target="_blank">
+        <img src="https://softwareengineeringdaily.com/wp-content/uploads/2016/10/PostgreSQL.png" alt="PostgreSQL" height="80px">
+      </a>
+      <a href="http://rspec.info/" target="_blank">
+        <img src="http://rspec.info/images/logo.png" alt="RSpec" height="60px">
+      </a>
+      <a href="http://getskeleton.com/" target="_blank">
+        <img src="https://cdn.tutsplus.com/webdesign/uploads/2013/10/skeleton-retina.png" alt="Skeleton" height="50px">
+      </a>
+      <a href="http://sass-lang.com/" target="_blank">
+        <img src="http://sass-lang.com/assets/img/styleguide/black-7fd39aa3.png" alt="SASS" height="50px">
+      </a>
+    </div>
+    <div class="api">
+      <a href="http://elections.bc.ca/" target="_blank">
+        <img src="http://elections.bc.ca/wp-content/themes/elections/images/EBC_logo.png" alt="Elections BC" height="30px">
+      </a>
+
+      <a href="https://developers.google.com/maps/" target="_blank">
+        <img src="http://logos-download.com/wp-content/uploads/2016/05/Google_Maps_logo_wordmark.png" alt="Google Maps" height="30px">
+      </a>
+      <a href="https://represent.opennorth.ca/" target="_blank">
+        <img src="http://www.opennorth.ca/theme/img/open-north-logo-header-black-en.png" alt="Open North" height="45px">
+      </a>
+      <div class="hosting">
+        <a href="https://www.heroku.com/" target="_blank">
+          <img src="http://sparksolutions.co/wp-content/uploads/2015/05/heroku.png" alt="Heroku" height="70px">
+        </a>
+      </div>
+    </div>
   </div>
 </div>
