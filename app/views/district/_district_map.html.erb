@@ -6,7 +6,7 @@
   var map;
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-      <% geodatum = DistrictGeodatum.find_by(district_id: @district.id) %>
+      <% geodatum = DistrictGeodatum.find_by(district_id: district.id) %>
       zoom: 9,
       center: {lat: <%= geodatum.centroid_lat %>, lng: <%= geodatum.centroid_lng %>},
       // snazzy maps style
@@ -15,7 +15,7 @@
     });
     // Define the LatLng coordinates for the district
     var coords = [
-      <% boundary = DistrictPoint.where(district_id: @district.id).order('id') %>
+      <% boundary = DistrictPoint.where(district_id: district.id).order('id') %>
       <% boundary.each do |point| %>
         {lat: <%= point.lat %>, lng: <%= point.lng %>},
       <% end %>

@@ -1,9 +1,11 @@
 puts "Seeding parties ..."
 
 Party.create!([
+  {name: '4BC', abbr: '4BC', color: '#3dace0'},
   {name: 'BC Action Party', abbr: 'BCAP', color: '#fff797'},
   {name: 'BC Cascadia Party', abbr: 'BCC', color: '#03663d'},
   {name: 'BC Conservative Party', abbr: 'CP', color: '#0f5eaf'},
+  {name: 'BC Citizens First Party', abbr: 'CFP', color: '#283878'},
   {name: 'BC Excalibur Party', abbr: 'BCEX', color: '#c3de5f'},
   {name: 'BC First', abbr: 'FP', color: '#30B1F3'},
   {name: 'BC Green Party', abbr: 'GP', color: '#27bc6a'},
@@ -20,6 +22,7 @@ Party.create!([
   {name: 'Helping Hand Party', abbr: 'HH', color: '#1bf804'},
   {name: 'Independent', abbr: 'IND', color: '#D0D0D0'},
   {name: 'Libertarian', abbr: 'LBN', color: '#f6c259'},
+  {name: 'Land Air Water-The L.A.W.', abbr: 'LAW', color: '#000001'},
   {name: 'National Alliance Party', abbr: 'NAP', color: '#0a4958'},
   {name: 'No Affiliation', abbr: 'N/A', color: '#D0D0D1'},
   {name: 'Other', abbr: 'OTH', color: '#D0D1D0'},

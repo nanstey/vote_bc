@@ -62,3 +62,26 @@ district_changes_2008 = [
 district_changes_2008.each do |dc|
   link_districts(dc[:new_name], dc[:old_name], 2008)
 end
+
+#########################################
+
+puts "seeding district aliases from 1996 ..."
+
+district_changes_1996 = [
+  {new_name: 'Abbotsford-Mount Lehman', old_name: 'Abbotsford'},
+  {new_name: 'Alberni-Qualicum', old_name: 'Alberni'},
+  {new_name: 'Chilliwack-Kent', old_name: 'Mission-Kent'},
+  {new_name: 'Abbotsford West', old_name: 'Matsqui'},
+  {new_name: 'Penticton-Okanagan Valley', old_name: 'Okanagan-Penticton'},
+  {new_name: 'Kelowna-Lake Country', old_name: 'Okanagan-East'},
+  {new_name: 'Port Moody-Westwood', old_name: 'Port Moody-Burnaby Mountain'},
+  {new_name: 'Nanaimo-Parksville', old_name: 'Parksville-Qualicum'},
+  {new_name: 'West Kootenay-Boundary', old_name: 'Rossland-Trail'},
+  {new_name: 'Kelowna-Mission', old_name: 'Okanagan-West'},
+  {new_name: 'Richmond-Steveston', old_name: 'Richmond Steveston'},
+  {new_name: 'Vancouver-Fairview', old_name: 'Vancouver-Little Mountain'},
+]
+
+district_changes_1996.each do |dc|
+  link_districts(dc[:new_name], dc[:old_name], 1996)
+end

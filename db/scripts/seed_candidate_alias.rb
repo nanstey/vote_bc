@@ -24,6 +24,7 @@ duplicate_candidates = [
   "Jeremy Dalton",
   "Jim Hessels",
   "Joe Pal",
+  ["John Alan Weisbeck", "John Weisbeck"],
   "John van Dongen",
   "Katrina Chowne",
   "Laery Braaten",
