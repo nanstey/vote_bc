@@ -1,13 +1,15 @@
 <div id="buffer"></div>
 <div class="container body-container">
   <div class="top-margin"></div>
-  <h1>About</h1>
-  <p>
-    Vote-BC is data visualization application that displays vote statistics for BC elections.
-  </p>
-  <p>
-    Created as a final project for <%= link_to "Lighthouse Labs", "https://lighthouselabs.ca/" %>, it has taken on a life of its own.
-  </p>
+  <div class="about">
+    <h1>About</h1>
+    <p>
+      Created as a final project for <%= link_to "Lighthouse Labs", "https://lighthouselabs.ca/" %>, Vote-BC is a data visualization application for BC election data. Frustrated and confused by a lack of consistency and centralization of BC election data, we decided to aggregate it all into one web app. We retreived most of the election data from .xls spreadsheets released by Elections BC, which of course were formatted with <b><i>immaculate consistency</i></b>.
+    </p>
+    <p>...But actually, it was a lot of work. Sometimes even within the same year, there were discrepancies in the formatting, making parsing the data a challenging task.  District boundary information was reterived from the Represent project at Open North. We combined this data with the Google Maps API to create the address/postal code functionality and the dynamic maps.
+    </p>
+    <img src="http://www.freepngimg.com/thumb/yao_ming_face/3-2-yao-ming-face-png-thumb.png" alt="Yao Ming Laugh" height="60px">
+  </div>
   <div class="created-by">
     <h4>Created By</h4>
     <%= link_to raw("<i class='fa fa-github' aria-hidden='true'></i> Noel Anstey"), "https://github.com/nanstey", class: 'button'  %>
@@ -45,6 +47,10 @@
       </a>
     </div>
     <div class="api">
+      <a href="http://elections.bc.ca/" target="_blank">
+        <img src="http://elections.bc.ca/wp-content/themes/elections/images/EBC_logo.png" alt="Elections BC" height="30px">
+      </a>
+
       <a href="https://developers.google.com/maps/" target="_blank">
         <img src="http://logos-download.com/wp-content/uploads/2016/05/Google_Maps_logo_wordmark.png" alt="Google Maps" height="30px">
       </a>

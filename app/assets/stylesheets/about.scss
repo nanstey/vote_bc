@@ -1,8 +1,11 @@
 // Place all the styles related to the about controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.about p {
+  margin-bottom: 5px;
+}
 
-p a {
+.about p a {
   text-decoration: none;
 }
 
