@@ -374,57 +374,72 @@
   }
 }
 /* line 4, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
+.about {
+  margin-bottom: 40px;
+}
+
+/* line 8, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
 .about p {
   margin-bottom: 5px;
 }
 
-/* line 8, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
+/* line 12, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
 .about p a {
   text-decoration: none;
 }
 
-/* line 12, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
+/* line 16, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
 .about #yao {
   display: none;
   position: fixed;
 }
 
-/* line 17, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
+/* line 21, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
 .git-hub {
   margin: 20px;
 }
 
-/* line 21, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
+/* line 25, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
 .git-hub a {
   color: #24292e;
   text-decoration: none;
   display: inline;
 }
 
-/* line 27, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
+/* line 31, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
 .git-hub a:visited {
   color: #24292e;
 }
 
-/* line 32, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
+/* line 36, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
 .tech-specs {
   margin-top: 40px;
 }
 
-/* line 36, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
+/* line 40, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
 .tech-specs a {
   text-decoration: none;
 }
 
-/* line 40, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
+/* line 44, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
+.stack {
+  margin-bottom: 20px;
+}
+
+/* line 47, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
 .stack img {
-  padding: 0 15px;
+  margin: 10px;
   vertical-align: middle;
 }
 
-/* line 45, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
+/* line 52, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
+.api {
+  margin-bottom: 20px;
+}
+
+/* line 56, /vagrant/vote-bc/app/assets/stylesheets/about.scss */
 .api img {
-  padding: 0 15px;
+  margin: 15px;
   vertical-align: middle;
 }
 /* line 1, /vagrant/vote-bc/app/assets/stylesheets/district_index.scss */
