@@ -1,6 +1,8 @@
+
 <% if request.original_fullpath == "/election/#{Election.current_election_year}" || request.original_fullpath == "/" %>
   <%= render 'layouts/parallax' %>
 <% end %>
+<% @page_title = "Election #{@election.year}" %>
 <div id="buffer"></div>
 <div class="container body-container election-container">
   <div class="top-margin"></div>

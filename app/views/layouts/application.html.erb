@@ -1,9 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Vote-BC</title>
+    <% if @page_title %>
+      <title>Vote-BC | <%= @page_title %></title>
+    <% else %>
+      <title>Vote-BC</title>
+    <% end %>
     <%= csrf_meta_tags %>
+
+    <!-- COMMON TAGS -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Search Engine -->
+    <meta name="description" content="Data visualisation for BC Election History">
+    <meta name="image" content="<%= asset_path 'vote-bc-wide-cover.jpg' %>">
+    <!-- Schema.org for Google -->
+    <meta itemprop="name" content="Vote BC">
+    <meta itemprop="description" content="Data visualisation for BC Election History">
+    <meta itemprop="image" content="<%= asset_path 'vote-bc-wide-cover.jpg' %>">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Vote BC">
+    <meta name="twitter:description" content="Data visualisation for BC Election History">
+    <meta name="twitter:image:src" content="<%= asset_path 'vote-bc-wide-cover.jpg' %>">
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta name="og:title" content="Vote BC">
+    <meta name="og:description" content="Data visualisation for BC Election History">
+    <meta name="og:image" content="<%= asset_path 'vote-bc-wide-cover.jpg' %>">
+    <meta name="og:url" content="www.Vote-BC.ca">
+    <meta name="og:site_name" content="Vote BC">
+    <meta name="og:locale" content="en_US">
+    <meta name="og:type" content="website">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:700" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
