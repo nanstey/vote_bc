@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Vote-BC</title>
+    <% if @page_title %>
+      <title>Vote-BC | <%= @page_title %></title>
+    <% else %>
+      <title>Vote-BC</title>
+    <% end %>
     <%= csrf_meta_tags %>
 
     <!-- COMMON TAGS -->
