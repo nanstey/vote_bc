@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html prefix="og: http://ogp.me/ns#">
   <head>
-    <% if @page_title %>
-      <title>Vote-BC | <%= @page_title %></title>
-    <% else %>
-      <title>Vote-BC</title>
-    <% end %>
+
+    <%
+      title = "Vote BC"
+      if @page_title
+        title += " | #{@page_title}"
+      end
+    %>
+    <title><%= title %></title>
     <%= csrf_meta_tags %>
 
     <% share_photo = "http://#{request.host}#{asset_path 'vote-bc-wide-cover.jpg'}" %>
@@ -18,16 +21,16 @@
     <meta name="description" content="Data visualisation for BC Election History">
     <meta name="image" content="<%= share_photo %>">
     <!-- Schema.org for Google -->
-    <meta itemprop="name" content="Vote BC">
+    <meta itemprop="name" content="<%= title %>">
     <meta itemprop="description" content="Data visualisation for BC Election History">
     <meta itemprop="image" content="<%= share_photo %>">
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Vote BC">
+    <meta name="twitter:title" content="<%= title %>">
     <meta name="twitter:description" content="Data visualisation for BC Election History">
     <meta name="twitter:image:src" content="<%= share_photo %>">
     <!-- Open Graph general (Facebook, Pinterest & Google+) -->
-    <meta property="og:title" content="Vote BC">
+    <meta property="og:title" content="<%= title %>">
     <meta property="fb:app_id" content="136130710263864">
     <meta property="og:description" content="Data visualisation for BC Election History">
     <meta property="og:image" content="<%= share_photo %>">
