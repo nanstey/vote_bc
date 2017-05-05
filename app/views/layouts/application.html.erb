@@ -8,26 +8,31 @@
     <% end %>
     <%= csrf_meta_tags %>
 
+    <% share_photo = "http://#{request.host}#{asset_path 'vote-bc-wide-cover.jpg'}" %>
+    <% share_photo_ssl = "https://#{request.host}#{asset_path 'vote-bc-wide-cover.jpg'}" %>
+
     <!-- COMMON TAGS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Search Engine -->
     <meta name="description" content="Data visualisation for BC Election History">
-    <meta name="image" content="<%= request.host %><%= asset_path 'vote-bc-wide-cover.jpg' %>">
+    <meta name="image" content="<%= share_photo %>">
     <!-- Schema.org for Google -->
     <meta itemprop="name" content="Vote BC">
     <meta itemprop="description" content="Data visualisation for BC Election History">
-    <meta itemprop="image" content="<%= request.host %><%= asset_path 'vote-bc-wide-cover.jpg' %>">
+    <meta itemprop="image" content="<%= share_photo %>">
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Vote BC">
     <meta name="twitter:description" content="Data visualisation for BC Election History">
-    <meta name="twitter:image:src" content="<%= request.host %><%= asset_path 'vote-bc-wide-cover.jpg' %>">
+    <meta name="twitter:image:src" content="<%= share_photo %>">
     <!-- Open Graph general (Facebook, Pinterest & Google+) -->
     <meta property="og:title" content="Vote BC">
     <meta property="og:description" content="Data visualisation for BC Election History">
-    <meta property="og:image" content="<%= request.host %><%= asset_path 'vote-bc-wide-cover.jpg' %>">
-    <meta property="og:url" content="www.Vote-BC.ca">
+    <meta property="og:image" content="<%= share_photo %>">
+    <meta property="og:image:secure_url" content="<%= share_photo_ssl %>">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:url" content="<%= request.original_url %>">
     <meta property="og:site_name" content="Vote BC">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
