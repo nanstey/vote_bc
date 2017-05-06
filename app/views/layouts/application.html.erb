@@ -1,9 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html prefix="og: http://ogp.me/ns#">
   <head>
-    <title>Vote-BC</title>
+
+    <%
+      title = "Vote BC"
+      if @page_title
+        title += " | #{@page_title}"
+      end
+    %>
+    <title><%= title %></title>
     <%= csrf_meta_tags %>
+
+    <% share_photo = "http://#{request.host}#{asset_path 'vote-bc-wide-cover.jpg'}" %>
+    <% share_photo_ssl = "https://#{request.host}#{asset_path 'vote-bc-wide-cover.jpg'}" %>
+
+    <!-- COMMON TAGS -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Search Engine -->
+    <meta name="description" content="Data visualisation for BC Election History">
+    <meta name="image" content="<%= share_photo %>">
+    <!-- Schema.org for Google -->
+    <meta itemprop="name" content="<%= title %>">
+    <meta itemprop="description" content="Data visualisation for BC Election History">
+    <meta itemprop="image" content="<%= share_photo %>">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image_">
+    <meta name="twitter:site" content="@votebcapp">
+    <meta name="twitter:title" content="<%= title %>">
+    <meta name="twitter:description" content="Data visualisation for BC Election History">
+    <meta name="twitter:image:src" content="<%= share_photo %>">
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta property="og:title" content="<%= title %>">
+    <meta property="fb:app_id" content="136130710263864">
+    <meta property="og:description" content="Data visualisation for BC Election History">
+    <meta property="og:image" content="<%= share_photo %>">
+    <meta property="og:image:secure_url" content="<%= share_photo_ssl %>">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:site_name" content="Vote BC">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:700" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
