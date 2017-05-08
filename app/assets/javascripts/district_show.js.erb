@@ -37,13 +37,6 @@ $(document).on("turbolinks:load", function() {
   $('.year-tabs button').css({'border-width': '1px', 'border-color': '#bbb', 'color': '#555'});
   $('.year-tabs button:contains(' + year + ')').css({'border-width': '3px', 'border-color': '#888', 'color': 'black'});
 
-  // Appends trophy icon to eletion winner
-  $('.candidate-tables tbody').each(function(){
-    if ($(this).find('td').last().prev().text()) {
-    $(this).find('td').first().append(' <i class="fa fa-trophy" aria-hidden="true"></i>');
-    }
-  });
-
 // sets year-tabs style on click and selects which year to display
   $('.year-tabs').children().on('click', function(){
     year = $(this).text();
