@@ -10,9 +10,13 @@
             <th width="20%">Total Votes</th>
             <th width="20%">Percent</th>
           </thead>
-          <% district_year[:candidates].each do |ced| %>
+          <% district_year[:candidates].each_with_index do |ced, index| %>
             <tr>
-              <td><%= ced.candidate.name %></td>
+              <% if index == 0 && district_year[:district].election.year != Election.current_election_year %>
+                <td><%= ced.candidate.name %> <i class="fa fa-trophy" aria-hidden="true"></i></td>
+              <% else %>
+                <td><%= ced.candidate.name %></td>
+              <% end %>
               <td><%= ced.candidate.party.abbr %></td>
               <td><%= ced.votes_total %></td>
               <td><%= ced.votes_percent %>%</td>
