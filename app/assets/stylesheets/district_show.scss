@@ -100,6 +100,11 @@
     width: 100%;
     margin-left: 0;
   }
+
+  #map {
+    width:80%;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -119,7 +124,6 @@
   .year-tabs {
     margin: 20px 68px;
   }
-
 }
 
 @media screen and (max-width: 450px) {
