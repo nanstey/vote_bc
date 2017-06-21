@@ -29,7 +29,7 @@ require Rails.root.join('db', 'scripts', 'seed_parties')
 
 require Rails.root.join('db', 'scripts', 'seed_elections')
 
-require Rails.root.join('db', 'scripts', 'import_candidate_election_district_2017')
+require Rails.root.join('db', 'scripts', 'import_election_results_2017')
 
 require Rails.root.join('db', 'scripts', 'import_election_results_2013_2009')
 
