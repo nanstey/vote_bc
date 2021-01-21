@@ -106,4 +106,4 @@ def read_election_data(year)
   end
 end
 
-read_election_data(2017)
+read_election_data(2020)
