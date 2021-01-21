@@ -2,6 +2,9 @@
 def get_boundary_points(district)
   url = "https://represent.opennorth.ca/boundaries/british-columbia-electoral-districts-2015-redistribution/#{district.slug}/simple_shape"
   puts "  >> #{district.name}"
+  if district.name == "Cariboo-Chilcoltin"
+    return
+  end
   response = HTTP.get(url)
   boundary = JSON.parse(response)
   boundary['coordinates'][0][0].each do |point|
