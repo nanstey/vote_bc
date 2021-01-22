@@ -16,7 +16,7 @@ def read_election_data(year)
       end
     else
 
-      puts "  >> #{name}"
+      puts "  >> 1996-#{name}"
 
       # Get candidate info
       candidates = []
