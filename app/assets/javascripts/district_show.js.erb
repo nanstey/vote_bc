@@ -29,7 +29,7 @@ $(document).on("turbolinks:load", function() {
     var year = window.location.pathname.slice(-4);
   }
   else {
-    var year = <%= Election.last_election_year %>;
+    var year = <%= Election.current_election_year %>;
   }
 
 // Sets year-tabs style on load and selects which year to display
