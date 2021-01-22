@@ -24,7 +24,7 @@ def read_election_data(year)
       end
 
     else
-      puts "  >> #{name}"
+      puts "  >> 2017-#{name}"
       # Get winning candidate
       last_candidate = sheet.last_column - 2
       row = sheet.last_row

@@ -50,7 +50,7 @@ def read_election_data(year)
       end
       (2..last_candidate).each do |i|
         candidates[i-2][:votes_total] = sheet.cell(row, i)
-        candidates[i-2][:votes_percent] = sheet.cell(row+1, i).to_f * 100
+        candidates[i-2][:votes_percent] = (sheet.cell(row+1, i).to_f * 100).round(2)
       end
 
       # Seed info
