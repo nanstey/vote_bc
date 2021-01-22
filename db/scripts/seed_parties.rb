@@ -54,5 +54,7 @@ Party.create!([
   {name: 'Progressive Democratic Alliance', abbr: 'PDA', color: '#AA99CC'},
   {name: 'Common Sense, Community, Family', abbr: 'CCF', color: '#705b97'},
   {name: 'Natural Law', abbr: 'NLP', color: '#2691d5'},
-  {name: 'Family Coalition', abbr: 'FCP', color: '#fdb342'}
+  {name: 'Family Coalition', abbr: 'FCP', color: '#fdb342'},
+  {name: 'Wexit BC', abbr: 'WX', color: '#FF7F50'},
+  {name: 'Rural BC Party', abbr: 'RU', color: '#B8860B'}
 ])
