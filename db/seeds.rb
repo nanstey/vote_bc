@@ -31,26 +31,26 @@ require Rails.root.join('db', 'scripts', 'seed_elections')
 
 require Rails.root.join('db', 'scripts', 'import_election_results_2020')
 
-# require Rails.root.join('db', 'scripts', 'import_election_results_2017')
+require Rails.root.join('db', 'scripts', 'import_election_results_2017')
 
-# require Rails.root.join('db', 'scripts', 'import_election_results_2013_2009')
+require Rails.root.join('db', 'scripts', 'import_election_results_2013_2009')
 
-# require Rails.root.join('db', 'scripts', 'import_election_results_2005')
+require Rails.root.join('db', 'scripts', 'import_election_results_2005')
 
-# require Rails.root.join('db', 'scripts', 'import_election_results_2001')
+require Rails.root.join('db', 'scripts', 'import_election_results_2001')
 
-# require Rails.root.join('db', 'scripts', 'import_election_results_1996')
+require Rails.root.join('db', 'scripts', 'import_election_results_1996')
 
-# require Rails.root.join('db', 'scripts', 'seed_party_leaders')
+require Rails.root.join('db', 'scripts', 'seed_party_leaders')
 
-# require Rails.root.join('db', 'scripts', 'seed_election_stats')
+require Rails.root.join('db', 'scripts', 'seed_election_stats')
 
-# require Rails.root.join('db', 'scripts', 'seed_electoral_redistributions')
+require Rails.root.join('db', 'scripts', 'seed_electoral_redistributions')
 
-# require Rails.root.join('db', 'scripts', 'seed_candidate_alias')
+require Rails.root.join('db', 'scripts', 'seed_candidate_alias')
 
-# require Rails.root.join('db', 'scripts', 'import_district_geodata')
+require Rails.root.join('db', 'scripts', 'import_district_geodata')
 
-# require Rails.root.join('db', 'scripts', 'import_boundaries')
+require Rails.root.join('db', 'scripts', 'import_boundaries')
 
 puts "=============== DONE SEEDING ==============="

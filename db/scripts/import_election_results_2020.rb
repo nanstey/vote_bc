@@ -8,78 +8,55 @@ def read_election_data(year)
   codes = {}
   registered = {}
   xlsx.each_with_pagename do |name, sheet|
-    # First page ED code collection
-    if name == "ED List"
-      (1..sheet.last_row).each do |i|
-        ed_code = sheet.cell(i, 1)
-        ed_name = sheet.cell(i, 2)
-        codes[ed_code] = ed_name
-      end
-    elsif name == "Registered"
-      last_registered = sheet.last_row
-      (1..last_registered).each do |i|
-        ed = sheet.cell(i, 1)
-        reg = sheet.cell(i, 2)
-        registered[ed] = reg
-      end
 
-    else
-      puts "  >> #{name}"
-      # Get winning candidate
-      last_candidate = sheet.last_column - 2
-      row = sheet.last_row
-      until sheet.cell(row, 1) == "Grand totals"
-        row -= 1
-      end
+    dis_start_row = sheet.first_row + 2
+    curr_row = dis_start_row
+    final_row = sheet.last_row
+    highest_votes = 0
 
-      winner_col = 2
-      (3..last_candidate).each do |i|
-        if sheet.cell(row, i) > sheet.cell(row, winner_col)
-          winner_col = i
-        end
-      end
-
-      rejected = sheet.cell(row, sheet.last_column)
-      valid = sheet.cell(row, sheet.last_column-1)
-      total_voters = rejected + valid
-      total_registered = registered[name]
-
-
-      # Get candidate info
+    while dis_start_row < final_row
       candidates = []
-      row = sheet.first_row
-      until sheet.cell(row, 1) == "Advance voting"
-        row += 1
-      end
-      (2..last_candidate).each do |i|
-        party = sheet.cell(row-1, i)
-        party = 'N/A' if party.nil?
-        candidates[i-2] = {name: sheet.cell(row-2, i).delete("\n"), party: party}
-      end
-
-      winner = sheet.cell(row-2, winner_col)
-      winner_party = sheet.cell(row-1, winner_col)
-
-      # Get candidate stats
-      row = sheet.last_row
-      until sheet.cell(row, 1) == "Grand totals"
-        row -= 1
-      end
-      (2..last_candidate).each do |i|
-        candidates[i-2][:votes_total] = sheet.cell(row, i)
-        candidates[i-2][:votes_percent] = ((sheet.cell(row, i).to_f/valid.to_f).to_f * 100).round(2)
-      end
-
-      # Seed info
-      ed_code = name
-      ed_name = codes[ed_code]
-      district = District.find_by(name: ed_name)
+      curr_row = dis_start_row
+      # District info
+      ed_code = sheet.cell(dis_start_row + 1, sheet.first_column)
+      ed_name = sheet.cell(dis_start_row, sheet.first_column)
+      district = District.find_by(abbr: ed_code)
       if district.nil?
         district = District.create(name: ed_name, abbr: ed_code)
-      end
+      end    
+      puts "  >> 2020-#{ed_code}"
 
+
+      # Candidate info
+      until sheet.cell(curr_row, 1) == "Final voting results - Complete"
+        curr_row += 1
+      end
+      dis_last_candidate_row = curr_row - 1
+      dis_first_candidate_row = dis_last_candidate_row - dis_start_row - 1
+      i = 0
+      for curr_row in (dis_start_row + 1)..dis_last_candidate_row
+        party = sheet.cell(curr_row, sheet.first_column + 2)
+        party = 'N/A' if party.nil?
+        candidates[i] = {name: sheet.cell(curr_row, sheet.first_column + 1), party: party, votes_total: sheet.cell(curr_row, sheet.first_column + 3), votes_percent: ((sheet.cell(curr_row, sheet.first_column + 4)).chomp('%')).to_f}
+        if sheet.cell(curr_row, sheet.first_column + 3) > highest_votes
+          highest_votes = sheet.cell(curr_row, sheet.first_column + 3)
+          winner = i
+        end
+        i += 1
+      end
+      highest_votes = 0
+
+
+      # Cumulative vote info
+      valid = sheet.cell(dis_last_candidate_row + 1, sheet.first_column + 3)
+      total_registered = sheet.cell(dis_last_candidate_row + 3, sheet.first_column + 3)
+      rejected = sheet.cell(dis_last_candidate_row + 2, sheet.first_column + 3)
+      total_voters = valid + rejected
+
+
+      # Seed DB
       candidates.each do |c|
-        party = Party.find_by(abbr: c[:party])
+        party = Party.find_by(name: (c[:party]))
         candidate = Candidate.find_or_create_by!(name: c[:name], party_id: party.id)
         CandidateElectionDistrict.create!(
           candidate_id: candidate.id,
@@ -90,8 +67,8 @@ def read_election_data(year)
         )
       end
 
-      party = Party.find_by(abbr: winner_party)
-      winning_candidate = Candidate.where(name: winner, party_id: party.id ).first
+      party = Party.find_by(name: (candidates[winner][:party]))
+      winning_candidate = Candidate.where(name: candidates[winner][:name], party_id: party.id).first
 
       ElectionDistrict.create!(
         election_id: election.id,
@@ -102,6 +79,10 @@ def read_election_data(year)
         ballots_rejected: rejected,
         ballots_valid: valid
       )
+
+      dis_start_row = dis_last_candidate_row + 5
+      curr_row = dis_start_row
+
     end
   end
 end
