@@ -37,7 +37,10 @@ def read_election_data(year)
       for curr_row in (dis_start_row + 1)..dis_last_candidate_row
         party = sheet.cell(curr_row, sheet.first_column + 2)
         party = 'N/A' if party.nil?
-        candidates[i] = {name: sheet.cell(curr_row, sheet.first_column + 1), party: party, votes_total: sheet.cell(curr_row, sheet.first_column + 3), votes_percent: ((sheet.cell(curr_row, sheet.first_column + 4)).chomp('%')).to_f}
+        candidate_name = sheet.cell(curr_row, sheet.first_column + 1)
+        candidate_votes_total = sheet.cell(curr_row, sheet.first_column + 3)
+        candidate_votes_percent = ((sheet.cell(curr_row, sheet.first_column + 4)).chomp('%')).to_f
+        candidates[i] = {name: candidate_name, party: party, votes_total: candidate_votes_total, votes_percent: candidate_votes_percent}
         if sheet.cell(curr_row, sheet.first_column + 3) > highest_votes
           highest_votes = sheet.cell(curr_row, sheet.first_column + 3)
           winner = i
