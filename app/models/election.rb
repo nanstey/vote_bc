@@ -26,6 +26,7 @@ class Election < ApplicationRecord
 
   def party_stats
     if self.premier_id.nil?
+      puts "ITS NILLLLL"
       eps = ElectionParty.includes(:party).where(:election_id => self.id).order(:candidates_running => :DESC)
       seats = ElectionDistrict.where(:election_id => self.id).count
       party_stats = {
