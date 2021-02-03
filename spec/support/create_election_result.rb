@@ -89,7 +89,7 @@ def create_election_result
       end
     end
   end
-
+  read_election_data(2020)
   read_election_data(2013)
   read_election_data(2009)
 end

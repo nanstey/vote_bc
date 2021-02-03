@@ -13,11 +13,11 @@ class Election < ApplicationRecord
   end
 
   def self.current_election_year
-    2017
+    2020
   end
 
   def self.last_election_year
-    2013
+    2017
   end
 
   def self.earliest_election_year

@@ -1,6 +1,6 @@
 
 def read_election_data(year)
-  xlsx = Roo::Excelx.new(Rails.root.join('db', 'excel', "#{year}_GE_Interim_VA_Results.xlsx"))
+  xlsx = Roo::Excelx.new(Rails.root.join('db', 'excel', "#{year}GE-Results-Excel.xlsx"))
   puts "Seeding election results for #{year} ..."
 
   election = Election.find_by(year: year)
@@ -24,7 +24,7 @@ def read_election_data(year)
       end
 
     else
-      puts "  >> #{name}"
+      puts "  >> 2017-#{name}"
       # Get winning candidate
       last_candidate = sheet.last_column - 2
       row = sheet.last_row
