@@ -20,6 +20,9 @@ ElectionLeader.create!([
   {candidate_id: ndp.id, election_id: election.id}
 ])
 
+election.premier_id = ndp.id
+election.save!
+
 #########################################
 
 puts "Seeding party leaders 2017 ..."
@@ -35,6 +38,9 @@ ElectionLeader.create!([
   {candidate_id: liberal.id, election_id: election.id},
   {candidate_id: ndp.id, election_id: election.id}
 ])
+
+election.premier_id = ndp.id
+election.save!
 
 #########################################
 
