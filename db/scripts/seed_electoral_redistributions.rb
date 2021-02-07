@@ -32,7 +32,7 @@ puts "seeding district aliases from 2008 ..."
 
 district_changes_2008 = [
   {new_name: 'Kootenay East', old_name: 'East Kootenay'},
-  {new_name: 'Chilliwack-Hope', old_name: 'Chilliwack-Kent'},
+  {new_name: 'Chilliwack-Hope', old_name: 'Chilliwack Kent'},
   {new_name: 'Vernon-Monashee', old_name: 'Okanagan-Vernon'},
   {new_name: 'West Vancouver-Sea to Sky', old_name: 'West Vancouver-Garibaldi'},
   {new_name: 'Abbotsford South', old_name: 'Abbotsford-Clayburn'},
@@ -71,7 +71,7 @@ puts "seeding district aliases from 1996 ..."
 district_changes_1996 = [
   {new_name: 'Abbotsford-Clayburn', old_name: 'Abbotsford'},
   {new_name: 'Alberni-Qualicum', old_name: 'Alberni'},
-  {new_name: 'Chilliwack-Kent', old_name: 'Mission-Kent'},
+  {new_name: 'Chilliwack Kent', old_name: 'Mission-Kent'},
   {new_name: 'Abbotsford-Mount Lehman', old_name: 'Matsqui'},
   {new_name: 'Penticton-Okanagan Valley', old_name: 'Okanagan-Penticton'},
   {new_name: 'Kelowna-Lake Country', old_name: 'Okanagan-East'},
