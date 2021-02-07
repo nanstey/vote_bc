@@ -4,6 +4,26 @@ party_ndp = Party.find_by(abbr: "NDP")
 party_pda = Party.find_by(abbr: "PDA")
 party_rp = Party.find_by(abbr: "RP")
 
+#########################################
+
+puts "Seeding party leaders 2020 ..."
+
+election = Election.find_by(year: 2020)
+
+green = Candidate.find_by(name: 'Sonia Furstenau', party_id: party_gp.id)
+liberal = Candidate.find_by(name: 'Andrew Wilkinson', party_id: party_lib.id)
+ndp = Candidate.find_by(name: 'John Horgan', party_id: party_ndp.id)
+
+ElectionLeader.create!([
+  {candidate_id: green.id, election_id: election.id},
+  {candidate_id: liberal.id, election_id: election.id},
+  {candidate_id: ndp.id, election_id: election.id}
+])
+
+election.premier_id = ndp.id
+election.save!
+
+#########################################
 
 puts "Seeding party leaders 2017 ..."
 
@@ -18,6 +38,9 @@ ElectionLeader.create!([
   {candidate_id: liberal.id, election_id: election.id},
   {candidate_id: ndp.id, election_id: election.id}
 ])
+
+election.premier_id = ndp.id
+election.save!
 
 #########################################
 

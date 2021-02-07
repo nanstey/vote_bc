@@ -6,17 +6,44 @@ def read_election_data(year)
   election = Election.find_by(year: year)
 
   codes = {}
+  registered = {}
   xlsx.each_with_pagename do |name, sheet|
     # First page ED code collection
-    if name == "ED Codes"
+    if name == "ED List"
       (1..sheet.last_row).each do |i|
         ed_code = sheet.cell(i, 1)
         ed_name = sheet.cell(i, 2)
         codes[ed_code] = ed_name
       end
-    else
+    elsif name == "Registered"
+      last_registered = sheet.last_row
+      (1..last_registered).each do |i|
+        ed = sheet.cell(i, 1)
+        reg = sheet.cell(i, 2)
+        registered[ed] = reg
+      end
 
-      puts "  >> #{name}"
+    else
+      puts "  >> 2017-#{name}"
+      # Get winning candidate
+      last_candidate = sheet.last_column - 2
+      row = sheet.last_row
+      until sheet.cell(row, 1) == "Grand totals"
+        row -= 1
+      end
+
+      winner_col = 2
+      (3..last_candidate).each do |i|
+        if sheet.cell(row, i) > sheet.cell(row, winner_col)
+          winner_col = i
+        end
+      end
+
+      rejected = sheet.cell(row, sheet.last_column)
+      valid = sheet.cell(row, sheet.last_column-1)
+      total_voters = rejected + valid
+      total_registered = registered[name]
+
 
       # Get candidate info
       candidates = []
@@ -24,37 +51,27 @@ def read_election_data(year)
       until sheet.cell(row, 1) == "Advance voting"
         row += 1
       end
-      last_candidate = sheet.last_column - 3
       (2..last_candidate).each do |i|
         party = sheet.cell(row-1, i)
         party = 'N/A' if party.nil?
         candidates[i-2] = {name: sheet.cell(row-2, i).delete("\n"), party: party}
       end
 
-      # Get winning candidate
-      row = sheet.last_row
-      until sheet.cell(row, 1) == "Candidate elected:"
-        row -= 1
-      end
-      winner = sheet.cell(row, 2)
-
-      # Get district stats
-      total_registered = sheet.cell(row-2, 2)
-      total_voters = sheet.cell(row-4, 2)
-      rejected = sheet.cell(row-5, 2)
-      valid = sheet.cell(row-7, 2)
+      winner = sheet.cell(row-2, winner_col)
+      winner_party = sheet.cell(row-1, winner_col)
 
       # Get candidate stats
+      row = sheet.last_row
       until sheet.cell(row, 1) == "Grand totals"
         row -= 1
       end
       (2..last_candidate).each do |i|
         candidates[i-2][:votes_total] = sheet.cell(row, i)
-        candidates[i-2][:votes_percent] = (sheet.cell(row+1, i).to_f * 100).round(2)
+        candidates[i-2][:votes_percent] = ((sheet.cell(row, i).to_f/valid.to_f).to_f * 100).round(2)
       end
 
       # Seed info
-      ed_code = name.lines('-')[1]
+      ed_code = name
       ed_name = codes[ed_code]
       district = District.find_by(name: ed_name)
       if district.nil?
@@ -73,9 +90,8 @@ def read_election_data(year)
         )
       end
 
-      winner_info = winner.scan(/[^()]+/)
-      party = Party.find_by(abbr: winner_info[1])
-      winning_candidate = Candidate.where(name: winner_info[0].strip, party_id: party.id ).first
+      party = Party.find_by(abbr: winner_party)
+      winning_candidate = Candidate.where(name: winner, party_id: party.id ).first
 
       ElectionDistrict.create!(
         election_id: election.id,
@@ -86,10 +102,8 @@ def read_election_data(year)
         ballots_rejected: rejected,
         ballots_valid: valid
       )
-
     end
   end
 end
 
-read_election_data(2013)
-read_election_data(2009)
+read_election_data(2017)

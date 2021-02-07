@@ -29,20 +29,13 @@ $(document).on("turbolinks:load", function() {
     var year = window.location.pathname.slice(-4);
   }
   else {
-    var year = <%= Election.last_election_year %>;
+    var year = <%= Election.current_election_year %>;
   }
 
 // Sets year-tabs style on load and selects which year to display
   $('.show-' + year).addClass('show').css( 'position', 'static');
   $('.year-tabs button').css({'border-width': '1px', 'border-color': '#bbb', 'color': '#555'});
   $('.year-tabs button:contains(' + year + ')').css({'border-width': '3px', 'border-color': '#888', 'color': 'black'});
-
-  // Appends trophy icon to eletion winner
-  $('.candidate-tables tbody').each(function(){
-    if ($(this).find('td').last().prev().text()) {
-    $(this).find('td').first().append(' <i class="fa fa-trophy" aria-hidden="true"></i>');
-    }
-  });
 
 // sets year-tabs style on click and selects which year to display
   $('.year-tabs').children().on('click', function(){

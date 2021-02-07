@@ -24,15 +24,18 @@ def party_and_election
     {name: 'Peoples Front', abbr: 'PF'},
     {name: 'Platinum Party', abbr: 'PLAT'},
     {name: 'Republican Party', abbr: 'RP'},
+    {name: 'Rural BC Party', abbr: 'RU'},
     {name: 'The Advocational Party', abbr: 'AID'},
     {name: 'The Sex Party', abbr: 'SEX'},
     {name: 'The Vancouver Island Party', abbr: 'VIP'},
     {name: 'Unparty: The Consensus-Building Party', abbr: 'UCBP'},
     {name: 'Western Canada Concept Party', abbr: 'WCC'},
+    {name: 'Wexit BC', abbr: 'WX'},
     {name: 'Work Less Party', abbr: 'WLP'},
     {name: 'Your Political Party of BC (YPP)', abbr: 'YPBC'}
   ])
   Election.create!([
+    {year: 2020},
     {year: 2017},
     {year: 2013},
     {year: 2009}
