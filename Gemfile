@@ -42,6 +42,8 @@ gem 'json'
 gem 'friendly_id', '~> 5.1.0'
 gem 'morrisjs-rails'
 gem 'raphael-rails'
+gem 'mimemagic', '~> 0.4.0'
+gem 'mini_racer'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

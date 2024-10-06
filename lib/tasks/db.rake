@@ -1,34 +1,32 @@
 namespace :db do
 
-    desc "Dumps the database to db/APP_NAME.dump"
-    task :dump => :environment do
-      cmd = nil
-      with_config do |app, host, db, user|
-        cmd = "pg_dump --host #{host} --username #{user} --verbose --clean --no-owner --no-acl --format=c #{db} > #{Rails.root}/db/#{app}.dump"
-      end
+  desc "Dumps the database to db/APP_NAME.dump"
+  task :dump => :environment do
+    with_uri do |app, uri|
+      db = uri.path.sub('/', '')
+      cmd = "PGPASSWORD=#{uri.password} pg_dump --host=#{uri.host} --username=#{uri.user} --verbose --clean --no-owner --no-acl --format=plain #{db} > #{Rails.root}/db/#{app}.sql"
       puts cmd
       exec cmd
     end
-  
-    desc "Restores the database dump at db/APP_NAME.dump."
-    task :restore => :environment do
-      cmd = nil
-      with_config do |app, host, db, user|
-        cmd = "pg_restore --verbose --host #{host} --username #{user} --clean --no-owner --no-acl --dbname #{db} #{Rails.root}/db/#{app}.dump"
-      end
-      Rake::Task["db:drop"].invoke
-      Rake::Task["db:create"].invoke
-      puts cmd
-      exec cmd
-    end
-  
-    private
-  
-    def with_config
-      yield Rails.application.class.parent_name.underscore,
-        ActiveRecord::Base.connection_config[:host],
-        ActiveRecord::Base.connection_config[:database],
-        ActiveRecord::Base.connection_config[:username]
-    end
-  
   end
+
+  desc "Restores the database dump at db/APP_NAME.dump."
+  task :restore => :environment do
+    with_uri do |app, uri|
+      cmd = "psql -d #{uri} --file=#{Rails.root}/db/#{app}.sql --echo-all"
+      puts cmd
+      exec cmd
+    end
+  end
+
+  private
+
+  def with_uri
+    uri = URI.parse(ENV['DATABASE_URL'])
+    raise "DATABASE_URL environment variable is not set!" unless uri.host
+
+    app_name = Rails.application.class.module_parent_name.underscore
+    yield app_name, uri
+  end
+
+end

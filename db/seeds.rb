@@ -1,27 +1,27 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-puts "Destroying tables..."
+puts "Deleting tables..."
 
-puts "  >> Destroying Candidate join tables ..."
-CandidateAlias.destroy_all
-CandidateElectionDistrict.destroy_all
+puts "  >> Deleting Candidate join tables ..."
+CandidateAlias.delete_all
+CandidateElectionDistrict.delete_all
 
-puts "  >> Destroying District join tables ..."
-DistrictGeodatum.destroy_all
-DistrictPoint.destroy_all
-DistrictAlias.destroy_all
+puts "  >> Deleting District join tables ..."
+DistrictGeodatum.delete_all
+DistrictPoint.delete_all
+DistrictAlias.delete_all
 
-puts "  >> Destroying Election join tables ..."
-ElectionDistrict.destroy_all
-ElectionLeader.destroy_all
-ElectionParty.destroy_all
+puts "  >> Deleting Election join tables ..."
+ElectionDistrict.delete_all
+ElectionLeader.delete_all
+ElectionParty.delete_all
 
-puts "  >> Destroying Core tables ..."
-Election.destroy_all
-Candidate.destroy_all
-District.destroy_all
-Party.destroy_all
+puts "  >> Deleting Core tables ..."
+Election.delete_all
+Candidate.delete_all
+District.delete_all
+Party.delete_all
 
 puts "=============== START SEEDING ==============="
 
